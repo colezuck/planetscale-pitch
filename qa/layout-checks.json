@@ -1,37 +1,79 @@
 [
   {
+    "height": 720,
     "id": "opening",
-    "missingImages": [],
-    "overflow": []
+    "imageErrors": [],
+    "overflow": [],
+    "width": 1280,
+    "version": "v2",
+    "keyboard_navigation": "verified",
+    "notes_dialog": "verified",
+    "browser_console_errors": 0
   },
   {
-    "id": "availability",
-    "missingImages": [],
-    "overflow": []
-  },
-  {
-    "id": "metal",
-    "missingImages": [],
-    "overflow": []
-  },
-  {
+    "height": 720,
     "id": "vitalize",
-    "missingImages": [],
-    "overflow": []
+    "imageErrors": [],
+    "overflow": [],
+    "width": 1280,
+    "version": "v2",
+    "keyboard_navigation": "verified",
+    "notes_dialog": "verified",
+    "browser_console_errors": 0
   },
   {
-    "id": "migration",
-    "missingImages": [],
-    "overflow": []
+    "height": 720,
+    "id": "availability",
+    "imageErrors": [],
+    "overflow": [],
+    "width": 1280,
+    "version": "v2",
+    "keyboard_navigation": "verified",
+    "notes_dialog": "verified",
+    "browser_console_errors": 0
   },
   {
+    "height": 720,
+    "id": "metal",
+    "imageErrors": [],
+    "overflow": [],
+    "width": 1280,
+    "version": "v2",
+    "keyboard_navigation": "verified",
+    "notes_dialog": "verified",
+    "browser_console_errors": 0
+  },
+  {
+    "height": 720,
     "id": "neki",
-    "missingImages": [],
-    "overflow": []
+    "imageErrors": [],
+    "overflow": [],
+    "width": 1280,
+    "version": "v2",
+    "keyboard_navigation": "verified",
+    "notes_dialog": "verified",
+    "browser_console_errors": 0
   },
   {
+    "height": 720,
     "id": "neki-scale",
-    "missingImages": [],
-    "overflow": []
+    "imageErrors": [],
+    "overflow": [],
+    "width": 1280,
+    "version": "v2",
+    "keyboard_navigation": "verified",
+    "notes_dialog": "verified",
+    "browser_console_errors": 0
+  },
+  {
+    "height": 720,
+    "id": "migration",
+    "imageErrors": [],
+    "overflow": [],
+    "width": 1280,
+    "version": "v2",
+    "keyboard_navigation": "verified",
+    "notes_dialog": "verified",
+    "browser_console_errors": 0
   }
 ]

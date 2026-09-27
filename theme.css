@@ -26,3 +26,49 @@
 .neki-scale .scale-metrics{border-left-color:#7b7150}.neki-scale .scale-metrics strong,.neki-scale .scale-metrics p,.neki-workload{font-family:var(--mono)}
 .scale-metrics strong{font-size:52px;letter-spacing:-2px}.scale-metrics strong span{font-size:29px}.scale-metrics p{font-size:18px}
 .migration-steps span,.migration-steps strong{font-family:var(--mono)}.migration-steps strong{font-size:25px}.migration-steps p{font-size:17px;line-height:1.45}
+/* v2: Postgres on Metal first, customer proof early, migration closes. */
+.hero{grid-template-columns:800px 1fr;height:458px;padding-top:44px}
+.hero h1{font-size:88px;line-height:1.06;letter-spacing:-4.8px}
+.hero .lead{font-size:29px;line-height:1.5!important;margin-top:28px!important;color:#bbb}
+.server-art{width:430px;top:16px;right:0}
+.opening-proof{border-top:1px solid #555;display:flex;gap:140px;padding-top:30px;margin-top:15px}
+.opening-proof strong{display:block;font-size:34px;font-weight:500;letter-spacing:-1px}
+.opening-proof>div:first-child strong{color:var(--orange)}
+.opening-proof span{display:block;font:19px var(--mono);color:#aaa;margin-top:12px}
+.customer-story{display:flex;justify-content:space-between;font:20px var(--mono);color:#aaa;margin-top:24px}
+.customer-move{display:flex;align-items:center;gap:22px;font:23px var(--mono);margin-top:24px}
+.customer-move strong{color:var(--orange);font-weight:400}
+.move-line{display:block;width:108px;height:1px;background:#aaa;position:relative}
+.move-line:after{content:'';position:absolute;right:-1px;top:-4px;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid #aaa}
+.vitalize-charts{margin-top:23px;padding-top:24px;gap:40px}
+.vitalize-charts svg{height:315px}
+.availability h2{font-size:55px;letter-spacing:-2.6px}
+.availability .sla strong{font-size:72px}
+.availability .sla p{font-size:17px}
+.availability .ha-diagram{margin-top:15px}
+.availability .ha-diagram svg{height:382px}
+.availability .cash-proof{grid-template-columns:1.05fr 1fr 1.3fr;gap:60px;padding-top:17px;margin-top:18px}
+.availability .cash-proof strong{font-size:35px;letter-spacing:-1.4px}
+.availability .cash-proof span{font-size:16px;margin-top:8px}
+.availability .cash-proof .customer img{width:172px}
+.availability .cash-proof .customer span{font-size:14px;margin-top:9px}
+.benchmark-grid{margin-top:30px}
+.chart-legend{top:77px;right:3px}
+.benchmark-grid h3 span{font-size:15px}
+.neki:not(.neki-scale) h2{font-size:59px}
+.neki-topology{margin-top:18px}.neki-topology svg{height:505px}
+.neki-scale .scale-layout{margin-top:72px}
+.neki-scale .scale-chart,.neki-scale .scale-chart svg{height:425px}
+.neki-scale .scale-metrics{gap:40px;padding-top:16px}
+.neki-scale .neki-workload{margin-top:18px!important}
+.migration-diagram{margin-top:24px}.migration-diagram svg{height:262px}
+.migration-steps{margin-top:15px;gap:36px}
+.migration-steps>div{padding-top:15px}
+.migration-steps strong{font-size:24px}
+.migration-steps p{font-size:17px;margin-top:9px}
+.migration-close{border-top:1px solid #555;padding-top:22px;margin-top:32px;display:flex;flex-direction:column;gap:12px}
+.migration-close strong{font-size:30px;font-weight:500;color:var(--orange);letter-spacing:-.8px}
+.migration-close span{font:18px var(--mono);color:#aaa}
+/* Keep browser text selection out of static slide exports. */
+.capture .reveal{-webkit-user-select:none;user-select:none}
+.capture ::selection{background:transparent;color:inherit}

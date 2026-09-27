@@ -1,6 +1,6 @@
 # PlanetScale — Postgres on Metal
 
-A seven-slide, 10–15 minute technical sales presentation for a general Postgres prospect. The close is technical discovery plus a migration assessment.
+Version 2. A seven-slide, 10–15 minute technical sales presentation for a general Postgres prospect. The close is technical discovery plus a migration assessment.
 
 ## Present
 
@@ -17,13 +17,13 @@ The PDF is a static 16:9 presentation backup. Speaker notes are also available i
 
 ## Narrative
 
-1. Postgres on Metal and the infrastructure team; Cash App scale proof.
-2. Postgres high availability, read routing and the control plane.
-3. Provider throughput comparison and p99 latency.
-4. Vitalize's actual Query Insights latency plot and a vCPU comparison.
-5. Migration workflow and partnership with the infrastructure team.
-6. Neki sharded Postgres architecture.
-7. Neki's measured scale and the next meeting.
+1. Hosted Postgres on Metal: local NVMe, unlimited IOPS, and a path to scale.
+2. Vitalize's Postgres migration and measured results.
+3. Three-zone availability, control plane, and Cash App operating experience.
+4. Postgres Metal throughput and p99 benchmark evidence.
+5. Neki's sharded Postgres architecture.
+6. Neki's measured scale for a defined workload.
+7. Migration partnership and the technical discovery close.
 
 Technical qualifications and benchmark configurations are in the speaker notes. Cash App is identified as Vitess/MySQL, and the Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
 
@@ -50,3 +50,9 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
 Review all seven slides, then commit the source and updated portable HTML together. Refresh `qa/slide-01.png` through `qa/slide-07.png` before rebuilding the PDF. The seven captures are versioned so the PDF can be reproduced; temporary QA images and source ZIPs are ignored. PDF packaging requires `reportlab` and `pypdf`. Keep reference presentations in the ignored `references/` folder.
+
+## Durable pitch context
+
+- [Customer case studies](docs/customer-case-studies.md): customer-reported results, comparisons, limitations, and selection guidance.
+- [Pitch blueprint](docs/pitch-blueprint.md): Gong-based sequencing and delivery plan.
+- [Postgres Metal benchmarks](docs/postgres-metal-benchmarks.md): workload definitions, selected data, configuration differences, and pitch framing.
