@@ -104,28 +104,25 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media print{.deck-tools,dialog{display:none!important}.reveal .slides>section{overflow:hidden!important}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 
-/* Additional customer stories, retained as candidates until the final deck edit. */
-.case-heading{display:flex;align-items:center;justify-content:space-between;gap:32px;height:74px}
+/* Customer proof: authentic curves and proportional comparisons. */
+.case-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;height:74px}
 .case-heading h2{font-size:53px;white-space:nowrap}
 .case-heading img{object-fit:contain;flex-shrink:0}
-.convex-logo{width:226px;height:86px}
-.autumn-logo{width:191px;height:47px;filter:brightness(0) invert(1)}
-.case-context{font:20px var(--mono);color:#aaa;margin-top:22px!important}
-.case-charts{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:44px;border-top:1px solid #555;padding-top:28px}
-.case-charts h3{margin-bottom:18px}
-.case-charts svg{width:100%;height:auto}
-.autumn-outcomes{display:grid;grid-template-columns:870px 1fr;gap:52px;margin-top:60px}
-.latency-change{display:flex;align-items:center;justify-content:space-between;margin-top:28px}
-.latency-change>div>span{display:block;font:21px var(--mono);color:#aaa;margin-bottom:21px}
-.latency-change strong{font:500 68px/1.05 var(--mono);letter-spacing:-3px;white-space:nowrap}
-.latency-change strong span{font-size:31px;letter-spacing:-1px}
-.result-arrow{font:43px var(--mono);color:#777;margin-top:33px}
-.autumn-cutover{border-left:1px solid #555;padding-left:39px;display:flex;flex-direction:column;justify-content:flex-end;gap:17px;padding-bottom:5px}
-.autumn-cutover strong{font-size:52px;letter-spacing:-2px;color:var(--orange)}
-.autumn-cutover span{font:19px var(--mono);color:#aaa;white-space:nowrap}
-.autumn-journey{display:flex;align-items:center;gap:26px;margin-top:72px;font:24px var(--mono)}
-.autumn-journey i{flex:1;height:1px;border-top:1px dashed #888;position:relative}
-.autumn-journey i:after{content:'';position:absolute;right:0;top:-5px;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid #aaa}
-.autumn-partner{border-top:1px solid #555;margin-top:40px;padding-top:28px}
-.autumn-partner strong{font-size:31px;letter-spacing:-.6px}
-.autumn-partner p{font:21px var(--mono);color:#aaa;margin-top:13px}
+.convex-brand{display:flex;align-items:center;width:245px;flex-shrink:0;margin-right:-24px}
+.convex-symbol{width:82px;height:84px;margin-right:-27px!important}
+.convex-wordmark{width:210px;height:95px}
+.autumn-logo{width:191px;height:47px}
+.case-context{font:20px var(--mono);color:#aaa;margin-top:15px!important}
+.convex-curves{margin-top:34px}
+.convex-curves svg{width:100%;height:auto}
+.autumn-evidence{display:grid;grid-template-columns:940px 1fr;gap:66px;margin-top:38px}
+.autumn-evidence svg{width:100%;height:auto}
+.autumn-migration{border-left:1px solid #555;padding-left:38px;padding-top:62px}
+.migration-number strong{font:500 82px/1 var(--mono);letter-spacing:-4px;color:var(--orange);white-space:nowrap}
+.migration-number strong span{font-size:34px;letter-spacing:-1px}
+.autumn-migration p{font:20px/1.4 var(--mono);color:#aaa;margin-top:14px}
+.cutover-number{margin-top:64px}
+.cutover-number strong{font-size:44px;color:var(--orange);letter-spacing:-1.5px}
+.migration-assist{display:flex;gap:16px;align-items:center;margin-top:68px}
+.migration-assist p{font:19px/1.45 var(--mono);margin:0;color:#eee}
+.assist-node{display:block;flex-shrink:0;width:19px;height:19px;border:1px solid var(--orange);outline:1px solid var(--orange);outline-offset:4px}

@@ -75,3 +75,18 @@ The user requested two additional slides while preserving Vitalize and the exist
 
 - Convex: unmodified white logo from the [official brand kit](https://www.convex.dev/brand), downloaded from `https://www.convex.dev/resources/logos.zip`, entry `Logos/SVG/logo-white.svg`.
 - Autumn: official website navbar logo, `https://useautumn.com/images/navbar/autumnlogo.svg`. The slide uses the same white-on-dark CSS treatment shown by Autumn's site footer.
+
+
+## Customer-slide visual refinement — 2026-09-27
+
+Convex now uses two p99 curves reconstructed from its original published chart. The red p99 traces are digitized at source-pixel resolution by `digitize_convex.py`, persisted in `qa/convex-p99-digitized.json`, and rendered as native SVG. This is approximate image-derived data, not raw telemetry. Missing pixels remain gaps, including query peaks clipped above 20 ms in the source. The white/orange boundary follows the visible step around 23:55; it is not an independently established cutover timestamp. Callouts use the article’s explicit 10–15 → 5–7 ms and 75–200 ms spikes → ~20 ms claims, rather than statistics recomputed from pixels. Other percentile lines are intentionally omitted.
+
+Original Convex chart: https://storage.ghost.io/c/e6/e9/e6e9d6ca-a1ad-4d1c-bd58-d32798cd446c/content/images/2025/07/Screenshot-2025-07-01-at-7.59.02---AM-2.png
+
+Autumn uses an approximate 100 ms baseline and a dashed 10 ms upper-bound bar, labelled <10 ms. This is general query latency, with no published percentile. The previous provider remains unnamed. Its Insights screenshot (`assets/autumn-original-insights.png`) is retained as research evidence only: it is not a paired migration comparison. The later ~200 → <50 ms p99 and 40% → <10% CPU improvements followed query/index tuning, so they remain separate from the migration result.
+
+Original Autumn chart: https://useautumn.com/images/blog/planetscale-insights.png
+
+Brand assets: Convex’s unmodified color symbol and white wordmark come from https://www.convex.dev/resources/logos.zip . Autumn’s current official logo at https://useautumn.com/images/navbar/autumnlogo.svg and official icon at https://useautumn.com/icon-192.png are monochrome. Keep the official logo rather than inventing a colored version.
+
+Both stories remain candidate slides 8–9, with Vitalize and the original seven slide records preserved.
