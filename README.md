@@ -25,7 +25,7 @@ The PDF is a static 16:9 presentation backup. Speaker notes are also available i
 6. Neki's measured scale for a defined workload.
 7. Convex / Chef: before-and-after query and batch-commit p99.
 8. Autumn: two-day migration to Metal, latency results, and migration-team support.
-9. Migration partnership and the technical discovery close.
+9. Self-service and PlanetScale-led migrations, closing with technical discovery plus migration assessment.
 
 Technical qualifications and benchmark configurations are in the speaker notes. The Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
 
@@ -56,6 +56,7 @@ Review all slides, then commit the source and updated portable HTML together. Re
 ## Durable pitch context
 
 - [Customer case studies](docs/customer-case-studies.md): customer-reported results, comparisons, limitations, and selection guidance.
+- [Migration options](docs/migration-options.md): self-service tooling, migration services, and closing-slide positioning.
 - [Pitch blueprint](docs/pitch-blueprint.md): Gong-based sequencing and delivery plan.
 - [Postgres Metal benchmarks](docs/postgres-metal-benchmarks.md): workload definitions, selected data, configuration differences, and pitch framing.
 

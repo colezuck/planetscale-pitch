@@ -187,3 +187,8 @@ Convex follows the Gong customer-story structure: an infrastructure buyer's need
 ## Current closing sequence
 
 The nine-slide working order now finishes with Convex (7), Autumn (8), and migration (9). Autumn’s assisted migration naturally sets up the prospect’s own assessment. Close on technical discovery plus migration assessment, leaving the migration slide visible during the discussion. This supersedes the appended-candidate order above; no slides were removed. The current scripted timing is about 14 minutes before buyer exchanges, so final story selection or shorter delivery is still useful for a 10–15 minute meeting.
+
+
+## Closing slide: two migration paths
+
+The final slide now uses “Migrate to PlanetScale” as the headline and shows one shared destination: Postgres on Metal. Two paths explain ownership: self-service migration led by the prospect’s team, and PlanetScale-led migration with migration specialists. Technical mechanics stay in the spoken track. One shared next step remains technical discovery plus migration assessment, to confirm compatibility, performance targets, and the migration approach. This replaces the earlier team-only close and Assess / Rehearse / Cut over rows. Scope and supporting research are in `migration-options.md`.
