@@ -18,7 +18,7 @@ These services are not restricted to Enterprise customers. PlanetScale advertise
 - Shared destination: PlanetScale Postgres on Metal
 - Paths: Self-service migration / PlanetScale-led migration
 - One next step: Technical discovery + migration assessment
-- Session outcome: Confirm compatibility, performance targets, and the migration approach
+- Session outcome, spoken only: Confirm compatibility, performance targets, and the migration approach
 
 After Autumn’s customer evidence, this slide gives the buyer control over delivery ownership and a concrete next meeting. It replaces the previous detailed migration mechanism and three-step row.
 

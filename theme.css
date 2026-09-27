@@ -75,16 +75,13 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 /* Migration close: two delivery paths, one destination and next step. */
 .migration-diagram{margin-top:36px}
 .migration-diagram svg{width:100%;height:auto}
-.migration-paths{display:grid;grid-template-columns:1fr 1fr;gap:76px;margin-top:50px}
-.migration-path-heading{display:flex;align-items:center;gap:15px;min-height:44px}
-.reveal .migration-path-heading h3{font:500 35px/1.15 Inter,Arial,sans-serif;letter-spacing:-1.1px;white-space:nowrap}
+.migration-paths{display:grid;grid-template-columns:1fr 72px 1.15fr;gap:32px;align-items:center;margin-top:46px;min-height:168px}
+.migration-path-heading{display:flex;align-items:center;justify-content:center;gap:15px;min-height:48px}
+.reveal .migration-path-heading h3{font:500 38px/1.15 Inter,Arial,sans-serif;letter-spacing:-1.25px;white-space:nowrap}
 .planetscale-led h3{color:var(--orange)}
-.migration-path .migration-owner{font:26px/1.35 Inter,Arial,sans-serif;letter-spacing:-.5px;margin-top:17px;color:#e7e7e7}
-.migration-path-details{margin-top:25px;display:flex;flex-direction:column;gap:13px}
-.migration-path-details p{font:20px/1.45 var(--mono);color:#aaa;letter-spacing:-.25px}
-.migration-close{margin-top:49px;padding:22px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;border:1px solid #555;background-color:#111;background-image:radial-gradient(#494949 .7px,transparent .9px);background-size:7px 7px}
+.migration-option-slash{display:block;font:300 112px/1 Inter,Arial,sans-serif;color:#777;text-align:center;transform:rotate(8deg)}
+.migration-close{margin-top:46px;padding:34px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;border:1px solid #555;background-color:#111;background-image:radial-gradient(#494949 .7px,transparent .9px);background-size:7px 7px}
 .migration-close strong{font-size:32px;line-height:1.2;color:var(--orange);letter-spacing:-.8px;background:#111;padding:3px 12px}
-.migration-close span{font:18px/1.4 var(--mono);color:#bbb;background:#111;padding:3px 12px}
 
 /* Presentation UI is outside the slide canvas. */
 .deck-tools{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:5px 9px;background:rgba(30,30,30,.98);border:1px solid #454545;border-radius:8px;z-index:20;color:#ddd;font-size:12px;opacity:.13;transition:opacity .15s}

@@ -192,3 +192,5 @@ The nine-slide working order now finishes with Convex (7), Autumn (8), and migra
 ## Closing slide: two migration paths
 
 The final slide now uses “Migrate to PlanetScale” as the headline and shows one shared destination: Postgres on Metal. Two paths explain ownership: self-service migration led by the prospect’s team, and PlanetScale-led migration with migration specialists. Technical mechanics stay in the spoken track. One shared next step remains technical discovery plus migration assessment, to confirm compatibility, performance targets, and the migration approach. This replaces the earlier team-only close and Assess / Rehearse / Cut over rows. Scope and supporting research are in `migration-options.md`.
+
+The closing slide now presents the two migration option names with a large slash between them. Supporting descriptions and the discovery subtitle are removed from the canvas; their context remains in speaker notes.
