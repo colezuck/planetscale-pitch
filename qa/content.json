@@ -1,0 +1,30 @@
+[
+  {
+    "id": "opening",
+    "label": "Your Postgres. Our infrastructure."
+  },
+  {
+    "id": "availability",
+    "label": "Postgres availability and control plane"
+  },
+  {
+    "id": "metal",
+    "label": "Metal throughput and p99"
+  },
+  {
+    "id": "vitalize",
+    "label": "Vitalize Postgres migration"
+  },
+  {
+    "id": "migration",
+    "label": "Migration with the PlanetScale team"
+  },
+  {
+    "id": "neki",
+    "label": "Neki architecture"
+  },
+  {
+    "id": "neki-scale",
+    "label": "Neki demonstrated scale and next step"
+  }
+]

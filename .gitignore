@@ -1,0 +1,20 @@
+# Local files and credentials
+.DS_Store
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+# Redundant packaged source and temporary visual checks
+*-source.zip
+qa/*.png
+!qa/slide-01.png
+!qa/slide-02.png
+!qa/slide-03.png
+!qa/slide-04.png
+!qa/slide-05.png
+!qa/slide-06.png
+!qa/slide-07.png
+# Reference decks remain local
+references/
