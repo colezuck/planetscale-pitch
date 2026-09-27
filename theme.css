@@ -127,13 +127,13 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-result strong{color:var(--orange);font-size:38px}
 .autumn-evidence{display:grid;grid-template-columns:940px 1fr;gap:66px;margin-top:38px}
 .autumn-evidence svg{width:100%;height:auto}
-.autumn-migration{border-left:1px solid #555;padding-left:38px;padding-top:62px}
-.migration-number strong{font:500 82px/1 var(--mono);letter-spacing:-4px;color:var(--orange);white-space:nowrap}
+.autumn-migration{display:flex;flex-direction:column;justify-content:space-between;border:0;padding:66px 0 48px}
+.migration-number strong{font:500 76px/1 var(--mono);letter-spacing:-3px;color:var(--orange);white-space:nowrap}
 .migration-number strong span{font-size:34px;letter-spacing:-1px}
 .autumn-migration p{font:20px/1.4 var(--mono);color:#aaa;margin-top:14px}
-.cutover-number{margin-top:64px}
-.cutover-number strong{font-size:44px;color:var(--orange);letter-spacing:-1.5px}
-.migration-assist{display:flex;gap:16px;align-items:center;margin-top:68px}
+.cutover-number{margin:0}
+.cutover-number strong{font:500 52px/1 var(--mono);color:var(--orange);letter-spacing:-2px}
+.migration-assist{display:flex;gap:16px;align-items:center;margin:0}
 .migration-assist p{font:19px/1.45 var(--mono);margin:0;color:#eee}
 .assist-node{display:block;flex-shrink:0;width:19px;height:19px;border:1px solid var(--orange);outline:1px solid var(--orange);outline-offset:4px}
 
@@ -164,3 +164,8 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .autumn-heading h2{font:500 44px/1.1 Inter,Arial,sans-serif;letter-spacing:-1.9px}
 .autumn-title-symbol{width:52px;height:52px;overflow:hidden;flex-shrink:0}
 .autumn-title-symbol img{display:block;width:211.714px;height:52px;object-fit:initial}
+
+.migration-team-symbol{display:block;width:38px;height:38px;overflow:hidden;flex-shrink:0}
+.migration-team-symbol img{display:block;width:237.132px;height:38px;max-width:none}
+.migration-assist p{font:22px/1.35 Inter,Arial,sans-serif;letter-spacing:-.3px}
+.migration-assist p span{font:15px/1.4 var(--mono);color:#aaa;letter-spacing:0;white-space:nowrap}
