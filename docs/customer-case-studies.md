@@ -105,3 +105,8 @@ The two original plots are now stacked at larger scale with their p99 callouts a
 ### Layout rollback
 
 At user request, restored the side-by-side original chart panels, subtitle, dividers, and result spacing from commit 97e06c0. Retained the left-aligned Convex branding and “migrated and lowered p99” headline. The stacked layout above is superseded.
+
+
+### Autumn follow-on story recommendation
+
+For a separate infrastructure-team proof slide, prioritize the later engineer-assisted query/index tuning: one heavily used query’s p99 fell from ~200 ms to <50 ms, while CPU use fell from 40% to <10%. This occurred after migration and must not be combined with the migration’s ~100 ms to <10 ms general query latency baseline. Secondary talking points: pooling stopped being a bottleneck; Insights helped locate an incident-causing query within minutes. The current slide retains migration proof, with the title in the deck font and the official Autumn symbol. Source: https://useautumn.com/blog/migrating-to-planetscale
