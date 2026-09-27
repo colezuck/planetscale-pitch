@@ -49,3 +49,5 @@ Keep provider names, units, dataset, concurrency, and duration visible. Keep sou
 ## Four-provider latency comparison
 
 The p99 plot now includes AlloyDB and Supabase at 32 connections. Each has 300 published one-second samples; PlanetScale's samples match across the provider comparison datasets. Ranges: AlloyDB 277.21–1,235.62 ms; Supabase 196.89–1,561.52 ms. The shared linear axis is 0–1,600 ms; all samples are retained without smoothing or clipping. The x-axis aligns elapsed time in separate runs, not simultaneous wall-clock timestamps. Provenance is in `qa/benchmark-p99-provenance.json`. The visible workload footer was removed at the user's request; workload context remains in the speaker notes for spoken delivery.
+
+The slide display now uses a 0–1,200 ms y-axis and clips higher values at the plot boundary. Raw samples remain unchanged; full ranges remain in speaker notes.
