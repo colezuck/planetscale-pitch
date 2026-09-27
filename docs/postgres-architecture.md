@@ -10,7 +10,7 @@ PlanetScale's [architecture documentation](https://planetscale.com/docs/postgres
 
 ## Slide labels
 
-- Title: One cluster. Three nodes.
+- Title: Postgres Cluster Architecture
 - Outer containers: Availability zone A / B / C. These letters are schematic, not provider-specific AZ identifiers.
 - Inner boxes: Primary node / Replica node / Replica node.
 - Application choices: Primary connection / Replica connection.

@@ -9,7 +9,7 @@
   },
   {
     "id": "availability",
-    "label": "One cluster. Three nodes."
+    "label": "Postgres Cluster Architecture"
   },
   {
     "id": "metal",
