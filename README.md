@@ -19,13 +19,13 @@ The PDF is a static 16:9 presentation backup. Speaker notes are also available i
 
 1. Hosted Postgres on Metal: local NVMe, unlimited IOPS, and a path to scale.
 2. Vitalize's Postgres migration and measured results.
-3. Three-zone availability, control plane, and Cash App operating experience.
+3. Full-height three-zone node architecture and control plane.
 4. Postgres Metal throughput and p99 benchmark evidence.
 5. Neki's sharded Postgres architecture.
 6. Neki's measured scale for a defined workload.
 7. Migration partnership and the technical discovery close.
 
-Technical qualifications and benchmark configurations are in the speaker notes. Cash App is identified as Vitess/MySQL, and the Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
+Technical qualifications and benchmark configurations are in the speaker notes. The Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
 
 ## Edit
 

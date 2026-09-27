@@ -37,19 +37,14 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .vitalize-charts svg{height:390px;width:100%}
 .vitalize-charts>div:last-child{border-left:1px solid #555;padding-left:24px}
 
-/* Availability: one heading, a wide topology, and a concise proof row. */
+/* Availability: the full content area belongs to the node and control-plane architecture. */
 .title-with-stat{display:flex;justify-content:space-between;align-items:center;gap:36px}
 .sla{flex-shrink:0;text-align:right}
 .sla strong{font-size:64px;letter-spacing:-3px;color:var(--orange);line-height:1}
 .sla strong span{font-size:42px}
 .sla p{font:17px var(--mono);color:#aaa;margin-top:8px}
-.ha-diagram{margin-top:42px}
+.ha-diagram{margin-top:24px}
 .ha-diagram svg{width:100%;height:auto}
-.cash-proof{display:grid;grid-template-columns:1.05fr 1fr 1.3fr;align-items:center;gap:60px;border-top:1px solid #484848;padding-top:24px;margin-top:40px}
-.cash-proof strong{display:block;font-size:38px;letter-spacing:-1.4px;white-space:nowrap}
-.cash-proof span{display:block;font:17px var(--mono);color:#aaa;margin-top:9px}
-.cash-proof .customer img{width:172px}
-.cash-proof .customer span{font-size:15px;margin-top:10px}
 
 /* Benchmarks: align chart headings and reserve the lower band for workload context. */
 .metal-heading{display:flex;justify-content:space-between;align-items:baseline;gap:30px}

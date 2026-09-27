@@ -18,7 +18,10 @@
     "id": "availability",
     "imageErrors": [],
     "overflow": [],
-    "planetScaleLogos": 0
+    "planetScaleLogos": 0,
+    "diagramHeight": 580.42,
+    "bottomSpace": 53.58,
+    "customerProof": false
   },
   {
     "headingLines": "1",

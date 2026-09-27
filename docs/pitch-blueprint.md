@@ -10,6 +10,8 @@ The user clarified that hosted Postgres on Metal is the central offer, with spee
 
 The latest user-approved direction prioritizes screen space. Keep the PlanetScale logo on the opening slide only. All six content slides use single-line headings. Vitalize's secondary vCPU claim belongs over the compute chart. Diagram-heavy slides use the reclaimed header space for larger, readable artwork and separation between elements. This supersedes the longer working headlines below.
 
+The architecture slide now omits the Cash App proof row entirely, at the user's request. Its full content area is reserved for the application endpoints, three-zone topology, replication, and control plane. Cash App remains research context only; the older proposed proof-row placement below is superseded.
+
 ## Audience, objective, and constraints
 
 General Postgres prospect. CTO and technical leaders. Seven slides total, with two Neki slides toward the end. Core presentation: 11 minutes 30 seconds, with room for short exchanges within a 15-minute meeting segment. The next step is technical discovery plus a migration assessment.
