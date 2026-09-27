@@ -42,6 +42,11 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .ha-diagram{margin-top:24px}
 .ha-diagram svg{width:100%;height:auto}
 
+/* Metal mechanism: compare the storage paths, then show durability below. */
+.metal-path h2{font-size:56px}
+.metal-path-art{margin-top:44px}
+.metal-path-art svg{width:100%;height:auto}
+
 /* Benchmarks: align chart headings and reserve the lower band for workload context. */
 .metal-heading{display:flex;justify-content:center;align-items:center}
 .metal-heading h2{display:flex;align-items:center;gap:16px;white-space:nowrap}

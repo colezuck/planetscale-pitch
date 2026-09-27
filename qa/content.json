@@ -20,6 +20,10 @@
     "label": "Postgres Cluster Architecture"
   },
   {
+    "id": "metal-path",
+    "label": "Why Metal: Postgres on local NVMe"
+  },
+  {
     "id": "metal",
     "label": "Postgres on Metal: throughput and p99"
   },
