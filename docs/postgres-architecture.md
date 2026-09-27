@@ -14,7 +14,7 @@ PlanetScale's [architecture documentation](https://planetscale.com/docs/postgres
 - Outer containers: Availability zone A / B / C. These letters are schematic, not provider-specific AZ identifiers.
 - Inner boxes: Primary node / Replica node / Replica node.
 - Application choices: Primary connection / Replica connection.
-- Management: Control plane, with Custom Kubernetes operator beneath it.
+- Management: Control plane. Keep the underlying operator implementation in speaker notes.
 
 The operator manages creation, version upgrades, resizes, and failovers. It is a management component, not a database node or query hop. The [operations documentation](https://planetscale.com/docs/postgres/operations-philosophy) also confirms semi-sync replication and acknowledges brief disruptions during failovers and changes.
 

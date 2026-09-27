@@ -58,10 +58,10 @@ for x,label,role,color in [(0,'Availability zone A','Primary',ORANGE),(450,'Avai
     b+=(db(x+79,280,192,100,color) if role=='Primary' else rect(x+79,280,192,100,INK,color))+txt(x+175,324,role,29,anchor='middle')+txt(x+175,356,'node',21,GRAY,'middle')
 b+=path('M272 330H524',GRAY,1.8,True,arrow='ha-arrow')+txt(398,311,'Replication',19,GRAY,'middle')
 b+=path('M175 382V429H1075V383',GRAY,1.8,True,arrow='ha-arrow')+txt(628,456,'Semi-synchronous replication',20,GRAY,'middle')
-b+=rect(0,484,1250,65,INK,'#aaaaaa')+txt(24,511,'Control plane',26,WHITE,weight=500)+txt(24,538,'Custom Kubernetes operator',17,GRAY)
+b+=rect(0,484,1250,65,INK,'#aaaaaa')+txt(24,525,'Control plane',27,WHITE,weight=500)
 b+=txt(419,525,'Provision',23,GRAY)+txt(674,525,'Fail over',23,GRAY)+txt(884,525,'Resize',23,GRAY)+txt(1060,525,'Upgrade',23,GRAY)
 for x in (27,1223):b+=path(f'M{x} 484V406','#777777',1.5,True)
-ha=svg(1250,553,b,'One highly available Postgres cluster in a single region, containing three database nodes. Each availability zone contains one node: a primary in zone A and replicas in zones B and C. Application connections select the primary or replicas. Semi-synchronous replication connects the nodes. The separate control plane uses a custom Kubernetes operator to manage them.',mark='ha-arrow')
+ha=svg(1250,553,b,'One highly available Postgres cluster in a single region, containing three database nodes. Each availability zone contains one node: a primary in zone A and replicas in zones B and C. Application connections select the primary or replicas. Semi-synchronous replication connects the nodes. The separate control plane manages provisioning, failover, resizing, and upgrades.',mark='ha-arrow')
 
 # Throughput bars and real one-second p99 samples, kept as native vector charts.
 qps_source=json.loads((R/'qa/benchmark-qps.json').read_text())
