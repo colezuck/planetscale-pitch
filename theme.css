@@ -153,3 +153,8 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 
 .convex-quote{justify-content:center;text-align:center}
 .convex-heading h2{font-size:44px;letter-spacing:-1.9px}
+
+/* PlanetScale-style stipple panel for the customer quote. */
+.convex-quote{border:1px solid #555;padding:18px 24px;margin-top:32px;background-color:#111;background-image:radial-gradient(#494949 .7px,transparent .9px);background-size:7px 7px;gap:0}
+.convex-quote q{background:#111;padding:6px 14px}
+.convex-quote>span{background:#111;padding:9px 14px 9px 8px}
