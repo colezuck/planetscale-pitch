@@ -55,7 +55,7 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .benchmark-grid h3 span{display:block;font-size:16px;color:#969696;font-weight:400;margin-top:7px;letter-spacing:0}
 .benchmark-grid svg{height:505px}
 .benchmark-grid>div:first-child svg{height:440px;margin-top:32px}
-.chart-legend{position:absolute;top:81px;right:5px;display:flex;gap:16px;font:16px var(--mono);z-index:1}
+.chart-legend{position:absolute;top:81px;left:0;right:0;display:flex;justify-content:center;gap:16px;font:16px var(--mono);z-index:1}
 .chart-legend span:before{content:'';display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:8px;background:#c4c4c4}
 .chart-legend .ps-dot:before{background:var(--orange)}
 .chart-legend .alloydb-dot:before{background:#91abc7}
