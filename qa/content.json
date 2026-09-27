@@ -4,8 +4,16 @@
     "label": "PlanetScale Postgres on Metal"
   },
   {
+    "id": "convex",
+    "label": "Convex migrated from Aurora to PlanetScale Postgres Metal"
+  },
+  {
     "id": "vitalize",
     "label": "Vitalize: 2 ms p95, half the vCPUs"
+  },
+  {
+    "id": "autumn",
+    "label": "Autumn: two days to PlanetScale Metal"
   },
   {
     "id": "availability",
@@ -22,14 +30,6 @@
   {
     "id": "neki-scale",
     "label": "Neki: 118.5M queries per second"
-  },
-  {
-    "id": "convex",
-    "label": "Convex migrated from Aurora to PlanetScale Postgres Metal"
-  },
-  {
-    "id": "autumn",
-    "label": "Autumn: two days to PlanetScale Metal"
   },
   {
     "id": "migration",
