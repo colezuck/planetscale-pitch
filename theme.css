@@ -175,3 +175,12 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .migration-team-symbol img{display:block;width:237.132px;height:38px;max-width:none}
 .migration-assist p{font:22px/1.35 Inter,Arial,sans-serif;letter-spacing:-.3px}
 .migration-assist p span{font:15px/1.4 var(--mono);color:#aaa;letter-spacing:0;white-space:nowrap}
+
+/* Vitalize uses its official dark-mode symbol and the shared customer-story hierarchy. */
+.vitalize-heading{justify-content:flex-start;gap:18px}
+.vitalize-heading h2{font:500 43px/1.1 Inter,Arial,sans-serif;letter-spacing:-1.8px}
+.vitalize-title-symbol{width:56px;height:56px;flex-shrink:0;display:flex;align-items:center}
+.vitalize-title-symbol img{display:block;width:56px;height:auto;max-width:none;object-fit:contain}
+.vitalize-charts{margin-top:50px;padding-top:0;border-top:0;gap:54px}
+.vitalize-charts svg{height:445px}
+.vitalize-charts>div:last-child{border-left:0;padding-left:0}
