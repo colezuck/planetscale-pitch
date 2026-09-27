@@ -7,7 +7,9 @@
     "planetScaleLogos": 1,
     "diagramHeight": 518.5,
     "bottomSpace": 75.91,
-    "openingProof": false
+    "openingProof": false,
+    "nodeDetail": false,
+    "composition": "Product overview"
   },
   {
     "headingLines": "1",

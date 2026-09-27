@@ -19,26 +19,31 @@ def db(x,y,w=170,h=94,color=LINE):
 def stipple_box(x,y,w,h,label,mark,color=WHITE,size=24):
     return rect(x,y,w,h,INK,color)+rect(x+6,y+6,w-12,h-12,f'url(#{mark})','none')+rect(x+w/2-len(label)*size*.33-12,y+h/2-19,len(label)*size*.66+24,38,INK,'none')+txt(x+w/2,y+h/2+size*.34,label,size,color,'middle')
 
-# Opening: the managed Metal cluster is the hero, with a separate operating plane.
-b=rect(285,1,964,490,INK,'#555555')
-b+=txt(310,35,'PlanetScale Metal',22,WHITE)
-b+=txt(1223,35,'Compute + storage, colocated',18,GRAY,'end')
-b+=stipple_box(1,125,244,76,'Your application','metal-hero-dots',WHITE,20)
-for x,role,color in [(330,'Primary',ORANGE),(635,'Replica',WHITE),(940,'Replica',WHITE)]:
-    b+=rect(x-15,64,275,288,INK,'#777777')
-    b+=(db(x,86,245,114,color) if role=='Primary' else rect(x,86,245,114,INK,color))
-    b+=f'<image href="assets/postgresql.svg" x="{x+21}" y="111" width="42" height="44"/>'
-    b+=txt(x+77,131,'Postgres',25,WHITE)+txt(x+77,170,role,20,color)
-    b+=path(f'M{x+122.5} 201V244',color,1.8,True,arrow='metal-hero')
-    b+=stipple_box(x,256,245,67,'Local NVMe','metal-hero-accent',ORANGE,23)
-b+=path('M246 163H328',ORANGE,2,True,arrow='metal-hero')
-b+=path('M452.5 353V378H1062.5V354',GRAY,1.5,True,arrow='metal-hero')
-b+=path('M757.5 378V354',GRAY,1.5,True,arrow='metal-hero')
-b+=txt(757,406,'Replication',19,GRAY,'middle')
-b+=rect(310,431,914,43,INK,'#aaaaaa')
-b+=txt(329,459,'Control plane',22,WHITE)
-b+=txt(1203,458,'Provision / Monitor / Fail over / Upgrade',19,GRAY,'end')
-servers=svg(1250,494,b,'Your application connects to a Postgres primary on PlanetScale Metal. Each of the three database nodes pairs Postgres compute with local NVMe storage. The primary replicates to two replicas. A separate PlanetScale control plane operates the infrastructure.',mark='metal-hero')
+# Opening: product portfolio and operating foundation, not a node topology.
+b=db(1,8,790,288,WHITE)
+b+='<image href="assets/postgresql.svg" x="39" y="58" width="69" height="72"/>'
+b+=txt(140,112,'Postgres',49,WHITE,weight=500,mono=False)
+b+=txt(140,157,'Fully managed',24,GRAY)
+b+=rect(20,200,752,77,INK,ORANGE)
+b+=rect(26,206,740,65,'url(#metal-hero-accent)','none')
+b+=rect(42,217,147,42,INK,'none')+txt(58,248,'Metal',32,ORANGE)
+b+=rect(497,222,253,35,INK,'none')+txt(731,247,'Local NVMe storage',22,ORANGE,'end')
+b+=path('M791 151H893','#777777',1.5,True)
+b+=rect(910,44,339,217,INK,'#77632b')
+b+=rect(934,68,48,68,YELLOW,'none')
+b+='<image href="assets/neki-cat.svg" x="940" y="72" width="38" height="58"/>'
+b+=txt(1000,117,'[ NEKI ]',31,YELLOW)
+b+=txt(940,176,'Sharded Postgres',26,WHITE)
+b+=txt(940,219,'Horizontal scale',21,GRAY)
+b+=path('M396 297V350H1080V262','#777777',1.5)
+b+=path('M738 350V380','#777777',1.5)
+b+=rect(1,381,1248,109,INK,'#777777')
+b+=txt(27,423,'PlanetScale platform',28,WHITE,weight=500,mono=False)
+b+=txt(27,463,'Provisioning / Observability / Backups',21,GRAY)
+b+=path('M840 400V472','#555555',1)
+b+=txt(876,423,'Infrastructure team',28,WHITE,weight=500,mono=False)
+b+=txt(876,463,'Migration + operations',21,GRAY)
+servers=svg(1250,494,b,'PlanetScale product overview: fully managed Postgres on Metal with local NVMe storage, alongside Neki for sharded Postgres and horizontal scale. The PlanetScale platform and infrastructure team support the database products. This is a product map, not a query path or migration flow.',mark='metal-hero')
 
 # HA: full-height architecture makes the query paths and control plane the focus.
 b=stipple_box(470,0,310,52,'Application','ha-arrow-dots',WHITE,25)
@@ -143,7 +148,7 @@ b+=txt(60,365,'QUERIES / SECOND',15,'#b9a762',mono=True)+txt(756,365,'LOG SCALES
 scale=svg(820,380,b,'Neki read-only point-select benchmark: 5 shards delivered 999,624 QPS; 50 shards delivered 9,923,900 QPS; 512 shards delivered 118,538,803 QPS. Both axes use logarithmic scales.',mark='scale-arrow',color=YELLOW)
 
 slides=[
- dict(id='opening',label='PlanetScale Postgres on Metal',theme='opening',html=f'''<h1>Postgres on <span class="accent">Metal</span></h1><div class="opening-architecture">{servers}</div>''',notes="1:15. “You already run Postgres. We bring the hardware and the operating platform.” Trace the application into the primary, then down to local NVMe. “Compute and storage run together on each machine. We replicate across nodes, and our control plane operates the cluster.” This is a simplified view of an HA Metal cluster; the availability slide adds zones, endpoints, and replication detail. The control plane is separate from the application query path. Connect the architecture to the buyer: faster requests, less infrastructure work, and a path to horizontal scale when needed. Ask: “Which is taking the most engineering attention today: performance, availability, or operating the database?” Keep detailed failover and sizing discussion for later. The immediate offer is hosted Postgres on Metal. Unlimited IOPS is PlanetScale's product wording, not infinite physical throughput. Transition: “Vitalize is one Postgres team that made this move.” Sources: https://planetscale.com/metal and https://planetscale.com/blog/benchmarking-postgres."),
+ dict(id='opening',label='PlanetScale Postgres on Metal',theme='opening',html=f'''<h1>Postgres on <span class="accent">Metal</span></h1><div class="opening-architecture">{servers}</div>''',notes="1:15. “PlanetScale brings together the database, the hardware, and the team operating it. For your workload, we are proposing fully managed Postgres on Metal, with local NVMe storage. Our platform handles database operations, and our infrastructure team works with you on migration and production.” Point to Neki briefly: “For workloads that eventually outgrow one machine, Neki is our sharded Postgres product.” This is a product overview, not a query path or an automatic upgrade flow. Do not describe replica topology or control-plane internals here; slide 3 covers the architecture. Neki is in Platform Preview and requires a separate compatibility and migration assessment. The immediate offer remains hosted Postgres on Metal. Ask: “Where is your team spending the most time with Postgres today?” Transition: “Vitalize is one Postgres team that made this move.” Sources: https://planetscale.com/metal ; https://planetscale.com/docs/neki ; https://planetscale.com/blog/benchmarking-postgres."),
  dict(id='vitalize',label='Vitalize: 2 ms p95, half the vCPUs',theme='vitalize',html=f'''<h2>Vitalize: <span class="accent">2 ms p95</span></h2><div class="customer-story"><span>Hospital staffing software</span><span>400 GB / 150 million rows</span></div><div class="customer-move"><span>Supabase</span><span class="move-line"></span><strong>PlanetScale Metal</strong></div><div class="vitalize-charts"><div>{vitalize_latency}</div><div>{vitalize_compute}</div></div>''',notes='1:45. “Vitalize runs hospital staffing software. They moved a 400 GB Postgres database with 150 million rows from Supabase to PlanetScale Metal. They report about 2 ms p95 on half the vCPUs, with the same 16 GB of RAM.” Tell the customer story before explaining the graphs: demanding database reads, the move, then the result. The latency plot is their actual PlanetScale Query Insights capture after migration, not a paired before/after percentile. No comparable Supabase p95 is published. The 200 GB JSONB-heavy table comparison separately reports 50-second average reads before and 1.2-second maximum reads after; do not calculate a speedup from unlike statistics. The cutover included taking the app offline. These are customer-reported outcomes, not a guarantee. Transition: “Here is the platform operating that database.” Source: https://vitalize.care/blog/from-supabase-to-planetscale . Other cases and suitable alternatives: docs/customer-case-studies.md.'),
  dict(id='availability',label='Your Postgres. Operated by PlanetScale',theme='availability',html=f'''<div class="title-with-stat"><h2>Postgres across three zones</h2><div class="sla"><strong>99.99<span>%</span></strong><p>single-region HA SLA</p></div></div><div class="ha-diagram">{ha}</div>''',notes="2:00. “We operate a primary and two replicas across three availability zones. Your application has a primary endpoint and a replica endpoint; our control plane manages health and production changes.” Trace application traffic first, replication second, management last. Use replicas for reads that tolerate replication lag. Semi-synchronous streaming replication acknowledges from at least one replica. The control plane is outside the SQL query path and handles provisioning, failover, resizing, and upgrades. Backups and point-in-time recovery complement HA. Automatic failover can interrupt connections, so applications need retries. The diagram is a simplified HA topology. 99.99% is the single-region HA SLA under the applicable agreement, not a guarantee of no interruption. It excludes single-node and beta offerings. Hosted infrastructure is the main offer; if data location requires it, assess single-tenancy or PlanetScale Managed in the customer's own AWS/GCP account. Transition: “Local NVMe is the hardware foundation. Let's look at its performance under load.” Sources: https://planetscale.com/blog/benchmarking-postgres ; https://planetscale.com/legal/planetscale-service-level-agreement ; https://planetscale.com/docs/plans/managed ."),
  dict(id='metal',label='Postgres on Metal: throughput and p99',theme='metal',html=f'''<div class="metal-heading"><h2>More throughput. Lower p99</h2><p class="metal-line">Postgres on Metal</p></div><div class="benchmark-grid"><div><h3>Throughput <span>mean queries / second</span></h3>{bars}</div><div><h3>p99 latency <span>milliseconds / 1-second intervals</span></h3><div class="chart-legend"><span class="ps-dot">PlanetScale</span><span class="aurora-dot">Aurora</span></div>{latency}</div></div><p class="workload">TPCC-like / 500 GB / 32 connections / 5-minute run</p>''',notes="1:45. “In this mixed read/write benchmark, Postgres on Metal delivers more throughput and lower p99 than these tested configurations. We can evaluate the same questions against your application.” Left: arithmetic mean QPS across 300 one-second samples with 32 concurrent connections: PlanetScale 16,338.6276; Aurora 10,908.9315; AlloyDB 10,355.0109; Supabase 5,270.2068. Right: one-second interval p99 samples from the same TPCC-like benchmark, not an aggregate run-wide percentile. PlanetScale ranges 170.48–223.34 ms; Aurora 325.98–733 ms. Higher QPS and lower p99 are distinct findings. PlanetScale M-320 has 4 vCPU, 32 GB RAM, and 937 GB local NVMe; Aurora and AlloyDB use 4 vCPU/32 GB; Supabase uses 8 vCPU/32 GB and 12k IOPS. Clients run in each provider's cloud region; AlloyDB uses GCP, the others AWS. Work is sent to the primary, not summed across replicas. These are vendor-run synthetic results with different hardware and infrastructure, not isolated proof that NVMe causes every difference. The site's rounded ~18k headline spans other runs; this deck deliberately uses a single concurrency and exact samples. A separate read-only test has roughly equal average throughput for Aurora and PlanetScale, so do not claim every workload is faster by this ratio. Ask: “Which workload would we need to reproduce for this to matter to you?” Validate p95/p99, throughput, errors, and resource use in discovery. Transition: “When one machine becomes the constraint, Neki extends the architecture across Postgres shards.” Sources: https://planetscale.com/benchmarks ; https://planetscale.com/benchmarks/aurora ; https://planetscale.com/benchmarks/alloydb ; https://planetscale.com/benchmarks/supabase . Data definitions: docs/postgres-metal-benchmarks.md."),

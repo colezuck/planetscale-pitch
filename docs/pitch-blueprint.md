@@ -167,6 +167,6 @@ The proposed session should establish compatibility questions, a target deployme
 No new company overview, agenda, ROI calculator, logo wall, or thank-you slide is needed. The seven-slide constraint is met without combining migration and Neki into the same closing slide.
 
 
-## Opening revision — architecture first
+## Opening revision — product introduction
 
-The opening now reads “Postgres on Metal” beneath the PlanetScale lockup. The main visual shows an application connecting to a primary, two replicas, local NVMe on each machine, and a separate control plane. Removed the generic benefit blocks and supporting paragraph. This is the platform introduction; slide 3 supplies the availability-zone and endpoint detail. Keep the opening to 75 seconds and move to the Vitalize customer result.
+Slide 1 introduces the offer: fully managed Postgres on Metal, Neki as the horizontal scaling product, and the PlanetScale platform and infrastructure team beneath both. This product map supersedes the opening node diagram. Reserve replicas, replication paths, and control-plane topology for slide 3. Keep the opening to 75 seconds; emphasize Postgres on Metal now and briefly introduce Neki before moving to Vitalize. The product relationship does not imply an automatic migration to Neki.
