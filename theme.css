@@ -186,5 +186,5 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .vitalize-charts>div:last-child{border-left:0;padding-left:0}
 
 /* Customer-reported migration comparison replaces the post-migration-only trace. */
-.vitalize-art{margin-top:42px}
+.vitalize-art{margin-top:28px}
 .vitalize-art svg{width:100%;height:auto}

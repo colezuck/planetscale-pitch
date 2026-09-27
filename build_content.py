@@ -89,28 +89,30 @@ b+='</g>'
 b+=txt(575,499,'seconds',16,GRAY,'end',mono=True)
 latency=svg(600,505,b,'One-second benchmark p99 latency samples over 300 seconds, 32 connections. PlanetScale 170.48 to 223.34 ms; Aurora 325.98 to 733 ms; AlloyDB 277.21 to 1235.62 ms; Supabase 196.89 to 1561.52 ms. Linear axis from zero to 1200 milliseconds; values above 1200 are clipped.',mark='p99')
 
-# Vitalize: customer-reported before/after, with unlike read statistics labeled explicitly.
-b=txt(0,30,'200 GB JSONB-heavy table',25,GRAY)
-b+=rect(0,63,524,278,INK,'#777777')
-b+=rect(726,63,524,278,INK,ORANGE)
-b+=txt(31,105,'SUPABASE',22,GRAY)
-b+=txt(757,105,'PLANETSCALE METAL',22,ORANGE)
-b+=rect(28,128,468,125,'url(#vitalize-art-dots)','none')
-b+=rect(754,128,468,125,'url(#vitalize-art-accent)','none')
-b+=rect(76,140,342,105,INK,'none')
-b+=rect(800,140,376,105,INK,'none')
-b+=txt(262,221,'50 s',78,WHITE,'middle',500,False)
-b+=txt(988,221,'1.2 s',78,ORANGE,'middle',500,False)
-b+=txt(262,302,'AVERAGE READ',21,GRAY,'middle')
-b+=txt(988,302,'MAXIMUM READ',21,GRAY,'middle')
-b+=path('M540 204H706',WHITE,2,True,arrow='vitalize-art')
-b+=rect(563,169,124,42,INK,'none')+txt(625,198,'MIGRATED',18,GRAY,'middle')
-b+=rect(0,376,1250,128,INK,'#555555')
-b+=path('M420 376V504','#555555',1)+path('M831 376V504','#555555',1)
-b+=txt(31,419,'400 GB',42,WHITE,weight=500,mono=False)+txt(31,460,'150 million rows',21,GRAY)
-b+=txt(450,419,'4 → 2',42,ORANGE,weight=500,mono=False)+txt(450,460,'vCPUs / 16 GB RAM each',21,GRAY)
-b+=txt(862,419,'2 ms',42,ORANGE,weight=500,mono=False)+txt(862,460,'p95 after migration',21,GRAY)
-vitalize_art=svg(1250,510,b,'Vitalize moved 400 GB and 150 million rows from Supabase to PlanetScale Metal. On the same 200 GB JSONB-heavy table, Supabase reads averaged 50 seconds and PlanetScale reads maxed out at 1.2 seconds; these are different statistics, not a matched percentile comparison. Compute changed from four to two vCPUs at 16 GB RAM each. After migration, p95 was about two milliseconds.',mark='vitalize-art')
+# Vitalize: an editorial comparison, with the statistic attached to each result.
+b=txt(0,22,'400 GB migrated',20,GRAY)+txt(1250,22,'150 million rows',20,GRAY,'end')
+b+=path('M0 46H1250','#383838',1)
+b+=txt(0,104,'Supabase',26,WHITE,mono=False,weight=500)
+b+=txt(730,104,'PlanetScale Metal',26,ORANGE,mono=False,weight=500)
+# A restrained stipple field extends behind the destination, fading toward the type.
+b+='<defs><linearGradient id="vitalize-stipple-fade"><stop offset="0" stop-color="white" stop-opacity="0"/><stop offset="1" stop-color="white" stop-opacity=".3"/></linearGradient><mask id="vitalize-stipple-mask"><rect x="730" y="128" width="520" height="197" fill="url(#vitalize-stipple-fade)"/></mask></defs>'
+b+='<g mask="url(#vitalize-stipple-mask)">'+rect(730,128,520,197,'url(#vitalize-art-accent)','none')+'</g>'
+b+=txt(-5,257,'50',154,WHITE,weight=500,mono=False)+txt(210,255,'s',66,GRAY,mono=False)
+b+=txt(722,257,'1.2',154,ORANGE,weight=500,mono=False)+txt(942,255,'s',66,ORANGE,mono=False)
+b+=txt(0,304,'Average read',23,GRAY)+txt(730,304,'Maximum read',23,GRAY)
+b+=path('M440 214H642','#777777',2,arrow='vitalize-art')
+b+=txt(625,365,'200 GB JSONB-heavy table',21,GRAY,'middle')
+b+=path('M0 395H1250','#383838',1)
+# Physical CPU blocks make the resource change legible without another chart.
+b+=txt(0,438,'Half the vCPUs',27,WHITE,mono=False,weight=500)
+for x in [0,40,80,120]:b+=db(x,460,28,34,'#888888')
+b+=path('M174 477H235','#777777',1.5,arrow='vitalize-art')
+for x in [258,298]:b+=db(x,460,28,34,ORANGE)
+b+=txt(355,486,'4 → 2',30,ORANGE,mono=False,weight=500)
+b+=txt(0,531,'16 GB RAM on both',20,GRAY)
+b+=txt(730,476,'2 ms',64,ORANGE,mono=False,weight=500)
+b+=txt(730,531,'p95 after migration',20,GRAY)
+vitalize_art=svg(1250,550,b,'Vitalize moved 400 GB and 150 million rows from Supabase to PlanetScale Metal. On the same 200 GB JSONB-heavy table, Supabase reads averaged 50 seconds and PlanetScale reads maxed out at 1.2 seconds; these are different statistics, not a matched percentile comparison. Compute changed from four to two vCPUs at 16 GB RAM each. After migration, p95 was about two milliseconds.',mark='vitalize-art')
 
 # Migration close: one destination, with a choice of delivery ownership.
 b=db(1,8,380,112,WHITE)
