@@ -53,10 +53,13 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .benchmark-grid>div{position:relative}
 .benchmark-grid h3{margin-bottom:20px}
 .benchmark-grid h3 span{display:block;font-size:16px;color:#969696;font-weight:400;margin-top:7px;letter-spacing:0}
-.benchmark-grid svg{height:390px}
-.chart-legend{position:absolute;top:81px;right:5px;display:flex;gap:22px;font:16px var(--mono);z-index:1}
+.benchmark-grid svg{height:505px}
+.benchmark-grid>div:first-child svg{height:440px;margin-top:32px}
+.chart-legend{position:absolute;top:81px;right:5px;display:flex;gap:16px;font:16px var(--mono);z-index:1}
 .chart-legend span:before{content:'';display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:8px;background:#c4c4c4}
 .chart-legend .ps-dot:before{background:var(--orange)}
+.chart-legend .alloydb-dot:before{background:#91abc7}
+.chart-legend .supabase-dot:before{background:#88b8a0}
 .workload{border-top:1px solid #3d3d3d;padding-top:22px;margin-top:28px!important;font:18px var(--mono);color:#949494}
 
 /* Neki: branding fits in the title row rather than a separate banner. */

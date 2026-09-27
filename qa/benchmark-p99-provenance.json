@@ -1,0 +1,10 @@
+{
+  "source_bundle": "https://planetscale.com/assets/iframe/iframe-DpZL3dF_.js",
+  "sha256": "5dd33e04a2d49d6a94475fd923c32ea8a56513f29e89e3464b5eefcf0e0e144e",
+  "reviewed": "2026-09-27",
+  "sources": {
+    "alloydb": "https://planetscale.com/metal/benchmarks/postgres/iframe#tpcc-500g-p99-planetscale-alloydb",
+    "supabase": "https://planetscale.com/metal/benchmarks/postgres/iframe#tpcc-500g-p99-planetscale-supabase"
+  },
+  "selection": "TPCC-like 500 GB; 32 connections; 300 one-second p99 samples; no smoothing or clipping"
+}

@@ -44,3 +44,8 @@ The separate read-only comparison reports similar average QPS for PlanetScale an
 “In this published mixed-workload run, Postgres on Metal sustains higher throughput and lower p99 than these configurations. We can assess those same measures with your queries, concurrency, data size, and latency targets.”
 
 Keep provider names, units, dataset, concurrency, and duration visible. Keep source links and fuller hardware details in speaker notes. Do not add an ROI estimate, current price quote, extrapolated annual saving, or a promise that the customer's latency will match the benchmark.
+
+
+## Four-provider latency comparison
+
+The p99 plot now includes AlloyDB and Supabase at 32 connections. Each has 300 published one-second samples; PlanetScale's samples match across the provider comparison datasets. Ranges: AlloyDB 277.21–1,235.62 ms; Supabase 196.89–1,561.52 ms. The shared linear axis is 0–1,600 ms; all samples are retained without smoothing or clipping. The x-axis aligns elapsed time in separate runs, not simultaneous wall-clock timestamps. Provenance is in `qa/benchmark-p99-provenance.json`. The visible workload footer was removed at the user's request; workload context remains in the speaker notes for spoken delivery.
