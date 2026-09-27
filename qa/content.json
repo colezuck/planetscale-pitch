@@ -29,7 +29,7 @@
   },
   {
     "id": "convex",
-    "label": "Convex: lower, more predictable p99"
+    "label": "Convex migrated and lowered p99"
   },
   {
     "id": "autumn",

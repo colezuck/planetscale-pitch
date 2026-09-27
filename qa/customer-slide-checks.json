@@ -6,9 +6,18 @@
     "overflow": []
   },
   {
-    "headingLines": 0.9948542024013722,
+    "chartWidths": [
+      980,
+      980
+    ],
+    "headingLines": 0.9965034965034965,
     "id": "convex",
     "imageErrors": [],
-    "overflow": []
+    "overflow": [],
+    "resultDividers": [
+      "0px",
+      "0px"
+    ],
+    "subtitleRemoved": true
   }
 ]
