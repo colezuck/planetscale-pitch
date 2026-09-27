@@ -90,3 +90,8 @@ Original Autumn chart: https://useautumn.com/images/blog/planetscale-insights.pn
 Brand assets: Convex’s unmodified color symbol and white wordmark come from https://www.convex.dev/resources/logos.zip . Autumn’s current official logo at https://useautumn.com/images/navbar/autumnlogo.svg and official icon at https://useautumn.com/icon-192.png are monochrome. Keep the official logo rather than inventing a colored version.
 
 Both stories remain candidate slides 8–9, with Vitalize and the original seven slide records preserved.
+
+
+### Original Convex chart panels replace the reconstruction
+
+The current slide now displays `assets/convex-original-results.png` directly in two CSS clipping viewports, one per original chart. The source PNG remains unchanged. `filter: invert(.93) hue-rotate(180deg) brightness(1.7) contrast(1.12)` changes only browser presentation colors to fit the dark deck. All five percentile lines, legends, ticks, and chart titles remain as published. Chart axes remain in seconds; the separate p99 summaries are in milliseconds. The digitized JSON/script above are historical research and no longer supply the slide.

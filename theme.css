@@ -113,8 +113,18 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-wordmark{width:210px;height:95px}
 .autumn-logo{width:191px;height:47px}
 .case-context{font:20px var(--mono);color:#aaa;margin-top:15px!important}
-.convex-curves{margin-top:34px}
-.convex-curves svg{width:100%;height:auto}
+.convex-curves{margin-top:52px}
+.convex-original-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.source-provider-row{display:flex;justify-content:space-around;font:18px var(--mono);margin-bottom:21px;color:#bcbcbc}
+.source-provider-row span:last-child{color:var(--orange)}
+.convex-source-frame{position:relative;aspect-ratio:1488/660;overflow:hidden}
+.convex-source-frame img{display:block;width:100%;height:auto;filter:invert(.93) hue-rotate(180deg) brightness(1.7) contrast(1.12)}
+.commit-source img{transform:translateY(-50.752%)}
+.convex-result{margin-top:36px;padding-top:24px;border-top:1px solid #444}
+.convex-result>span{font:21px var(--mono);color:#aaa}
+.convex-result>div{margin-top:21px;font:30px var(--mono);white-space:nowrap}
+.convex-result i{font-style:normal;color:#777;margin:0 10px}
+.convex-result strong{color:var(--orange);font-size:38px}
 .autumn-evidence{display:grid;grid-template-columns:940px 1fr;gap:66px;margin-top:38px}
 .autumn-evidence svg{width:100%;height:auto}
 .autumn-migration{border-left:1px solid #555;padding-left:38px;padding-top:62px}

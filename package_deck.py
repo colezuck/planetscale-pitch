@@ -25,7 +25,7 @@ for filename in ['vendor/reveal.js', 'vendor/notes.js', 'slides.js', 'app.js']:
         dynamic = "assets/planetscale-${light?'black':'white'}.svg"
         replacement = "${light ? '" + data_uri('assets/planetscale-black.svg') + "' : '" + data_uri('assets/planetscale-white.svg') + "'}"
         code = code.replace(dynamic, replacement)
-    for image in ['postgresql.svg', 'planetscale-black.svg', 'planetscale-white.svg', 'cash-app.svg', 'neki-cat.svg', 'vitalize.svg', 'planetscale-white.png', 'vitalize-query-latency.png', 'convex-white.svg', 'autumn.svg', 'convex-symbol-color.svg', 'convex-wordmark-white.svg']:
+    for image in ['postgresql.svg', 'planetscale-black.svg', 'planetscale-white.svg', 'cash-app.svg', 'neki-cat.svg', 'vitalize.svg', 'planetscale-white.png', 'vitalize-query-latency.png', 'convex-white.svg', 'autumn.svg', 'convex-symbol-color.svg', 'convex-wordmark-white.svg', 'convex-original-results.png']:
         code = code.replace('assets/' + image, data_uri('assets/' + image))
     code = re.sub(r'</script', r'<\\/script', code, flags=re.I)
     html = html.replace(f'<script src="{filename}"></script>', '<script>' + code + '</script>')
