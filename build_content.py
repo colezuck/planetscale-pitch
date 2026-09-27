@@ -90,7 +90,7 @@ b+=txt(575,499,'seconds',16,GRAY,'end',mono=True)
 latency=svg(600,505,b,'One-second benchmark p99 latency samples over 300 seconds, 32 connections. PlanetScale 170.48 to 223.34 ms; Aurora 325.98 to 733 ms; AlloyDB 277.21 to 1235.62 ms; Supabase 196.89 to 1561.52 ms. Linear axis from zero to 1200 milliseconds; values above 1200 are clipped.',mark='p99')
 
 # Vitalize: an editorial comparison, with the statistic attached to each result.
-b=txt(0,22,'400 GB migrated',20,GRAY)+txt(1250,22,'150 million rows',20,GRAY,'end')
+b=txt(0,22,'400 GB migrated',20,GRAY)+txt(210,22,'/ 150 million rows',20,GRAY)+txt(1250,22,'200 GB JSONB-heavy table',20,GRAY,'end')
 b+=path('M0 46H1250','#383838',1)
 b+=txt(0,104,'Supabase',26,WHITE,mono=False,weight=500)
 b+=txt(730,104,'PlanetScale Metal',26,ORANGE,mono=False,weight=500)
@@ -101,17 +101,14 @@ b+=txt(-5,257,'50',154,WHITE,weight=500,mono=False)+txt(210,255,'s',66,GRAY,mono
 b+=txt(722,257,'1.2',154,ORANGE,weight=500,mono=False)+txt(942,255,'s',66,ORANGE,mono=False)
 b+=txt(0,304,'Average read',23,GRAY)+txt(730,304,'Maximum read',23,GRAY)
 b+=path('M440 214H642','#777777',2,arrow='vitalize-art')
-b+=txt(625,365,'200 GB JSONB-heavy table',21,GRAY,'middle')
 b+=path('M0 395H1250','#383838',1)
 # Physical CPU blocks make the resource change legible without another chart.
 b+=txt(0,438,'Half the vCPUs',27,WHITE,mono=False,weight=500)
 for x in [0,40,80,120]:b+=db(x,460,28,34,'#888888')
 b+=path('M174 477H235','#777777',1.5,arrow='vitalize-art')
 for x in [258,298]:b+=db(x,460,28,34,ORANGE)
-b+=txt(355,486,'4 → 2',30,ORANGE,mono=False,weight=500)
-b+=txt(0,531,'16 GB RAM on both',20,GRAY)
 b+=txt(730,476,'2 ms',64,ORANGE,mono=False,weight=500)
-b+=txt(730,531,'p95 after migration',20,GRAY)
+b+=txt(930,469,'p95 after migration',21,GRAY)
 vitalize_art=svg(1250,550,b,'Vitalize moved 400 GB and 150 million rows from Supabase to PlanetScale Metal. On the same 200 GB JSONB-heavy table, Supabase reads averaged 50 seconds and PlanetScale reads maxed out at 1.2 seconds; these are different statistics, not a matched percentile comparison. Compute changed from four to two vCPUs at 16 GB RAM each. After migration, p95 was about two milliseconds.',mark='vitalize-art')
 
 # Migration close: one destination, with a choice of delivery ownership.
