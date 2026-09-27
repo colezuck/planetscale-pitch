@@ -59,7 +59,7 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .neki-heading{display:flex;justify-content:space-between;align-items:center;gap:24px}
 .neki h2{color:var(--yellow)}
 .neki-lockup{display:flex;align-items:center;gap:17px}
-.neki-lockup img{height:50px;width:34px;object-fit:contain;background:var(--yellow);padding:4px}
+.neki-lockup img{height:62px;width:42px;object-fit:contain;background:var(--yellow);padding:4px}
 .neki-wordmark{font:500 25px var(--mono);letter-spacing:-1px;color:var(--yellow);white-space:nowrap}
 .neki-topology{margin-top:36px}
 .neki-topology svg{width:100%;height:auto}

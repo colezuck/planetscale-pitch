@@ -17,7 +17,7 @@
   },
   {
     "id": "neki",
-    "label": "Neki: Postgres beyond a single machine"
+    "label": "Neki: Horizontal Scaling for Postgres"
   },
   {
     "id": "neki-scale",
