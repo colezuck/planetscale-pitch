@@ -25,7 +25,7 @@ for filename in ['vendor/reveal.js', 'vendor/notes.js', 'slides.js', 'app.js']:
         dynamic = "assets/planetscale-${light?'black':'white'}.svg"
         replacement = "${light ? '" + data_uri('assets/planetscale-black.svg') + "' : '" + data_uri('assets/planetscale-white.svg') + "'}"
         code = code.replace(dynamic, replacement)
-    for image in ['postgresql.svg', 'planetscale-black.svg', 'planetscale-white.svg', 'cash-app.svg', 'neki-cat.svg', 'vitalize.svg', 'planetscale-white.png', 'vitalize-query-latency.png']:
+    for image in ['postgresql.svg', 'planetscale-black.svg', 'planetscale-white.svg', 'cash-app.svg', 'neki-cat.svg', 'vitalize.svg', 'planetscale-white.png', 'vitalize-query-latency.png', 'convex-white.svg', 'autumn.svg']:
         code = code.replace('assets/' + image, data_uri('assets/' + image))
     code = re.sub(r'</script', r'<\\/script', code, flags=re.I)
     html = html.replace(f'<script src="{filename}"></script>', '<script>' + code + '</script>')
@@ -60,6 +60,6 @@ for i, slide in enumerate(slides, 1):
     c.showPage()
 c.save()
 reader = PdfReader(str(pdf))
-assert len(reader.pages) == len(slides) == 7
+assert len(reader.pages) == len(slides)
 assert all(float(p.mediabox.width) == 960 and float(p.mediabox.height) == 540 for p in reader.pages)
 print(f'Packaged {len(slides)} slides. PDF: {pdf.stat().st_size:,} bytes. HTML: {len(html):,} characters.')

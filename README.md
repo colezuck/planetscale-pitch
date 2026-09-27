@@ -1,12 +1,12 @@
 # PlanetScale — Postgres on Metal
 
-Version 2. A seven-slide, 10–15 minute technical sales presentation for a general Postgres prospect. The close is technical discovery plus a migration assessment.
+Working deck: nine slides for review. The original seven-slide pitch remains intact; Convex and Autumn are appended as customer-story candidates. Final selection and ordering are pending. The intended final pitch remains 10–15 minutes, closing with technical discovery plus a migration assessment.
 
 ## Present
 
 Open `Meridian-PlanetScale.html` in a browser. It is a portable file containing the deck, font, logos, charts and speaker notes; the filename is preserved so existing preview links continue to work.
 
-- Arrow keys: move through the seven slides.
+- Arrow keys: move through the slides.
 - O: slide overview.
 - Notes: private reading dialog for the current slide.
 - S: separate Reveal presenter view in browsers that allow pop-ups; serve locally for this feature.
@@ -24,6 +24,8 @@ The PDF is a static 16:9 presentation backup. Speaker notes are also available i
 5. Neki's sharded Postgres architecture.
 6. Neki's measured scale for a defined workload.
 7. Migration partnership and the technical discovery close.
+8. Convex / Chef: before-and-after query and batch-commit p99.
+9. Autumn: two-day migration to Metal, latency results, and migration-team support.
 
 Technical qualifications and benchmark configurations are in the speaker notes. The Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
 
@@ -31,9 +33,9 @@ Technical qualifications and benchmark configurations are in the speaker notes. 
 
 `build_content.py` contains slide copy, speaker notes and editable SVG diagrams. Run it to regenerate `slides.js`, `speaker-notes.md` and the slide manifest. `theme.css` controls the design. `app.js` controls rendering and presentation controls.
 
-Run `python3 package_deck.py --html-only` to rebuild the portable HTML. Serve this folder on localhost and review it in a browser. For the PDF, capture each final slide in a 16:9 browser view as `qa/slide-01.png` through `qa/slide-07.png`, then run `package_deck.py` with a Python environment containing ReportLab and pypdf. The HTML remains the editable master; the PDF is a raster snapshot with bookmarks.
+Run `python3 package_deck.py --html-only` to rebuild the portable HTML. Serve this folder on localhost and review it in a browser. For the PDF, capture each final slide in a 16:9 browser view as `qa/slide-01.png` through `qa/slide-09.png`, then run `package_deck.py` with a Python environment containing ReportLab and pypdf. The HTML remains the editable master; the PDF is a raster snapshot with bookmarks.
 
-Official PlanetScale, PostgreSQL, Cash App and Neki artwork is stored in `assets/`. Reveal.js and Inter licenses are included. This is an interview sample, not an actual customer proposal.
+Official PlanetScale, PostgreSQL, Cash App, Neki, Convex and Autumn artwork is stored in `assets/`. Reveal.js and Inter licenses are included. This is an interview sample, not an actual customer proposal.
 
 ## Visual system
 
@@ -49,7 +51,7 @@ python3 package_deck.py --html-only
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Review all seven slides, then commit the source and updated portable HTML together. Refresh `qa/slide-01.png` through `qa/slide-07.png` before rebuilding the PDF. The seven captures are versioned so the PDF can be reproduced; temporary QA images and source ZIPs are ignored. PDF packaging requires `reportlab` and `pypdf`. Keep reference presentations in the ignored `references/` folder.
+Review all slides, then commit the source and updated portable HTML together. Refresh `qa/slide-01.png` through `qa/slide-09.png` before rebuilding the PDF. The nine captures are versioned so the PDF can be reproduced; temporary QA images and source ZIPs are ignored. PDF packaging requires `reportlab` and `pypdf`. Keep reference presentations in the ignored `references/` folder.
 
 ## Durable pitch context
 

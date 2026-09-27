@@ -26,5 +26,13 @@
   {
     "id": "migration",
     "label": "Your migration with our infrastructure team"
+  },
+  {
+    "id": "convex",
+    "label": "Convex: lower, more predictable p99"
+  },
+  {
+    "id": "autumn",
+    "label": "Autumn: two days to PlanetScale Metal"
   }
 ]

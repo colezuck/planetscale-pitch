@@ -175,3 +175,10 @@ Slide 1 introduces the offer: fully managed Postgres on Metal, Neki as the horiz
 ## Availability terminology verified
 
 Slide 3 now uses “Postgres Cluster Architecture” with a primary node and two replica nodes inside explicitly named availability-zone containers. This preserves the distinction between database instances and cloud failure boundaries. The connection boxes describe application routing choices rather than separate DNS endpoints. The slide labels the management layer “Control plane”; operator implementation details stay in speaker notes. Research and exact connection/SLA qualifications live in `docs/postgres-architecture.md` and the speaker notes.
+
+
+## Customer-story candidates — current working deck
+
+The user asked to build Convex and Autumn as additional slides and defer final selection. The original seven slides, including Vitalize and the migration close, are preserved. Convex and Autumn are appended in positions 8 and 9. This supersedes the seven-slide limit for the working version only; it is not a claim that the final sequence or timing is settled.
+
+Convex follows the Gong customer-story structure: an infrastructure buyer's need, Chef's named workload, the move from Aurora, then reported p99 ranges. Autumn connects a critical billing workload and migration concern to a guided two-day move, seconds of cutover downtime, and observed Metal latency. References and qualifications stay in notes.

@@ -67,4 +67,11 @@ Source: [Supermemory just got faster on PlanetScale](https://supermemory.ai/blog
 - [Vitalize](https://vitalize.care/blog/from-supabase-to-planetscale): 400 GB, 150 million rows; 4 to 2 vCPUs at 16 GB RAM; reported after-migration p95 around 2 ms. No comparable before p95. The JSONB read comparison uses different statistics (50 s average versus 1.2 s maximum).
 - [Cash App](https://planetscale.com/case-studies/cash-app): Vitess/MySQL operating-scale evidence, not a Postgres or Neki customer result. Preserve its separate role in the pitch.
 
-Keep one main relatable customer story in a seven-slide deck. These references provide alternatives and objection support; adding every logo would dilute the story. Vitalize remains v2's primary case until a different buyer context calls for a swap. Convex is the strongest next candidate if the priority becomes a true p99 comparison.
+## Current working-deck selection
+
+The user requested two additional slides while preserving Vitalize and the existing migration close. Convex and Autumn are appended as slides 8 and 9 for comparison; the working deck has nine slides. Final sequencing remains undecided. The recommended eventual pairing is Convex for early technical proof and Autumn for migration partnership. Vitalize remains available as the compute-efficiency story.
+
+## Customer logo provenance
+
+- Convex: unmodified white logo from the [official brand kit](https://www.convex.dev/brand), downloaded from `https://www.convex.dev/resources/logos.zip`, entry `Logos/SVG/logo-white.svg`.
+- Autumn: official website navbar logo, `https://useautumn.com/images/navbar/autumnlogo.svg`. The slide uses the same white-on-dark CSS treatment shown by Autumn's site footer.

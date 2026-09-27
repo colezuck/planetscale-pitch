@@ -16,5 +16,7 @@ qa/*.png
 !qa/slide-05.png
 !qa/slide-06.png
 !qa/slide-07.png
+!qa/slide-08.png
+!qa/slide-09.png
 # Reference decks remain local
 references/
