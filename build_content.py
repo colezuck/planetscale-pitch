@@ -59,9 +59,9 @@ for x,label,role,color in [(0,'Availability zone A','Primary',ORANGE),(450,'Avai
 b+=path('M272 330H524',GRAY,1.8,True,arrow='ha-arrow')+txt(398,311,'Replication',19,GRAY,'middle')
 b+=path('M175 382V429H1075V383',GRAY,1.8,True,arrow='ha-arrow')+txt(628,456,'Semi-synchronous replication',20,GRAY,'middle')
 b+=rect(0,484,1250,65,INK,'#aaaaaa')
-b+='<image href="assets/planetscale-white.png" x="22" y="498" width="173" height="28"/>'
-b+=txt(218,525,'Control plane',24,WHITE,weight=500)
-b+=txt(467,525,'Provision',23,GRAY)+txt(674,525,'Fail over',23,GRAY)+txt(884,525,'Resize',23,GRAY)+txt(1060,525,'Upgrade',23,GRAY)
+b+='<svg x="24" y="500" width="33" height="33" viewBox="0 0 454 454" aria-label="PlanetScale"><g fill="#fff"><path d="m0 227c.00001067-125.369 101.631-227.00001067 227-227 92.178.00000806 171.524 54.9423 207.076 133.865l-300.211 300.211c-12.882-5.803-25.126-12.774-36.5966-20.776l186.2996-186.3h-56.568l-160.5132 160.513c-41.0789-41.079-66.48680548-97.829-66.4868-160.513z"/><path d="m454 227.078-226.922 226.922c125.307-.042 226.88-101.615 226.922-226.922z"/></g></svg>'
+b+=txt(76,525,'Control plane',27,WHITE,weight=500)
+b+=txt(419,525,'Provision',23,GRAY)+txt(674,525,'Fail over',23,GRAY)+txt(884,525,'Resize',23,GRAY)+txt(1060,525,'Upgrade',23,GRAY)
 for x in (27,1223):b+=path(f'M{x} 484V406','#777777',1.5,True)
 ha=svg(1250,553,b,'One highly available Postgres cluster in a single region, containing three database nodes. Each availability zone contains one node: a primary in zone A and replicas in zones B and C. Application connections select the primary or replicas. Semi-synchronous replication connects the nodes. The separate control plane manages provisioning, failover, resizing, and upgrades.',mark='ha-arrow')
 
