@@ -100,3 +100,8 @@ The current slide now displays `assets/convex-original-results.png` directly in 
 ### Convex layout and metric scope
 
 The two original plots are now stacked at larger scale with their p99 callouts alongside. The subtitle and result dividers are removed. The full-color wordmark leads the headline, “Convex migrated and lowered p99.” Chart crops retain the plot areas and axis labels; the original percentile legend is shared alongside. The axes are still in seconds and summaries in milliseconds. Rechecked the original Convex post and searched Convex/PlanetScale sources on 2026-09-27: no Convex migration throughput or IOPS comparison was found. Do not substitute PlanetScale synthetic benchmark results for customer-specific metrics.
+
+
+### Layout rollback
+
+At user request, restored the side-by-side original chart panels, subtitle, dividers, and result spacing from commit 97e06c0. Retained the left-aligned Convex branding and “migrated and lowered p99” headline. The stacked layout above is superseded.
