@@ -100,7 +100,7 @@ dialog{color:#fafafa;background:#222;border:1px solid #555;max-width:490px;paddi
 dialog::backdrop{background:#000b}dialog h2{font-size:25px;font-weight:500;margin-top:0}
 dialog p{line-height:1.6}dialog .small{font-size:14px;color:#bbb}dialog a{color:#8bb9da}
 dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15px Inter;cursor:pointer}
-#notes-dialog{max-width:720px}#notes-content{font-size:17px;line-height:1.65;max-height:60vh;overflow:auto}
+#notes-dialog{max-width:720px}#notes-content{font-size:17px;line-height:1.65;max-height:60vh;overflow:auto;white-space:pre-line}
 .capture .deck-tools,.capture .progress{display:none!important}
 .capture .reveal{-webkit-user-select:none;user-select:none}.capture ::selection{background:transparent;color:inherit}
 @media(max-width:700px){.deck-tools{gap:0;white-space:nowrap}.deck-tools button{padding:7px}.deck-tools #help{display:none}}
