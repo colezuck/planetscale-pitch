@@ -145,3 +145,8 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-quote{display:flex;align-items:baseline;gap:24px;margin-top:42px}
 .convex-quote q{font-size:30px;letter-spacing:-.6px;color:#fafafa}
 .convex-quote>span{font:17px var(--mono);color:#999}
+
+/* Use the deck typeface for the full customer headline. */
+.convex-heading{gap:14px}
+.convex-heading .convex-title-symbol{width:82px;height:84px;object-fit:contain;margin-left:-15px}
+.convex-heading h2{font-family:Inter,Arial,sans-serif;font-size:52px}
