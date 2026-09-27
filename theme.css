@@ -43,7 +43,11 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .ha-diagram svg{width:100%;height:auto}
 
 /* Benchmarks: align chart headings and reserve the lower band for workload context. */
-.metal-heading{display:flex;justify-content:space-between;align-items:baseline;gap:30px}
+.metal-heading{display:flex;justify-content:center;align-items:center}
+.metal-heading h2{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.metal-title-brand{display:inline-flex;align-items:center;gap:14px}
+.metal-title-symbol{display:block;width:46px;height:46px;overflow:hidden;flex-shrink:0}
+.metal-title-symbol img{display:block;width:287.055px;height:46px;max-width:none}
 .metal-line{font:21px var(--mono);color:#bbb;white-space:nowrap}
 .benchmark-grid{display:grid;grid-template-columns:1fr 1.08fr;gap:64px;margin-top:52px}
 .benchmark-grid>div{position:relative}
