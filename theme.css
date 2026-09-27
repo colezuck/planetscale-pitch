@@ -137,7 +137,11 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .migration-assist p{font:19px/1.45 var(--mono);margin:0;color:#eee}
 .assist-node{display:block;flex-shrink:0;width:19px;height:19px;border:1px solid var(--orange);outline:1px solid var(--orange);outline-offset:4px}
 
-/* Retain the approved Convex headline while restoring the previous chart layout. */
-.convex-heading{justify-content:flex-start;gap:24px}
-.convex-heading h2{font-size:52px}
-.convex-heading .convex-brand{margin-left:-20px;margin-right:-8px;width:245px}
+/* Align the customer wordmark and headline as separate, balanced elements. */
+.convex-heading{justify-content:flex-start;gap:34px;align-items:center}
+.convex-heading h2{font-size:52px;line-height:1.1}
+.convex-heading .convex-brand{margin-left:-18px;margin-right:0;width:278px;transform:translateY(5px)}
+.convex-heading .convex-wordmark{width:252px;height:114px}
+.convex-quote{display:flex;align-items:baseline;gap:24px;margin-top:42px}
+.convex-quote q{font-size:30px;letter-spacing:-.6px;color:#fafafa}
+.convex-quote>span{font:17px var(--mono);color:#999}
