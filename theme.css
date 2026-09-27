@@ -150,3 +150,6 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-heading{gap:14px}
 .convex-heading .convex-title-symbol{width:82px;height:84px;object-fit:contain;margin-left:-15px}
 .convex-heading h2{font-family:Inter,Arial,sans-serif;font-size:52px}
+
+.convex-quote{justify-content:center;text-align:center}
+.convex-heading h2{font-size:44px;letter-spacing:-1.9px}

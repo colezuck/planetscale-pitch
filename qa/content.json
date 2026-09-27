@@ -29,7 +29,7 @@
   },
   {
     "id": "convex",
-    "label": "Convex migrated from Aurora to Metal"
+    "label": "Convex migrated from Aurora to PlanetScale Postgres Metal"
   },
   {
     "id": "autumn",
