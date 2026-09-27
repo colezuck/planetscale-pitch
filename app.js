@@ -1,15 +1,10 @@
 const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const slides = window.PITCH_SLIDES;
 if(new URLSearchParams(location.search).has('capture'))document.body.classList.add('capture');
-document.getElementById('slides').innerHTML = slides.map(slide => `<section id="${slide.id}" class="${slide.theme}" data-background-color="#111111"><div class="top"></div>${slide.html}<aside class="notes">${escapeHtml(slide.notes)}</aside></section>`).join('');
-document.body.insertAdjacentHTML('beforeend', `<div class="deck-brand" role="img" aria-label="PlanetScale"><img src="assets/planetscale-white.png" alt="PlanetScale"></div>`);
+document.getElementById('slides').innerHTML = slides.map(slide => `<section id="${slide.id}" class="${slide.theme}" data-background-color="#111111">${slide.id === 'opening' ? '<div class="cover-brand"><img src="assets/planetscale-white.png" alt="PlanetScale"></div>' : ''}${slide.html}<aside class="notes">${escapeHtml(slide.notes)}</aside></section>`).join('');
 
 const deck = new Reveal({width:1440,height:810,margin:0.06,center:false,hash:true,controls:false,progress:true,transition:'none',backgroundTransition:'none',slideNumber:false,help:false,plugins:[RevealNotes],pdfSeparateFragments:false,pdfMaxPagesPerSlide:1,keyboard:{79:()=>deck.toggleOverview()},disableLayout:false});
-function syncBrand(){document.documentElement.style.setProperty('--slide-scale',deck.getScale());}
-deck.initialize().then(()=>{updatePosition();syncBrand();});
-deck.on('resize',syncBrand);
-deck.on('overviewshown',()=>document.querySelector('.deck-brand').hidden=true);
-deck.on('overviewhidden',()=>document.querySelector('.deck-brand').hidden=false);
+deck.initialize().then(updatePosition);
 function updatePosition(){const i=deck.getIndices().h;document.getElementById('position').textContent=`${String(i+1).padStart(2,'0')} / ${slides.length}`;document.getElementById('previous').disabled=i===0;document.getElementById('next').disabled=i===slides.length-1;}
 deck.on('slidechanged',updatePosition);
 document.getElementById('previous').onclick=()=>deck.prev();

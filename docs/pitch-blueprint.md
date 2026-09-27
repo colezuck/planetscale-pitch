@@ -6,6 +6,10 @@ Prepared 27 September 2026. Original analysis, followed by the implemented v2 up
 
 The user clarified that hosted Postgres on Metal is the central offer, with speed and reliability first and Neki as the growth path. V2 therefore opens with “Your Postgres. Faster on Metal” and a local-NVMe architecture diagram, while keeping the buyer-oriented discovery question in the spoken introduction. The remaining order follows this blueprint: Vitalize, operated HA platform, Metal performance, Neki architecture, Neki scale, migration close. Durable evidence lives in `customer-case-studies.md` and `postgres-metal-benchmarks.md`.
 
+## Layout refinement
+
+The latest user-approved direction prioritizes screen space. Keep the PlanetScale logo on the opening slide only. All six content slides use single-line headings. Vitalize's secondary vCPU claim belongs over the compute chart. Diagram-heavy slides use the reclaimed header space for larger, readable artwork and separation between elements. This supersedes the longer working headlines below.
+
 ## Audience, objective, and constraints
 
 General Postgres prospect. CTO and technical leaders. Seven slides total, with two Neki slides toward the end. Core presentation: 11 minutes 30 seconds, with room for short exchanges within a 15-minute meeting segment. The next step is technical discovery plus a migration assessment.

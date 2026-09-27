@@ -1,79 +1,51 @@
 [
   {
-    "height": 720,
+    "headingLines": null,
     "id": "opening",
     "imageErrors": [],
     "overflow": [],
-    "width": 1280,
-    "version": "v2",
-    "keyboard_navigation": "verified",
-    "notes_dialog": "verified",
-    "browser_console_errors": 0
+    "planetScaleLogos": 1
   },
   {
-    "height": 720,
+    "headingLines": "1",
     "id": "vitalize",
     "imageErrors": [],
     "overflow": [],
-    "width": 1280,
-    "version": "v2",
-    "keyboard_navigation": "verified",
-    "notes_dialog": "verified",
-    "browser_console_errors": 0
+    "planetScaleLogos": 0
   },
   {
-    "height": 720,
+    "headingLines": "1",
     "id": "availability",
     "imageErrors": [],
     "overflow": [],
-    "width": 1280,
-    "version": "v2",
-    "keyboard_navigation": "verified",
-    "notes_dialog": "verified",
-    "browser_console_errors": 0
+    "planetScaleLogos": 0
   },
   {
-    "height": 720,
+    "headingLines": "1",
     "id": "metal",
     "imageErrors": [],
     "overflow": [],
-    "width": 1280,
-    "version": "v2",
-    "keyboard_navigation": "verified",
-    "notes_dialog": "verified",
-    "browser_console_errors": 0
+    "planetScaleLogos": 0
   },
   {
-    "height": 720,
+    "headingLines": "1",
     "id": "neki",
     "imageErrors": [],
     "overflow": [],
-    "width": 1280,
-    "version": "v2",
-    "keyboard_navigation": "verified",
-    "notes_dialog": "verified",
-    "browser_console_errors": 0
+    "planetScaleLogos": 0
   },
   {
-    "height": 720,
+    "headingLines": "1",
     "id": "neki-scale",
     "imageErrors": [],
     "overflow": [],
-    "width": 1280,
-    "version": "v2",
-    "keyboard_navigation": "verified",
-    "notes_dialog": "verified",
-    "browser_console_errors": 0
+    "planetScaleLogos": 0
   },
   {
-    "height": 720,
+    "headingLines": "1",
     "id": "migration",
     "imageErrors": [],
     "overflow": [],
-    "width": 1280,
-    "version": "v2",
-    "keyboard_navigation": "verified",
-    "notes_dialog": "verified",
-    "browser_console_errors": 0
+    "planetScaleLogos": 0
   }
 ]

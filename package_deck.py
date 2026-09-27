@@ -52,11 +52,6 @@ for i, slide in enumerate(slides, 1):
     if not png.exists():
         raise FileNotFoundError(png)
     c.drawImage(str(png), 0, 0, width=960, height=540)
-    # Paint the fixed brand overlay directly for consistent browser-to-PDF output.
-    c.setFillColorRGB(17/255, 17/255, 17/255)
-    c.rect(65, 468, 140, 32, stroke=0, fill=1)
-    c.drawImage(str(ROOT / 'assets/planetscale-white.png'), 68.90625, 472.635,
-                width=131.6, height=21.09, mask='auto')
     c.bookmarkPage(slide['id'])
     c.addOutlineEntry(f'{i:02}. {slide["label"]}', slide['id'])
     for link in links.get(slide['id'], []):

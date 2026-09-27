@@ -56,3 +56,7 @@ Review all seven slides, then commit the source and updated portable HTML togeth
 - [Customer case studies](docs/customer-case-studies.md): customer-reported results, comparisons, limitations, and selection guidance.
 - [Pitch blueprint](docs/pitch-blueprint.md): Gong-based sequencing and delivery plan.
 - [Postgres Metal benchmarks](docs/postgres-metal-benchmarks.md): workload definitions, selected data, configuration differences, and pitch framing.
+
+## Slide layout conventions
+
+The PlanetScale logo appears only on the opening slide. Content slides start directly with a single-line heading. Keep secondary results with their charts (for example, “Half the vCPUs” above the Vitalize compute chart), and give diagrams their full available width. Neki branding stays in its title row. Avoid restoring a repeated logo spacer or decorative banner.
