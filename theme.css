@@ -44,11 +44,11 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 
 /* Metal mechanism: compare the storage paths, then show durability below. */
 .metal-path h2{font-size:56px}
-.metal-path-art{margin-top:44px}
+.metal-path-art{margin-top:12px}
 .metal-path-art svg{width:100%;height:auto}
 
 /* Benchmarks: align chart headings and reserve the lower band for workload context. */
-.metal-heading{display:flex;justify-content:center;align-items:center}
+.metal-heading{display:flex;justify-content:flex-start;align-items:center}
 .metal-heading h2{display:flex;align-items:center;gap:16px;white-space:nowrap}
 .metal-title-brand{display:inline-flex;align-items:center;gap:14px}
 .metal-title-symbol{display:block;width:46px;height:46px;overflow:hidden;flex-shrink:0}
@@ -76,9 +76,9 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .neki-topology{margin-top:36px}
 .neki-topology svg{width:100%;height:auto}
 .neki-scale h2{color:var(--white)}
-.scale-layout{display:grid;grid-template-columns:910px 1fr;gap:72px;margin-top:64px}
+.scale-layout{display:grid;grid-template-columns:910px 1fr;gap:48px;margin-top:104px}
 .scale-chart svg{width:100%;height:auto}
-.scale-metrics{display:flex;flex-direction:column;gap:44px;border-left:1px solid #7b7150;padding-left:43px;padding-top:14px}
+.scale-metrics{display:flex;flex-direction:column;gap:18px;padding-top:0}.scale-metrics>div{border:1px solid #494331;background:radial-gradient(#fbca0026 1px,transparent 1px) 0 0/7px 7px;padding:22px 25px}.scale-metrics>div strong,.scale-metrics>div p{background:var(--ink);width:fit-content}
 .scale-metrics strong{font:500 52px/1.05 var(--mono);letter-spacing:-2px;color:var(--yellow)}
 .scale-metrics strong span{font-size:29px;letter-spacing:-1px}
 .scale-metrics p{font:19px var(--mono);color:#b8ae7d;margin-top:10px}
@@ -193,3 +193,5 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 /* Customer-reported migration comparison replaces the post-migration-only trace. */
 .vitalize-art{margin-top:28px}
 .vitalize-art svg{width:100%;height:auto}
+
+.scale-metrics>div{text-align:center}.scale-metrics>div strong{display:block;margin-inline:auto}.scale-metrics>div p{margin-inline:auto}
