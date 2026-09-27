@@ -1,6 +1,6 @@
 # PlanetScale — Postgres on Metal
 
-Working deck: nine slides for review. The original seven-slide pitch remains intact; Convex and Autumn are appended as customer-story candidates. Final selection and ordering are pending. The intended final pitch remains 10–15 minutes, closing with technical discovery plus a migration assessment.
+Working deck: nine slides for review. All existing slides are retained. Convex and Autumn precede migration, which closes the deck. Final story selection is pending. The intended final pitch remains 10–15 minutes, closing with technical discovery plus a migration assessment.
 
 ## Present
 
@@ -23,9 +23,9 @@ The PDF is a static 16:9 presentation backup. Speaker notes are also available i
 4. Postgres Metal throughput and p99 benchmark evidence.
 5. Neki's sharded Postgres architecture.
 6. Neki's measured scale for a defined workload.
-7. Migration partnership and the technical discovery close.
-8. Convex / Chef: before-and-after query and batch-commit p99.
-9. Autumn: two-day migration to Metal, latency results, and migration-team support.
+7. Convex / Chef: before-and-after query and batch-commit p99.
+8. Autumn: two-day migration to Metal, latency results, and migration-team support.
+9. Migration partnership and the technical discovery close.
 
 Technical qualifications and benchmark configurations are in the speaker notes. The Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
 

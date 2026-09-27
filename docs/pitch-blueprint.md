@@ -182,3 +182,8 @@ Slide 3 now uses “Postgres Cluster Architecture” with a primary node and two
 The user asked to build Convex and Autumn as additional slides and defer final selection. The original seven slides, including Vitalize and the migration close, are preserved. Convex and Autumn are appended in positions 8 and 9. This supersedes the seven-slide limit for the working version only; it is not a claim that the final sequence or timing is settled.
 
 Convex follows the Gong customer-story structure: an infrastructure buyer's need, Chef's named workload, the move from Aurora, then reported p99 ranges. Autumn connects a critical billing workload and migration concern to a guided two-day move, seconds of cutover downtime, and observed Metal latency. References and qualifications stay in notes.
+
+
+## Current closing sequence
+
+The nine-slide working order now finishes with Convex (7), Autumn (8), and migration (9). Autumn’s assisted migration naturally sets up the prospect’s own assessment. Close on technical discovery plus migration assessment, leaving the migration slide visible during the discussion. This supersedes the appended-candidate order above; no slides were removed. The current scripted timing is about 14 minutes before buyer exchanges, so final story selection or shorter delivery is still useful for a 10–15 minute meeting.

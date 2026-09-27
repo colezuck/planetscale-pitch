@@ -24,15 +24,15 @@
     "label": "Neki: 118.5M queries per second"
   },
   {
-    "id": "migration",
-    "label": "Your migration with our infrastructure team"
-  },
-  {
     "id": "convex",
     "label": "Convex migrated from Aurora to PlanetScale Postgres Metal"
   },
   {
     "id": "autumn",
     "label": "Autumn: two days to PlanetScale Metal"
+  },
+  {
+    "id": "migration",
+    "label": "Your migration with our infrastructure team"
   }
 ]
