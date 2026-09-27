@@ -9,7 +9,7 @@
   },
   {
     "id": "availability",
-    "label": "Your Postgres. Operated by PlanetScale"
+    "label": "One cluster. Three nodes."
   },
   {
     "id": "metal",

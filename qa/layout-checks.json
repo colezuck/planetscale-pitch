@@ -26,7 +26,8 @@
     "planetScaleLogos": 0,
     "diagramHeight": 580.42,
     "bottomSpace": 53.58,
-    "customerProof": false
+    "customerProof": false,
+    "terminologyVerified": "2026-09-27: cluster / nodes / availability zones"
   },
   {
     "headingLines": "1",

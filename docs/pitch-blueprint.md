@@ -170,3 +170,8 @@ No new company overview, agenda, ROI calculator, logo wall, or thank-you slide i
 ## Opening revision — product introduction
 
 Slide 1 introduces the offer: fully managed Postgres on Metal, Neki as the horizontal scaling product, and the PlanetScale platform and infrastructure team beneath both. This product map supersedes the opening node diagram. Reserve replicas, replication paths, and control-plane topology for slide 3. Keep the opening to 75 seconds; emphasize Postgres on Metal now and briefly introduce Neki before moving to Vitalize. The product relationship does not imply an automatic migration to Neki.
+
+
+## Availability terminology verified
+
+Slide 3 now uses “One cluster. Three nodes.” with a primary node and two replica nodes inside explicitly named availability-zone containers. This preserves the distinction between database instances and cloud failure boundaries. The connection boxes describe application routing choices rather than separate DNS endpoints. The control plane identifies PlanetScale’s custom Kubernetes operator. Research and exact connection/SLA qualifications live in `docs/postgres-architecture.md` and the speaker notes.
