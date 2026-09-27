@@ -165,3 +165,8 @@ The proposed session should establish compatibility questions, a target deployme
 7. Rebuild notes with the timing and transitions above. Preserve existing slide IDs so direct browser links remain useful.
 
 No new company overview, agenda, ROI calculator, logo wall, or thank-you slide is needed. The seven-slide constraint is met without combining migration and Neki into the same closing slide.
+
+
+## Opening revision — architecture first
+
+The opening now reads “Postgres on Metal” beneath the PlanetScale lockup. The main visual shows an application connecting to a primary, two replicas, local NVMe on each machine, and a separate control plane. Removed the generic benefit blocks and supporting paragraph. This is the platform introduction; slide 3 supplies the availability-zone and endpoint detail. Keep the opening to 75 seconds and move to the Vitalize customer result.

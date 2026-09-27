@@ -17,15 +17,11 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 
 /* Brand presence belongs to the opening; content slides start at the headline. */
 .reveal .slides>.opening{padding-top:50px}
-.cover-brand{height:30px;margin-bottom:35px}
+.cover-brand{height:30px;margin-bottom:24px}
 .cover-brand img{display:block;width:210px;height:auto}
-.hero{display:grid;grid-template-columns:800px 1fr;position:relative;height:458px;align-items:start;padding-top:44px}
-.hero .lead{font-size:29px;line-height:1.5;margin-top:28px;color:#bbb;letter-spacing:-.6px}
-.server-art{width:430px;position:absolute;top:16px;right:0}
-.opening-proof{border-top:1px solid #555;display:flex;gap:140px;padding-top:30px;margin-top:15px}
-.opening-proof strong{display:block;font-size:34px;letter-spacing:-1px}
-.opening-proof>div:first-child strong{color:var(--orange)}
-.opening-proof span{display:block;font:19px var(--mono);color:#aaa;margin-top:12px}
+.reveal .opening h1{font-size:76px;line-height:1.1;letter-spacing:-3.5px}
+.opening-architecture{margin-top:28px}
+.opening-architecture svg{width:100%;height:auto}
 
 /* Customer result: the secondary claim lives with its evidence. */
 .customer-story{display:flex;justify-content:space-between;font:20px var(--mono);color:#aaa;margin-top:22px}

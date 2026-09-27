@@ -59,4 +59,4 @@ Review all seven slides, then commit the source and updated portable HTML togeth
 
 ## Slide layout conventions
 
-The PlanetScale logo appears only on the opening slide. Content slides start directly with a single-line heading. Keep secondary results with their charts (for example, “Half the vCPUs” above the Vitalize compute chart), and give diagrams their full available width. Neki branding stays in its title row. Avoid restoring a repeated logo spacer or decorative banner.
+The PlanetScale logo appears only on the opening slide. Its single-line “Postgres on Metal” heading sits above a large application → Metal cluster diagram, with local NVMe on each node and a separate control plane. Content slides start directly with a single-line heading. Keep secondary results with their charts (for example, “Half the vCPUs” above the Vitalize compute chart), and give diagrams their full available width. Neki branding stays in its title row. Avoid restoring a repeated logo spacer or decorative banner.

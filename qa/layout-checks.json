@@ -1,10 +1,13 @@
 [
   {
-    "headingLines": null,
+    "headingLines": "1",
     "id": "opening",
     "imageErrors": [],
     "overflow": [],
-    "planetScaleLogos": 1
+    "planetScaleLogos": 1,
+    "diagramHeight": 518.5,
+    "bottomSpace": 75.91,
+    "openingProof": false
   },
   {
     "headingLines": "1",
