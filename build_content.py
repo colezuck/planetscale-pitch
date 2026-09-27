@@ -99,15 +99,15 @@ b+='<g mask="url(#vitalize-stipple-mask)">'+rect(730,128,520,197,'url(#vitalize-
 b+=txt(-5,257,'50',154,WHITE,weight=500,mono=False)+txt(210,255,'s',66,GRAY,mono=False)
 b+=txt(722,257,'1.2',154,ORANGE,weight=500,mono=False)+txt(942,255,'s',66,ORANGE,mono=False)
 b+=txt(0,304,'Average read',23,GRAY)+txt(730,304,'Maximum read',23,GRAY)
-b+=txt(560,174,'200 GB JSONB-heavy table',16,GRAY,'middle')
-b+=path('M440 214H642','#777777',2,arrow='vitalize-art')
+b+=txt(505,174,'200 GB JSONB-heavy table',16,GRAY,'middle')
+b+=path('M385 214H587','#777777',2,arrow='vitalize-art')
 # Physical CPU blocks make the resource change legible without another chart.
 b+=txt(0,438,'Half the vCPUs utilized',27,WHITE,mono=False,weight=500)
 for x in [0,40,80,120]:b+=db(x,460,28,34,'#888888')
 b+=path('M174 477H235','#777777',1.5,arrow='vitalize-art')
 for x in [258,298]:b+=db(x,460,28,34,ORANGE)
 b+=txt(730,476,'2 ms',64,ORANGE,mono=False,weight=500)
-b+=txt(930,476,'p95',34,GRAY,mono=False,weight=500)
+b+=txt(900,476,'p95',64,WHITE,mono=False,weight=500)
 vitalize_art=svg(1250,550,b,'Vitalize moved 400 GB and 150 million rows from Supabase to PlanetScale Metal. On the same 200 GB JSONB-heavy table, Supabase reads averaged 50 seconds and PlanetScale reads maxed out at 1.2 seconds; these are different statistics, not a matched percentile comparison. Compute changed from four to two vCPUs at 16 GB RAM each. After migration, p95 was about two milliseconds.',mark='vitalize-art')
 
 # Migration close: one destination, with a choice of delivery ownership.
