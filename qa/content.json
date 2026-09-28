@@ -37,7 +37,7 @@
   },
   {
     "id": "cloud",
-    "label": "PlanetScale in your cloud"
+    "label": "Choose how you deploy PlanetScale"
   },
   {
     "id": "migration",
