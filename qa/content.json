@@ -36,6 +36,10 @@
     "label": "Neki: 118.5M queries per second"
   },
   {
+    "id": "cloud",
+    "label": "PlanetScale in your cloud"
+  },
+  {
     "id": "migration",
     "label": "Migrate to PlanetScale"
   }

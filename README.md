@@ -63,3 +63,7 @@ Review all slides, then commit the source and updated portable HTML together. Re
 ## Slide layout conventions
 
 The PlanetScale header logo appears only on the opening slide; slide 3 also uses the logo inside the control-plane bar to identify platform ownership. Its single-line “Postgres on Metal” heading sits above a product overview: managed Postgres and Metal, Neki for horizontal scale, and the shared PlanetScale platform and infrastructure team. Node topology belongs on slide 3. Content slides start directly with a single-line heading. Keep secondary results with their charts (for example, “Half the vCPUs” above the Vitalize compute chart), and give diagrams their full available width. Neki branding stays in its title row. Avoid restoring a repeated logo spacer or decorative banner.
+
+### Optional cloud deployment slide
+
+The core pitch keeps nine slides. Add the cloud/account discussion immediately before migration with `?cloud`, or open `Meridian-PlanetScale.html?cloud#/cloud` directly. Combine `?cloud&vitalize` to include both optional slides. Cloud deployment sources, region guidance, and BYOC discovery questions are in this slide's notes.

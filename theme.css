@@ -195,3 +195,23 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .vitalize-art svg{width:100%;height:auto}
 
 .scale-metrics>div{text-align:center}.scale-metrics>div strong{display:block;margin-inline:auto}.scale-metrics>div p{margin-inline:auto}
+
+/* Cloud choice and account ownership use separate rows; the service stays managed. */
+.cloud-providers{display:flex;align-items:center;justify-content:center;gap:58px;margin-top:40px;height:105px}
+.cloud-providers .cloud-aws-logo{display:block;width:126px;height:74px;object-fit:contain}
+.cloud-provider-slash{font:300 74px/1 Inter;color:#555;transform:rotate(8deg)}
+.cloud-google-lockup{display:flex;align-items:center;gap:20px;font:500 41px/1.1 Inter;letter-spacing:-1.2px}
+.cloud-google-lockup img{width:74px;height:74px;object-fit:contain}
+.cloud-deployments{display:grid;grid-template-columns:1fr 72px 1fr;align-items:center;gap:34px;margin-top:42px}
+.reveal .cloud-deployment h3{font:500 36px/1.1 Inter;letter-spacing:-1.1px;margin-bottom:24px}
+.cloud-deployment.byoc h3{color:var(--orange)}
+.cloud-deployment.byoc h3 span{font-size:30px}
+.cloud-account{height:238px;border:1px solid #777;padding:24px 26px;position:relative;display:flex;flex-direction:column}
+.reveal .cloud-account-label{font:21px/1.2 var(--mono);color:var(--muted);white-space:nowrap}
+.cloud-database{display:flex;align-items:center;justify-content:center;gap:20px;flex:1;font:500 41px/1.1 Inter;letter-spacing:-1px}
+.cloud-database img{display:block;width:48px;height:48px}
+.cloud-deployment.byoc .cloud-account{border:1px solid var(--orange);box-shadow:inset 0 0 0 5px #111,inset 0 0 0 6px #f358154d}
+.reveal .cloud-enterprise{font:17px/1.2 var(--mono);color:var(--orange);text-align:center}
+.cloud-option-slash{font:300 100px/1 Inter;color:#777;transform:rotate(8deg);text-align:center;padding-top:56px}
+.cloud-operations{margin-top:36px;padding:28px 20px;text-align:center;border:1px solid #555;background:radial-gradient(#494949 .7px,transparent .9px) 0 0/7px 7px}
+.cloud-operations strong{display:inline-block;background:#111;padding:0 14px;font:500 31px/1.2 Inter;color:var(--orange);letter-spacing:-.8px}

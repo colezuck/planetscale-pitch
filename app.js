@@ -1,5 +1,7 @@
 const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const slides = window.PITCH_SLIDES.filter(slide => slide.id !== "vitalize" || new URLSearchParams(location.search).has("vitalize") || location.hash === "#/vitalize");
+const optionalSlides = {vitalize:"vitalize",cloud:"cloud"};
+const slideOptions = new URLSearchParams(location.search);
+const slides = window.PITCH_SLIDES.filter(slide => !optionalSlides[slide.id] || slideOptions.has(optionalSlides[slide.id]) || location.hash === `#/${slide.id}`);
 if(new URLSearchParams(location.search).has('capture'))document.body.classList.add('capture');
 document.getElementById('slides').innerHTML = slides.map(slide => `<section id="${slide.id}" class="${slide.theme}" data-background-color="#111111">${slide.id === 'opening' ? '<div class="cover-brand"><img src="assets/planetscale-white.png" alt="PlanetScale"></div>' : ''}${slide.html}<aside class="notes">${escapeHtml(slide.notes)}</aside></section>`).join('');
 
