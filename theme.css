@@ -126,6 +126,7 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 #notes-dialog[open]{display:flex;flex-direction:column;gap:18px}#notes-dialog h2{margin:0;flex-shrink:0}#notes-dialog button{align-self:flex-start;flex-shrink:0}
 #notes-content{font-size:17px;line-height:1.65;max-height:60vh;min-height:0;overflow:auto;white-space:normal}
 .speaker-outline{margin:0;padding-left:1.3em}.speaker-outline li+li{margin-top:12px}
+.presentation-mode .deck-tools{display:none!important}
 .capture .deck-tools,.capture .progress{display:none!important}
 .capture .reveal{-webkit-user-select:none;user-select:none}.capture ::selection{background:transparent;color:inherit}
 @media(max-width:700px){.deck-tools{gap:0;white-space:nowrap}.deck-tools button{padding:7px}.deck-tools #help{display:none}}

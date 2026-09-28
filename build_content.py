@@ -22,24 +22,27 @@ def stipple_box(x,y,w,h,label,mark,color=WHITE,size=24):
     return rect(x,y,w,h,INK,color)+rect(x+6,y+6,w-12,h-12,f'url(#{mark})','none')+rect(x+w/2-len(label)*size*.33-12,y+h/2-19,len(label)*size*.66+24,38,INK,'none')+txt(x+w/2,y+h/2+size*.34,label,size,color,'middle')
 
 # HA: full-height architecture makes the query paths and control plane the focus.
-b=stipple_box(470,0,310,52,'Application','ha-arrow-dots',WHITE,25)
-b+=path('M560 53V78H175V108',ORANGE,2,True,arrow='ha-arrow')+txt(213,101,'Writes + fresh reads',20,ORANGE)
-b+=path('M690 53V78H888V108',BLUE,2,True,arrow='ha-arrow')+txt(915,101,'Replica reads',20,BLUE)
-b+=rect(25,113,300,52,stroke=ORANGE)+txt(175,147,'Primary connection',23,anchor='middle')
-b+=rect(730,113,315,52,stroke=BLUE)+txt(888,147,'Replica connection',23,anchor='middle')
-b+=path('M175 166V272',ORANGE,2,True,arrow='ha-arrow')
-b+=path('M888 166V193H625V272',BLUE,2,True,arrow='ha-arrow')+path('M888 193H1075V272',BLUE,2,True,arrow='ha-arrow')
+b=rect(440,0,370,58)+rect(446,6,38,46,'url(#ha-arrow-dots)','none')+rect(766,6,38,46,'url(#ha-arrow-dots)','none')
+b+=txt(625,26,'Application',25,anchor='middle')+txt(625,47,'Selects primary or replica',16,GRAY,'middle')
+b+=path('M560 59V83H175V272',ORANGE,2,True,arrow='ha-arrow')+txt(213,106,'Writes + fresh reads',20,ORANGE)
+b+=path('M690 59V83H888V108',BLUE,2,True,arrow='ha-arrow')+txt(915,106,'Replica reads',20,BLUE)
+b+=rect(730,113,315,70,stroke=BLUE)+txt(888,144,'Replica PgBouncer',23,anchor='middle')+txt(888,168,'Dedicated · optional',18,GRAY,'middle')
+b+=path('M888 184V209H850V330H727',BLUE,2,True,arrow='ha-arrow')+path('M850 330H974',BLUE,2,True,arrow='ha-arrow')
 for x,label,role,color in [(0,'Availability zone A','Primary',ORANGE),(450,'Availability zone B','Replica',BLUE),(900,'Availability zone C','Replica',BLUE)]:
     b+=rect(x,228,350,177,'none','#555555')+rect(x+12,234,270,24,INK,'none')+txt(x+18,253,label,20,GRAY)
-    b+=(db(x+79,280,192,100,color) if role=='Primary' else rect(x+79,280,192,100,INK,color))+txt(x+175,324,role,29,anchor='middle')+txt(x+175,356,'node',21,GRAY,'middle')
-b+=path('M272 330H524',GRAY,1.8,True,arrow='ha-arrow')+txt(398,311,'Replication',19,GRAY,'middle')
-b+=path('M175 382V429H1075V383',GRAY,1.8,True,arrow='ha-arrow')+txt(628,456,'Semi-synchronous replication',20,GRAY,'middle')
+    if role=='Primary':
+        b+=db(x+64,274,222,128,color)+rect(x+74,284,202,39,INK,color)+txt(x+175,311,'PgBouncer',23,anchor='middle')
+        b+=txt(x+175,363,'Primary',29,anchor='middle')+txt(x+175,389,'node',21,GRAY,'middle')
+    else:
+        b+=rect(x+79,280,192,100,INK,color)+txt(x+175,324,role,29,anchor='middle')+txt(x+175,356,'node',21,GRAY,'middle')
+b+=path('M287 365H524',GRAY,1.8,True,arrow='ha-arrow')+txt(398,345,'Replication',19,GRAY,'middle')
+b+=path('M175 403V429H1075V383',GRAY,1.8,True,arrow='ha-arrow')+txt(628,456,'Semi-synchronous replication',20,GRAY,'middle')
 b+=rect(0,484,1250,65,INK,'#aaaaaa')
 b+='<svg x="24" y="500" width="33" height="33" viewBox="0 0 454 454" aria-label="PlanetScale"><g fill="#fff"><path d="m0 227c.00001067-125.369 101.631-227.00001067 227-227 92.178.00000806 171.524 54.9423 207.076 133.865l-300.211 300.211c-12.882-5.803-25.126-12.774-36.5966-20.776l186.2996-186.3h-56.568l-160.5132 160.513c-41.0789-41.079-66.48680548-97.829-66.4868-160.513z"/><path d="m454 227.078-226.922 226.922c125.307-.042 226.88-101.615 226.922-226.922z"/></g></svg>'
 b+=txt(76,525,'Control plane',27,WHITE,weight=500)
 b+=txt(419,525,'Provision',23,GRAY)+txt(674,525,'Fail over',23,GRAY)+txt(884,525,'Resize',23,GRAY)+txt(1060,525,'Upgrade',23,GRAY)
 for x in (27,1223):b+=path(f'M{x} 484V406','#777777',1.5,True)
-ha=svg(1250,553,b,'One highly available Postgres cluster in a single region, containing three database nodes. Each availability zone contains one node: a primary in zone A and replicas in zones B and C. Application connections select the primary or replicas. Semi-synchronous replication connects the nodes. The separate control plane manages provisioning, failover, resizing, and upgrades.',mark='ha-arrow')
+ha=svg(1250,553,b,'One highly available Postgres cluster across three availability zones in one region. The application selects its connection: writes and fresh reads use local PgBouncer on the primary node; replica reads use an optional dedicated replica PgBouncer, which routes to the two replicas. This is application-selected routing, not automatic query splitting. Direct replica connections are an alternative. Semi-synchronous replication connects the nodes; the separate control plane manages provisioning, failover, resizing, and upgrades.',mark='ha-arrow')
 
 # Throughput bars and real one-second p99 samples, kept as native vector charts.
 qps_source=json.loads((R/'qa/benchmark-qps.json').read_text())

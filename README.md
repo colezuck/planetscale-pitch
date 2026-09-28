@@ -4,16 +4,20 @@ Working deck: ten core slides, with optional Autumn and cloud deployment slides 
 
 ## Present
 
+Double-click `Present-PlanetScale.command` to serve the current deck locally and open the 11-slide presentation with the cloud slide included. Use Chrome or Edge for presenting. The launcher hides the on-slide toolbar with `?present`; keyboard shortcuts remain available. Remove `present` from the URL to restore the toolbar.
+
 Open `Meridian-PlanetScale.html` in a browser. It is a portable file containing the deck, font, logos, charts and speaker notes; the filename is preserved so existing preview links continue to work.
 
 - Arrow keys: move through the slides.
 - O: slide overview.
-- Notes: private reading dialog for the current slide.
+- Notes: reading dialog on the slide window; visible to the audience if that window is shared.
 - S: separate Reveal presenter view in browsers that allow pop-ups; serve locally for this feature.
 - F: fullscreen.
 - B: black screen.
 
-The PDF is a static 16:9 presentation backup. Speaker notes are also available in `speaker-notes.md`.
+For Zoom, press **S** to open the separate presenter window with notes, slide previews and timer. Allow localhost popups if prompted. Share only the audience slide window in Zoom, and keep the presenter window unshared. Advance with arrow keys; Nexus includes incremental reveals.
+
+The existing PDF predates the latest edits and should not be used as the final deck. Speaker notes are also available in `speaker-notes.md`.
 
 ## Narrative
 

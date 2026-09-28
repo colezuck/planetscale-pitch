@@ -3,6 +3,7 @@ const renderNotes = value => `<ul class="speaker-outline">${value.split('\n').fi
 const optionalSlides = {autumn:"autumn",cloud:"cloud"};
 const slideOptions = new URLSearchParams(location.search);
 const slides = window.PITCH_SLIDES.filter(slide => !optionalSlides[slide.id] || slideOptions.has(optionalSlides[slide.id]) || location.hash === `#/${slide.id}`);
+if(slideOptions.has('present'))document.body.classList.add('presentation-mode');
 if(new URLSearchParams(location.search).has('capture'))document.body.classList.add('capture');
 document.getElementById('slides').innerHTML = slides.map(slide => `<section id="${slide.id}" class="${slide.theme}" data-background-color="#111111"><div class="slide-content">${slide.html}</div><aside class="notes">${renderNotes(slide.notes)}</aside></section>`).join('');
 
