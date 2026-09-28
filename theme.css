@@ -5,6 +5,7 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .reveal{font-family:Inter,Arial,sans-serif;font-size:25px;font-weight:400;color:var(--white)}
 .reveal .slides{text-align:left}
 .reveal .slides>section{height:810px;padding:60px 64px;overflow:hidden}
+.slide-content{position:absolute;top:50%;left:64px;right:64px;transform:translateY(-50%)}
 .reveal h1,.reveal h2,.reveal h3,.reveal p{margin:0;font-weight:400}
 .reveal h1{font-size:88px;font-weight:500;line-height:1.06;letter-spacing:-4.8px}
 .reveal h2{font-size:56px;font-weight:500;line-height:1.1;letter-spacing:-2.4px}
@@ -24,7 +25,7 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 
 /* Nexus: establish the capacity model, grow resources, then reveal discovery topics. */
 .reveal .nexus h2{font-size:64px;line-height:1.12;letter-spacing:-2.4px}
-.nexus-headline{position:relative;height:143.36px}
+.nexus-headline{position:relative;height:60.48px}
 .reveal .nexus-headline h2{position:absolute;inset:0;transition:opacity .25s ease}
 .reveal .nexus-headline .nexus-meta-title,.reveal .nexus-headline .nexus-challenge-title{font-size:54px;white-space:nowrap}
 .nexus-challenge-title{opacity:0;visibility:hidden}
@@ -51,12 +52,12 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .sla strong{font-size:64px;letter-spacing:-3px;color:var(--orange);line-height:1}
 .sla strong span{font-size:42px}
 .sla p{font:17px var(--mono);color:#aaa;margin-top:8px}
-.ha-diagram{margin-top:24px}
+.ha-diagram{margin-top:18px}
 .ha-diagram svg{width:100%;height:auto}
 
 /* Metal mechanism: compare the storage paths, then show durability below. */
 .metal-path h2{font-size:56px}
-.metal-path-art{margin-top:12px}
+.metal-path-art{margin-top:28px;max-width:1180px;margin-inline:auto}
 .metal-path-art svg{width:100%;height:auto}
 
 /* Benchmarks: align chart headings and reserve the lower band for workload context. */
@@ -82,7 +83,7 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 /* Neki: branding fits in the title row rather than a separate banner. */
 .neki-heading{display:flex;justify-content:space-between;align-items:center;gap:24px}
 .neki h2{color:var(--yellow)}
-.neki-lockup{position:absolute;top:34px;right:64px;display:flex;align-items:center;gap:17px}
+.neki-lockup{position:absolute;top:0;right:0;display:flex;align-items:center;gap:17px}
 .neki-lockup img{height:144px;width:98px;object-fit:contain;background:var(--yellow);padding:4px}
 .neki-wordmark{font:500 25px var(--mono);letter-spacing:-1px;color:var(--yellow);white-space:nowrap}
 .neki-topology{margin-top:36px}
@@ -136,7 +137,7 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-wordmark{width:210px;height:95px}
 .autumn-logo{width:191px;height:47px}
 .case-context{font:20px var(--mono);color:#aaa;margin-top:15px!important}
-.convex-curves{margin-top:52px}
+.convex-curves{margin-top:32px}
 .convex-original-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}
 .source-provider-row{display:flex;justify-content:space-around;font:18px var(--mono);margin-bottom:21px;color:#bcbcbc}
 .source-provider-row span:last-child{color:var(--orange)}
@@ -178,7 +179,7 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-heading h2{font-size:44px;letter-spacing:-1.9px}
 
 /* PlanetScale-style stipple panel for the customer quote. */
-.convex-quote{border:1px solid #555;padding:18px 24px;margin-top:32px;background-color:#111;background-image:radial-gradient(#494949 .7px,transparent .9px);background-size:7px 7px;gap:0}
+.convex-quote{border:1px solid #555;padding:18px 24px;margin-top:24px;background-color:#111;background-image:radial-gradient(#494949 .7px,transparent .9px);background-size:7px 7px;gap:0}
 .convex-quote q{background:#111;padding:6px 14px}
 .convex-quote>span{background:#111;padding:9px 14px 9px 8px}
 

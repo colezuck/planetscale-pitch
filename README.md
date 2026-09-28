@@ -65,6 +65,8 @@ Review all slides, then commit the source and updated portable HTML together. Re
 
 ## Slide layout conventions
 
+The live deck stays in 16:9 slide mode at every viewport width. Each slide uses a content group centered vertically within the 1440 × 810 canvas, with 64 px side margins and approximately 60 px or more above and below the composition. Keep speaker notes outside that group and avoid oversized SVG viewboxes with unused space. Nexus reserves one line for both headlines so its reveals keep the same position.
+
 The opening contains only a centered PlanetScale logo and “Postgres on Metal,” with Metal in orange. Nexus first shows a Postgres server with vCPU/RAM and a separate network-attached volume. Advance once to grow compute and storage; advance again to change the headline and reveal latency, high availability, and storage I/O as discovery topics. Provider names, replicas, and operational details belong in the notes; this is a capacity model, not a complete HA topology. The PDF shows the final reveal on one page. Research and boundaries are in `docs/nexus-research.md`. Content slides otherwise use single-line headings. Keep secondary results with their evidence and give diagrams their full available width. Neki branding stays in its title row.
 
 ### Optional cloud deployment slide

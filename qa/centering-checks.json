@@ -1,0 +1,105 @@
+{
+  "canvas": {
+    "width": 1440,
+    "height": 810
+  },
+  "checkedAt": "2026-09-27",
+  "slides": [
+    {
+      "bottom": 60,
+      "centerDifference": 0,
+      "height": 690,
+      "id": "opening",
+      "overflow": false,
+      "top": 60
+    },
+    {
+      "bottom": 110,
+      "centerDifference": 0,
+      "height": 590,
+      "id": "nexus",
+      "overflow": false,
+      "top": 110
+    },
+    {
+      "bottom": 60,
+      "centerDifference": 0,
+      "height": 691,
+      "id": "convex",
+      "overflow": false,
+      "top": 60
+    },
+    {
+      "bottom": 65,
+      "centerDifference": 0,
+      "height": 679,
+      "id": "vitalize",
+      "overflow": false,
+      "top": 65
+    },
+    {
+      "bottom": 84,
+      "centerDifference": 0,
+      "height": 642,
+      "id": "autumn",
+      "overflow": false,
+      "top": 84
+    },
+    {
+      "bottom": 60,
+      "centerDifference": 0,
+      "height": 690,
+      "id": "availability",
+      "overflow": false,
+      "top": 60
+    },
+    {
+      "bottom": 60,
+      "centerDifference": 0,
+      "height": 689,
+      "id": "metal-path",
+      "overflow": false,
+      "top": 60
+    },
+    {
+      "bottom": 69,
+      "centerDifference": 0,
+      "height": 671,
+      "id": "metal",
+      "overflow": false,
+      "top": 69
+    },
+    {
+      "bottom": 68,
+      "centerDifference": 0,
+      "height": 675,
+      "id": "neki",
+      "overflow": false,
+      "top": 68
+    },
+    {
+      "bottom": 84,
+      "centerDifference": 0,
+      "height": 641,
+      "id": "neki-scale",
+      "overflow": false,
+      "top": 84
+    },
+    {
+      "bottom": 67,
+      "centerDifference": 0,
+      "height": 677,
+      "id": "cloud",
+      "overflow": false,
+      "top": 66
+    },
+    {
+      "bottom": 102,
+      "centerDifference": 0,
+      "height": 606,
+      "id": "migration",
+      "overflow": false,
+      "top": 102
+    }
+  ]
+}
