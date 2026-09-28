@@ -220,7 +220,7 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .cloud-provider-slash{font:300 74px/1 Inter;color:#555;transform:rotate(8deg)}
 .cloud-google-lockup{display:flex;align-items:center;gap:20px;font:500 41px/1.1 Inter;letter-spacing:-1.2px}
 .cloud-google-lockup img{width:74px;height:74px;object-fit:contain}
-.cloud-deployments{display:grid;grid-template-columns:1fr 72px 1fr;align-items:center;gap:34px;margin-top:26px}
+.cloud-deployments{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;margin-top:26px}
 .reveal .cloud-deployment h3{font:500 36px/1.1 Inter;letter-spacing:-1.1px;margin-bottom:24px}
 .cloud-deployment.byoc h3{color:var(--orange)}
 .cloud-deployment.byoc h3 span{font-size:30px}
@@ -228,7 +228,7 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .reveal .cloud-account-label{font:21px/1.2 var(--mono);color:var(--muted);white-space:nowrap}
 .cloud-database{display:flex;align-items:center;justify-content:center;gap:20px;flex:1;font:500 41px/1.1 Inter;letter-spacing:-1px}
 .cloud-database img{display:block;width:48px;height:48px}
-.cloud-deployment.byoc .cloud-account{border:1px solid var(--orange);box-shadow:inset 0 0 0 5px #111,inset 0 0 0 6px #f358154d}
+.cloud-deployment.byoc .cloud-account{border:1px solid var(--orange);box-shadow:none}
 .reveal .cloud-enterprise{font:17px/1.2 var(--mono);color:var(--orange);text-align:center}
 .cloud-option-slash{font:300 100px/1 Inter;color:#777;transform:rotate(8deg);text-align:center;padding-top:56px}
 .cloud-operations{display:flex;align-items:center;justify-content:center;margin-top:24px;padding:16px;text-align:center;border:1px solid #555;background:radial-gradient(#494949 .7px,transparent .9px) 0 0/7px 7px}
@@ -238,5 +238,26 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .cloud-connectivity-heading{display:flex;align-items:center;gap:18px}
 .cloud-connectivity-heading strong{font:500 23px/1.2 Inter;color:#d1d1d1;letter-spacing:-.4px}
 .cloud-connectivity-setup{padding:4px 10px;border:1px solid #555;font:18px/1.2 var(--mono);color:var(--muted)}
-.reveal .cloud-connectivity p{font:20px/1.3 var(--mono);color:var(--muted);white-space:nowrap}
+.reveal .cloud-connectivity p{display:flex;justify-content:center;gap:44px;font:20px/1.3 var(--mono);color:var(--muted);white-space:nowrap}
 .cloud-connectivity-slash{color:#666;padding-inline:10px}
+
+/* Cloud pitch: deployment choice first, a shared operating model below. */
+.cloud-providers{margin-top:28px;height:72px;gap:44px}
+.cloud-providers .cloud-aws-logo{width:100px;height:60px}
+.cloud-google-lockup{font-size:30px;gap:14px;letter-spacing:-.7px}
+.cloud-google-lockup img{width:52px;height:52px}
+.cloud-deployments{gap:44px;margin-top:32px;align-items:stretch}
+.cloud-account{height:266px;padding:28px 30px;background:#151515;border-color:#666}
+.reveal .cloud-deployment h3{font-size:32px;margin:0 0 12px;letter-spacing:-.8px}
+.cloud-deployment.byoc h3 span{font-size:inherit;vertical-align:baseline}
+.reveal .cloud-account-label{font-size:18px}
+.cloud-database{font-size:43px;gap:17px}
+.cloud-database img{width:45px;height:45px}
+.reveal .cloud-enterprise{position:absolute;bottom:19px;right:25px;font-size:15px}
+.cloud-shared-path{height:42px;display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.cloud-shared-path i{display:block;width:1px;height:42px;background:#777;margin:auto}
+.cloud-shared-path i:last-child{background:var(--orange)}
+.cloud-operations{margin-top:0;min-height:83px;gap:18px;border-color:#f3581570;background:radial-gradient(#f3581538 .7px,transparent .9px) 0 0/7px 7px}
+.cloud-operations img{width:34px;height:34px}
+.cloud-operations strong{font-size:32px;color:#fafafa;letter-spacing:-.6px;padding:4px 12px}
+.cloud-operations strong span{color:var(--orange)}

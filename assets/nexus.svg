@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 470" role="img" aria-labelledby="nexus-title nexus-description">
   <title id="nexus-title">The common cloud Postgres capacity model</title>
-  <desc id="nexus-description">A Postgres server contains vCPU and RAM and reads and writes a separate network-attached storage volume. The first reveal expands compute and storage capacity: more vCPU, more RAM, and more storage. The second reveal highlights latency, high availability, and storage I/O as questions that resource sizing alone does not settle. Only the compute and storage capacity model is shown; replicas, availability zones, backups, and the managed service control plane are omitted. This is a common managed cloud Postgres pattern, not a literal topology shared by every provider or a performance benchmark.</desc>
+  <desc id="nexus-description">A Postgres server contains vCPU and RAM and reads and writes a separate network-attached storage volume. The first reveal expands compute and storage capacity: more vCPU, more RAM, and more storage. The second reveal highlights latency, availability, and storage I/O as questions that resource sizing alone does not settle. Only the compute and storage capacity model is shown; replicas, availability zones, backups, and the managed service control plane are omitted. This is a common managed cloud Postgres pattern, not a literal topology shared by every provider or a performance benchmark.</desc>
   <defs>
     <pattern id="nexus-volume-dots" width="7" height="7" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="1.2" height="2" fill="#747474"/></pattern>
     <pattern id="nexus-problem-dots" width="7" height="7" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="1.2" height="2" fill="#6b282c"/></pattern>
@@ -59,6 +59,6 @@
     <path d="M761 174L772 180L761 186Z M563 225L552 231L563 237Z" fill="#f35815"/>
     <g fill="url(#nexus-problem-dots)" stroke="#8e3338"><rect x="1" y="366" width="390" height="91"/><rect x="430" y="366" width="390" height="91"/><rect x="859" y="366" width="390" height="91"/></g>
     <g fill="#111111"><rect x="31" y="384" width="330" height="55"/><rect x="460" y="384" width="330" height="55"/><rect x="889" y="384" width="330" height="55"/></g>
-    <g fill="#ff4d4d" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="35" font-weight="500"><text x="196" y="425">Latency</text><text x="625" y="425">High availability</text><text x="1054" y="425">Storage I/O</text></g>
+    <g fill="#ff4d4d" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="35" font-weight="500"><text x="196" y="425">Latency</text><text x="625" y="425">Availability</text><text x="1054" y="425">Storage I/O</text></g>
   </g>
 </svg>

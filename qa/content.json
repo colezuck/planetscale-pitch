@@ -5,11 +5,11 @@
   },
   {
     "id": "nexus",
-    "label": "More resources won\u2019t fix the Postgres bottleneck"
+    "label": "More compute doesn\u2019t solve every Postgres bottleneck."
   },
   {
     "id": "convex",
-    "label": "Convex migrated from Aurora to PlanetScale Postgres Metal"
+    "label": "Convex reduced p99 query latency by over 50%"
   },
   {
     "id": "metal-path",
@@ -41,7 +41,7 @@
   },
   {
     "id": "cloud",
-    "label": "Choose how you deploy PlanetScale"
+    "label": "Planetscale on your cloud"
   },
   {
     "id": "migration",

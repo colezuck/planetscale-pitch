@@ -24,25 +24,26 @@ def stipple_box(x,y,w,h,label,mark,color=WHITE,size=24):
 # HA: full-height architecture makes the query paths and control plane the focus.
 b=rect(440,0,370,58)+rect(446,6,38,46,'url(#ha-arrow-dots)','none')+rect(766,6,38,46,'url(#ha-arrow-dots)','none')
 b+=txt(625,26,'Application',25,anchor='middle')+txt(625,47,'Selects primary or replica',16,GRAY,'middle')
-b+=path('M560 59V83H175V272',ORANGE,2,True,arrow='ha-arrow')+txt(213,106,'Writes + fresh reads',20,ORANGE)
+b+=path('M560 59V83H175V108',ORANGE,2,True,arrow='ha-arrow')+txt(213,106,'Writes + fresh reads',20,ORANGE)
+b+=rect(18,113,315,70,stroke=ORANGE)+txt(175,156,'Primary connection',23,anchor='middle')
+b+=path('M175 184V278',ORANGE,2,True,arrow='ha-arrow')
 b+=path('M690 59V83H888V108',BLUE,2,True,arrow='ha-arrow')+txt(915,106,'Replica reads',20,BLUE)
-b+=rect(730,113,315,70,stroke=BLUE)+txt(888,144,'Replica PgBouncer',23,anchor='middle')+txt(888,168,'Dedicated · optional',18,GRAY,'middle')
-b+=path('M888 184V209H850V330H727',BLUE,2,True,arrow='ha-arrow')+path('M850 330H974',BLUE,2,True,arrow='ha-arrow')
+b+=rect(730,113,315,70,stroke=BLUE)+txt(888,156,'Replica connection',23,anchor='middle')
+b+=path('M888 184V209H625V278',BLUE,2,True,arrow='ha-arrow')+path('M888 209H1075V278',BLUE,2,True,arrow='ha-arrow')
 for x,label,role,color in [(0,'Availability zone A','Primary',ORANGE),(450,'Availability zone B','Replica',BLUE),(900,'Availability zone C','Replica',BLUE)]:
     b+=rect(x,228,350,177,'none','#555555')+rect(x+12,234,270,24,INK,'none')+txt(x+18,253,label,20,GRAY)
     if role=='Primary':
-        b+=db(x+64,274,222,128,color)+rect(x+74,284,202,39,INK,color)+txt(x+175,311,'PgBouncer',23,anchor='middle')
-        b+=txt(x+175,363,'Primary',29,anchor='middle')+txt(x+175,389,'node',21,GRAY,'middle')
+        b+=db(x+79,280,192,100,color)+txt(x+175,324,'Primary',29,anchor='middle')+txt(x+175,356,'node',21,GRAY,'middle')
     else:
         b+=rect(x+79,280,192,100,INK,color)+txt(x+175,324,role,29,anchor='middle')+txt(x+175,356,'node',21,GRAY,'middle')
-b+=path('M287 365H524',GRAY,1.8,True,arrow='ha-arrow')+txt(398,345,'Replication',19,GRAY,'middle')
-b+=path('M175 403V429H1075V383',GRAY,1.8,True,arrow='ha-arrow')+txt(628,456,'Semi-synchronous replication',20,GRAY,'middle')
+b+=path('M271 345H524',GRAY,1.8,True,arrow='ha-arrow')+txt(398,325,'Replication',19,GRAY,'middle')
+b+=path('M175 381V429H1075V383',GRAY,1.8,True,arrow='ha-arrow')+txt(628,456,'Semi-synchronous replication',20,GRAY,'middle')
 b+=rect(0,484,1250,65,INK,'#aaaaaa')
 b+='<svg x="24" y="500" width="33" height="33" viewBox="0 0 454 454" aria-label="PlanetScale"><g fill="#fff"><path d="m0 227c.00001067-125.369 101.631-227.00001067 227-227 92.178.00000806 171.524 54.9423 207.076 133.865l-300.211 300.211c-12.882-5.803-25.126-12.774-36.5966-20.776l186.2996-186.3h-56.568l-160.5132 160.513c-41.0789-41.079-66.48680548-97.829-66.4868-160.513z"/><path d="m454 227.078-226.922 226.922c125.307-.042 226.88-101.615 226.922-226.922z"/></g></svg>'
 b+=txt(76,525,'Control plane',27,WHITE,weight=500)
 b+=txt(419,525,'Provision',23,GRAY)+txt(674,525,'Fail over',23,GRAY)+txt(884,525,'Resize',23,GRAY)+txt(1060,525,'Upgrade',23,GRAY)
 for x in (27,1223):b+=path(f'M{x} 484V406','#777777',1.5,True)
-ha=svg(1250,553,b,'One highly available Postgres cluster across three availability zones in one region. The application selects its connection: writes and fresh reads use local PgBouncer on the primary node; replica reads use an optional dedicated replica PgBouncer, which routes to the two replicas. This is application-selected routing, not automatic query splitting. Direct replica connections are an alternative. Semi-synchronous replication connects the nodes; the separate control plane manages provisioning, failover, resizing, and upgrades.',mark='ha-arrow')
+ha=svg(1250,553,b,'One highly available Postgres cluster across three availability zones in one region. The application selects its connection: writes and fresh reads use the primary connection; replica reads use the replica connection. Connection pooling details are omitted. These are application-selected connection paths, not automatic query splitting. Semi-synchronous replication connects the nodes; the separate control plane manages provisioning, failover, resizing, and upgrades.',mark='ha-arrow')
 
 # Throughput bars and real one-second p99 samples, kept as native vector charts.
 qps_source=json.loads((R/'qa/benchmark-qps.json').read_text())
@@ -101,23 +102,18 @@ b+=txt(992,58,'PlanetScale',31,WHITE,'middle')
 b+=txt(992,91,'Postgres on Metal',25,ORANGE,'middle')
 migration=svg(1250,128,b,'Migrate your existing Postgres database to PlanetScale Postgres on Metal. Both self-service and PlanetScale-led migrations share this destination.',mark='m-arrow')
 
-# Neki topology: terminal-style line work adapted from PlanetScale's ASCII language.
-b=rect(454,0,342,45,INK,WHITE)+txt(625,30,'Application',23,WHITE,'middle')
-b+=path('M625 46V75',WHITE,1.6,True,arrow='n-arrow')
-b+=stipple_box(256,82,738,69,'Neki router','n-arrow-yellow',YELLOW,27)
-b+=path('M625 152V180H187V211',WHITE,1.8,True,arrow='n-arrow')
-b+=path('M625 180V211',WHITE,1.8,True,arrow='n-arrow')
-b+=path('M625 180H1063V211',WHITE,1.8,True,arrow='n-arrow')
+# Simplified Neki topology, following the official site's shard visual.
+b=rect(454,0,342,65,INK,WHITE)+txt(625,42,'Application',26,WHITE,'middle')
+b+=path('M625 66V110',WHITE,1.6)
+b+=stipple_box(0,110,1250,94,'Neki router','n-arrow-yellow',YELLOW,30)
 for i,x in enumerate([0,438,876]):
-    b+=txt(x+187,236,f'SHARD 0{i+1}',18,YELLOW,'middle')
-    b+=db(x+66,252,242,86,WHITE)+txt(x+187,286,'Primary',25,WHITE,'middle')+txt(x+187,316,'Postgres + sidecar',17,GRAY,'middle')
-    b+=path(f'M{x+187} 340V364H{x+83}V386',WHITE,1.6,True,arrow='n-arrow')
-    b+=path(f'M{x+187} 364H{x+291}V386',WHITE,1.6,True,arrow='n-arrow')
-    for rx in [x,x+208]:
-        b+=rect(rx,394,166,58,INK,WHITE)+txt(rx+83,431,'Replica',23,WHITE,'middle')
-    b+=path(f'M{x+187} 488V462','#5d5d5d',1.3,True)
-b+=rect(0,489,1250,55,INK,'#7b7b7b')+txt(23,525,'Control plane',23,WHITE)+txt(483,525,'Topology / failover / resharding',22,GRAY)
-neki=svg(1250,550,b,'An application connects to a Neki router. The router routes to three shards. Each shard has a real Postgres primary with a sidecar and two replicas. The control plane manages topology, failover and resharding.',mark='n-arrow',color=WHITE)
+    b+=path(f'M{x+187} 205V257',YELLOW,1.8)
+    b+=rect(x,258,374,228,INK,YELLOW)
+    b+=txt(x+38,308,f'SHARD 0{i+1}',20,YELLOW)
+    b+=txt(x+38,389,'Postgres',36,WHITE)
+    for dx in [38,140,242]:
+        b+=rect(x+dx,432,88,14,YELLOW,'none')
+neki=svg(1250,510,b,'An application connects to the Neki router, which routes queries to three real Postgres shards. Each shard is shown as a simple Postgres card; internal replication and sidecars are omitted.',mark='n-arrow',color=WHITE)
 
 # A genuine scale series: point-read throughput vs shard count, both logarithmic.
 import math
@@ -136,7 +132,6 @@ for (x,y),(_,_,lab,val) in zip(coords,points):
     b+=f'<circle cx="{x}" cy="{y}" r="10" fill="#111" stroke="{YELLOW}" stroke-width="2"/><circle cx="{x}" cy="{y}" r="4" fill="{YELLOW}"/>'+txt(x,y-25,val,29,YELLOW,'middle',500,True)+txt(x,328,lab,18,WHITE,'middle',mono=True)
 b='<g transform="translate(22 0)">'+b+'</g>'
 b+=txt(69,28,'QPS',17,'#b9a762','end',mono=True)
-b+=txt(778,365,'LOG SCALES',13,'#84784c','end',mono=True)
 scale=svg(820,380,b,'Neki read-only point-select benchmark: 5 shards delivered 999,624 QPS; 50 shards delivered 9,923,900 QPS; 512 shards delivered 118,538,803 QPS. Both axes use logarithmic scales.',mark='scale-arrow',color=YELLOW)
 
 # Display the original customer charts without rebuilding or modifying their pixels.
@@ -159,22 +154,32 @@ autumn_plot=svg(905,510,b,'Autumn query latency: approximately 100 milliseconds 
 
 slides=[
  dict(id='opening',label='PlanetScale Postgres on Metal',theme='opening',html='<div class="opening-hero"><div class="cover-brand"><img src="assets/planetscale-white.svg" alt="PlanetScale"></div><h1>Postgres on <span class="accent">Metal</span></h1></div>',notes=speaker_notes['opening']),
- dict(id='nexus',label='More resources won’t fix the Postgres bottleneck',theme='nexus',html='<div class="nexus-headline"><h2 class="nexus-meta-title" aria-hidden="false">How <span class="accent">Postgres</span> typically runs and scales in the cloud</h2><h2 class="nexus-challenge-title" aria-hidden="true">More resources won’t fix <span class="accent">the Postgres bottleneck</span></h2></div><div class="nexus-art">'+(R/'assets/nexus.svg').read_text()+'</div>',notes=speaker_notes['nexus']),
+ dict(id='nexus',label='More compute doesn’t solve every Postgres bottleneck.',theme='nexus',html='<div class="nexus-headline"><h2 class="nexus-meta-title" aria-hidden="false">How <span class="accent">Postgres</span> typically runs and scales in the cloud</h2><h2 class="nexus-challenge-title" aria-hidden="true">More compute doesn’t solve <span class="accent">every Postgres bottleneck.</span></h2></div><div class="nexus-art">'+(R/'assets/nexus.svg').read_text()+'</div>',notes=speaker_notes['nexus']),
  dict(id='vitalize',label='Vitalize: 2 ms p95, half the vCPUs',theme='vitalize',html=f'''<div class="case-heading vitalize-heading"><span class="vitalize-title-symbol"><img src="assets/vitalize-symbol.svg" alt=""></span><h2>Vitalize migrated from Supabase to Metal</h2></div><div class="vitalize-art">{vitalize_art}</div>''',notes=speaker_notes['vitalize']),
  dict(id='availability',label='Planetscale Postgres Architecture',theme='availability',html=f'''<div class="title-with-stat"><h2>Planetscale Postgres Architecture</h2><div class="sla"><strong>99.99<span>%</span></strong><p>single-region HA SLA</p></div></div><div class="ha-diagram">{ha}</div>''',notes=speaker_notes['availability']),
  dict(id='metal',label='Postgres on Metal: throughput and p99',theme='metal',html=f'''<div class="metal-heading"><h2>More QPS &amp; Lower p99 on <span class="metal-title-brand"><span class="metal-title-symbol"><img src="assets/planetscale-white.svg" alt="PlanetScale"></span><span class="accent">Metal</span></span></h2></div><div class="benchmark-grid"><div><h3>Throughput (QPS)</h3>{bars}</div><div><h3>p99 latency</h3><div class="chart-legend"><span class="ps-dot">PlanetScale</span><span class="aurora-dot">Aurora</span><span class="alloydb-dot">AlloyDB</span><span class="supabase-dot">Supabase</span></div>{latency}</div></div>''',notes=speaker_notes['metal']),
  dict(id='neki',label='Neki: Horizontal Scaling for Postgres',theme='neki',html=f'''<div class="neki-heading"><h2>Neki: Horizontal Scaling for Postgres</h2><div class="neki-lockup"><img src="assets/neki-cat.svg" alt="Neki"></div></div><div class="neki-topology">{neki}</div>''',notes=speaker_notes['neki']),
- dict(id='neki-scale',label='Neki: 118.5M queries per second',theme='neki neki-scale',html=f'''<div class="neki-heading"><h2><span class="yellow">118.5M</span> queries / second</h2><div class="neki-lockup"><img src="assets/neki-cat.svg" alt="Neki"></div></div><div class="scale-layout"><div><div class="scale-chart">{scale}</div><p class="neki-workload">Read-only point selects / Primary-only shards</p></div><div class="scale-metrics"><div><strong>1.22 <span>PiB</span></strong><p>data</p></div><div><strong>512</strong><p>shards</p></div><div><strong>6.06 <span>ms</span></strong><p>router p99</p></div></div></div>''',notes=speaker_notes['neki-scale']),
- dict(id='convex',label='Convex migrated from Aurora to PlanetScale Postgres Metal',theme='customer-case convex',html=f'''<div class="case-heading convex-heading"><img class="convex-title-symbol" src="assets/convex-symbol-color.svg" alt=""><h2>Convex migrated from Aurora to PlanetScale Postgres Metal</h2></div><div class="convex-curves">{convex_plot}</div><div class="convex-quote"><q>p50 is the new p99.</q><span>Jamie Turner / Convex</span></div>''',notes=speaker_notes['convex']),
+ dict(id='neki-scale',label='Neki: 118.5M queries per second',theme='neki neki-scale',html=f'''<div class="neki-heading"><h2><span class="yellow">118.5M</span> queries / second</h2><div class="neki-lockup"><img src="assets/neki-cat.svg" alt="Neki"></div></div><div class="scale-layout"><div><div class="scale-chart">{scale}</div></div><div class="scale-metrics"><div><strong>1.22 <span>PiB</span></strong><p>data</p></div><div><strong>512</strong><p>shards</p></div><div><strong>6.06 <span>ms</span></strong><p>router p99</p></div></div></div>''',notes=speaker_notes['neki-scale']),
+ dict(id='convex',label='Convex reduced p99 query latency by over 50%',theme='customer-case convex',html=f'''<div class="case-heading convex-heading"><img class="convex-title-symbol" src="assets/convex-symbol-color.svg" alt=""><h2>Convex reduced p99 query latency by over 50%</h2></div><div class="convex-curves">{convex_plot}</div><div class="convex-quote"><q>p50 is the new p99.</q><span>Jamie Turner / Convex</span></div>''',notes=speaker_notes['convex']),
  dict(id='autumn',label='Autumn: two days to PlanetScale Metal',theme='customer-case autumn',html=f'''<div class="case-heading autumn-heading"><div class="autumn-title-symbol"><img src="assets/autumn.svg" alt=""></div><h2>Autumn migrated to PlanetScale Metal in two days</h2></div><div class="autumn-evidence"><div>{autumn_plot}</div><div class="autumn-migration"><div class="migration-number"><strong>2<span> days</span></strong><p>Migration</p></div><div class="cutover-number"><strong>Seconds</strong><p>Cutover downtime</p></div><div class="migration-assist"><span class="migration-team-symbol"><img src="assets/planetscale-white.svg" alt="PlanetScale"></span><p>Migration team<br><span>Copy + cutover support</span></p></div></div></div>''',notes=speaker_notes['autumn']),
  dict(id='migration',label='Migrate to PlanetScale',theme='migration',html=f'''<h2>Migrate to PlanetScale</h2><div class="migration-diagram">{migration}</div><div class="migration-paths" role="group" aria-label="Migration options"><div class="migration-path self-service"><div class="migration-path-heading"><h3>Self-service migration</h3></div></div><span class="migration-option-slash" aria-hidden="true">/</span><div class="migration-path planetscale-led"><div class="migration-path-heading"><span class="migration-team-symbol"><img src="assets/planetscale-white.svg" alt=""></span><h3>PlanetScale-led migration</h3></div></div></div><div class="migration-close"><strong>Technical discovery + migration assessment</strong></div>''',notes=speaker_notes['migration']),
  ]
 # Local and remote data I/O paths; durability is covered on the HA slide.
-slides.append(dict(id='metal-path', label='Why Metal: Postgres on local NVMe', theme='metal-path', html='<h2>Why <span class="accent">Metal</span>: local NVMe</h2><div class="metal-path-art">'+(R/'assets/metal-path.svg').read_text()+'</div>', notes=speaker_notes['metal-path']))
+slides.append(dict(id='metal-path', label='Why Metal: Postgres on local NVMe', theme='metal-path', html='<h2>Why <span class="accent">Metal</span></h2><div class="metal-path-art">'+(R/'assets/metal-path.svg').read_text()+'</div>', notes=speaker_notes['metal-path']))
 
 
 # Optional cloud/account discovery slide immediately before the migration close.
-slides.append(dict(id='cloud', label='Choose how you deploy PlanetScale', theme='cloud-offerings', html='<h2>Choose how you deploy <span class="accent">PlanetScale</span></h2>\n<div class="cloud-providers" role="group" aria-label="Supported clouds">\n  <img class="cloud-aws-logo" src="assets/aws.svg" alt="AWS">\n  <span class="cloud-provider-slash" aria-hidden="true">/</span>\n  <div class="cloud-google-lockup"><img src="assets/google-cloud-symbol.png" alt=""><span>Google Cloud</span></div>\n</div>\n<div class="cloud-deployments" role="group" aria-label="Cloud deployment options">\n  <div class="cloud-deployment hosted">\n    <h3>PlanetScale-hosted</h3>\n    <div class="cloud-account"><p class="cloud-account-label">PlanetScale account</p><div class="cloud-database"><img src="assets/planetscale-symbol-white.svg" alt="PlanetScale"><span>Postgres</span></div></div>\n  </div>\n  <span class="cloud-option-slash" aria-hidden="true">/</span>\n  <div class="cloud-deployment byoc">\n    <h3>Your cloud account <span>(BYOC)</span></h3>\n    <div class="cloud-account"><p class="cloud-account-label">Your AWS account / GCP project</p><div class="cloud-database"><img src="assets/planetscale-symbol-white.svg" alt="PlanetScale"><span>Postgres</span></div><p class="cloud-enterprise">Enterprise · PlanetScale Managed</p></div>\n  </div>\n</div>\n<div class="cloud-operations"><strong>Database operations managed by PlanetScale</strong></div>\n<div class="cloud-connectivity" role="group" aria-label="Private connectivity options, setup by PlanetScale and your team">\n  <div class="cloud-connectivity-heading"><strong>Private connectivity options</strong><span class="cloud-connectivity-setup">Setup: PlanetScale + your team</span></div>\n  <p>AWS PrivateLink <span class="cloud-connectivity-slash" aria-hidden="true">/</span> GCP Private Service Connect</p>\n</div>', notes=speaker_notes['cloud']))
+slides.append(dict(id='cloud', label='Planetscale on your cloud', theme='cloud-offerings', html='''<h2><span class="accent">Planetscale</span> on your cloud</h2>
+<div class="cloud-providers" role="group" aria-label="Supported clouds: AWS and Google Cloud">
+<img class="cloud-aws-logo" src="assets/aws.svg" alt="AWS"><div class="cloud-google-lockup"><img src="assets/google-cloud-symbol.png" alt=""><span>Google Cloud</span></div>
+</div>
+<div class="cloud-deployments" role="group" aria-label="Two deployment choices, both operated by PlanetScale">
+<div class="cloud-deployment hosted"><div class="cloud-account"><h3>PlanetScale-hosted</h3><div class="cloud-database"><img src="assets/planetscale-symbol-white.svg" alt=""><span>Postgres</span></div></div></div>
+<div class="cloud-deployment byoc"><div class="cloud-account"><h3>Your cloud account <span>(BYOC)</span></h3><div class="cloud-database"><img src="assets/planetscale-symbol-white.svg" alt=""><span>Postgres</span></div><p class="cloud-enterprise">Enterprise</p></div></div>
+</div>
+<div class="cloud-shared-path" aria-hidden="true"><i></i><i></i></div>
+<div class="cloud-operations"><strong>Your database <span>operated by PlanetScale</span></strong></div>
+''', notes=speaker_notes['cloud']))
 
 # Gong flow: problem, customer story, solution mechanism, evidence, then operating confidence and further proof.
 slide_order=['opening','nexus','convex','metal-path','metal','availability','vitalize','autumn','neki','neki-scale','cloud','migration']
