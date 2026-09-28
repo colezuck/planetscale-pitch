@@ -1,6 +1,6 @@
 # PlanetScale — Postgres on Metal
 
-Working deck: nine slides for review. All existing slides are retained. Convex and Autumn precede migration, which closes the deck. Final story selection is pending. The intended final pitch remains 10–15 minutes, closing with technical discovery plus a migration assessment.
+Working deck: ten core slides, with optional Vitalize and cloud deployment slides (twelve in the full deck). The opening is a minimal PlanetScale / Postgres on Metal hero, followed by a buyer-focused Nexus. Migration closes the deck. The pitch supports discovery, with technical detail selected around the buyer’s priorities.
 
 ## Present
 
@@ -17,15 +17,18 @@ The PDF is a static 16:9 presentation backup. Speaker notes are also available i
 
 ## Narrative
 
-1. Hosted Postgres on Metal: local NVMe, unlimited IOPS, and a path to scale.
-2. Vitalize's Postgres migration and measured results.
-3. Full-height three-zone node architecture and control plane.
-4. Postgres Metal throughput and p99 benchmark evidence.
-5. Neki's sharded Postgres architecture.
-6. Neki's measured scale for a defined workload.
-7. Convex / Chef: before-and-after query and batch-commit p99.
-8. Autumn: two-day migration to Metal, latency results, and migration-team support.
-9. Self-service and PlanetScale-led migrations, closing with technical discovery plus migration assessment.
+1. PlanetScale / Postgres on Metal hero.
+2. Nexus: establish the common cloud Postgres capacity model, grow vCPU/RAM/storage, then reveal latency, high availability, and storage I/O; pause for discovery.
+3. Convex: production migration and reported p99 results.
+4. Vitalize: migration outcomes (optional).
+5. Autumn: migration support and reported latency outcomes.
+6. Postgres cluster architecture and high availability.
+7. Why Metal: local NVMe versus network-attached storage.
+8. Postgres on Metal throughput and p99 benchmark evidence.
+9. Neki’s sharded Postgres architecture.
+10. Neki’s measured scale for a defined workload.
+11. Cloud deployment and networking responsibilities (optional).
+12. Self-service and PlanetScale-led migration options, closing with technical discovery and assessment.
 
 Technical qualifications and benchmark configurations are in the speaker notes. The Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
 
@@ -62,8 +65,8 @@ Review all slides, then commit the source and updated portable HTML together. Re
 
 ## Slide layout conventions
 
-The PlanetScale header logo appears only on the opening slide; slide 3 also uses the logo inside the control-plane bar to identify platform ownership. Its single-line “Postgres on Metal” heading sits above a product overview: managed Postgres and Metal, Neki for horizontal scale, and the shared PlanetScale platform and infrastructure team. Node topology belongs on slide 3. Content slides start directly with a single-line heading. Keep secondary results with their charts (for example, “Half the vCPUs” above the Vitalize compute chart), and give diagrams their full available width. Neki branding stays in its title row. Avoid restoring a repeated logo spacer or decorative banner.
+The opening contains only a centered PlanetScale logo and “Postgres on Metal,” with Metal in orange. Nexus first shows a Postgres server with vCPU/RAM and a separate network-attached volume. Advance once to grow compute and storage; advance again to change the headline and reveal latency, high availability, and storage I/O as discovery topics. Provider names, replicas, and operational details belong in the notes; this is a capacity model, not a complete HA topology. The PDF shows the final reveal on one page. Research and boundaries are in `docs/nexus-research.md`. Content slides otherwise use single-line headings. Keep secondary results with their evidence and give diagrams their full available width. Neki branding stays in its title row.
 
 ### Optional cloud deployment slide
 
-The core pitch keeps nine slides. Add the cloud/account discussion immediately before migration with `?cloud`, or open `Meridian-PlanetScale.html?cloud#/cloud` directly. Combine `?cloud&vitalize` to include both optional slides. Cloud deployment sources, region guidance, and BYOC discovery questions are in this slide's notes.
+The core pitch keeps ten slides. Add the cloud/account discussion immediately before migration with `?cloud`, or open `Meridian-PlanetScale.html?cloud#/cloud` directly. Combine `?cloud&vitalize` to include both optional slides. Cloud deployment sources, region guidance, and BYOC discovery questions are in this slide's notes.

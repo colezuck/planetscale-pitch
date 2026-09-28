@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 470" role="img" aria-labelledby="nexus-title nexus-description">
+  <title id="nexus-title">The common cloud Postgres capacity model</title>
+  <desc id="nexus-description">A Postgres server contains vCPU and RAM and reads and writes a separate network-attached storage volume. The first reveal expands compute and storage capacity: more vCPU, more RAM, and more storage. The second reveal highlights latency, high availability, and storage I/O as questions that resource sizing alone does not settle. Only the compute and storage capacity model is shown; replicas, availability zones, backups, and the managed service control plane are omitted. This is a common managed cloud Postgres pattern, not a literal topology shared by every provider or a performance benchmark.</desc>
+  <defs>
+    <pattern id="nexus-volume-dots" width="7" height="7" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="1.2" height="2" fill="#747474"/></pattern>
+    <pattern id="nexus-problem-dots" width="7" height="7" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="1.2" height="2" fill="#6b321d"/></pattern>
+  </defs>
+
+  <!-- Two components establish the common capacity model before the challenge. -->
+  <rect x="51" y="75" width="480" height="237" fill="#151515" stroke="#a5a5a5" stroke-width="1.5"/>
+  <text x="81" y="119" fill="#fafafa" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="500">Postgres server</text>
+  <g fill="#111111" stroke="#a5a5a5" stroke-width="1.5">
+    <rect x="91" y="154" width="145" height="104"/>
+    <path d="M105 147V154M128 147V154M151 147V154M174 147V154M197 147V154M220 147V154M105 258V265M128 258V265M151 258V265M174 258V265M197 258V265M220 258V265M84 168H91M84 191H91M84 214H91M84 237H91M236 168H243M236 191H243M236 214H243M236 237H243"/>
+    <rect x="292" y="154" width="181" height="104"/>
+    <path d="M306 258V265M329 258V265M352 258V265M375 258V265M398 258V265M421 258V265M444 258V265M467 258V265M236 206H292"/>
+  </g>
+  <g fill="#fafafa" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="30"><text x="163" y="216">vCPU</text><text x="383" y="216">RAM</text></g>
+
+  <path d="M549 180H771 M783 231H561" fill="none" stroke="#a5a5a5" stroke-width="2"/>
+  <path d="M771 174L782 180L771 186Z M561 225L550 231L561 237Z" fill="#a5a5a5"/>
+  <text x="666" y="151" text-anchor="middle" fill="#a5a5a5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="20">Storage network</text>
+
+  <rect x="819" y="106" width="405" height="186" fill="#111111" stroke="#747474"/>
+  <rect x="809" y="96" width="405" height="186" fill="url(#nexus-volume-dots)" stroke="#a5a5a5" stroke-width="1.5"/>
+  <rect x="821" y="108" width="381" height="162" fill="#151515"/>
+  <g fill="none" stroke="#a5a5a5" stroke-width="1.5"><rect x="843" y="158" width="46" height="62"/><path d="M852 169H880M852 181H880M852 193H873M852 205H880"/></g>
+  <g fill="#fafafa" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="500"><text x="1040" y="179">Network-attached</text><text x="1040" y="220">volume</text></g>
+
+  <!-- Reveal 1: resource growth keeps the same compute / remote-storage shape. -->
+  <g class="fragment nexus-scale" data-fragment-index="0">
+    <rect x="41" y="64" width="500" height="260" fill="#151515" stroke="#fafafa" stroke-width="1.5"/>
+    <rect x="49" y="72" width="484" height="244" fill="none" stroke="#555555"/>
+    <text x="81" y="119" fill="#fafafa" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="500">Postgres server</text>
+    <g fill="#111111" stroke="#fafafa" stroke-width="1.5">
+      <rect x="79" y="145" width="182" height="133"/><rect x="288" y="145" width="201" height="133"/>
+      <path d="M91 138V145M114 138V145M137 138V145M160 138V145M183 138V145M206 138V145M229 138V145M252 138V145M91 278V285M114 278V285M137 278V285M160 278V285M183 278V285M206 278V285M229 278V285M252 278V285M72 159H79M72 182H79M72 205H79M72 228H79M72 251H79M261 159H268M261 182H268M261 205H268M261 228H268M261 251H268M300 278V285M323 278V285M346 278V285M369 278V285M392 278V285M415 278V285M438 278V285M461 278V285M484 278V285M261 212H288"/>
+    </g>
+    <g fill="#fafafa" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="25"><text x="170" y="220">More vCPU</text><text x="388" y="220">More RAM</text></g>
+    <rect x="793" y="83" width="456" height="235" fill="#111111" stroke="#747474"/>
+    <rect x="783" y="73" width="456" height="235" fill="url(#nexus-volume-dots)" stroke="#fafafa" stroke-width="1.5"/>
+    <rect x="795" y="85" width="432" height="211" fill="#151515"/>
+    <g fill="none" stroke="#fafafa" stroke-width="1.5"><rect x="817" y="146" width="52" height="70"/><path d="M827 158H860M827 171H860M827 184H852M827 197H860"/></g>
+    <g fill="#fafafa" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="500"><text x="1038" y="163">Network-attached</text><text x="1038" y="204">volume</text></g>
+    <text x="1011" y="269" text-anchor="middle" fill="#fafafa" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="25">More storage</text>
+  </g>
+
+  <!-- Reveal 2: discovery questions, outside the architecture boundary. -->
+  <g class="fragment nexus-problems" data-fragment-index="1">
+    <path d="M549 180H771 M783 231H561" fill="none" stroke="#f35815" stroke-width="2.5"/>
+    <path d="M771 174L782 180L771 186Z M561 225L550 231L561 237Z" fill="#f35815"/>
+    <g fill="url(#nexus-problem-dots)" stroke="#6b321d"><rect x="1" y="366" width="390" height="91"/><rect x="430" y="366" width="390" height="91"/><rect x="859" y="366" width="390" height="91"/></g>
+    <g fill="#111111"><rect x="31" y="384" width="330" height="55"/><rect x="460" y="384" width="330" height="55"/><rect x="889" y="384" width="330" height="55"/></g>
+    <g fill="#f35815" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="35" font-weight="500"><text x="196" y="425">Latency</text><text x="625" y="425">High availability</text><text x="1054" y="425">Storage I/O</text></g>
+  </g>
+</svg>

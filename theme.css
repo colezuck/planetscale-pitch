@@ -15,13 +15,25 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .reveal .progress{height:2px;color:var(--orange)}
 .accent{color:var(--orange)}.yellow{color:var(--yellow)}
 
-/* Brand presence belongs to the opening; content slides start at the headline. */
-.reveal .slides>.opening{padding-top:50px}
-.cover-brand{height:30px;margin-bottom:24px}
-.cover-brand img{display:block;width:210px;height:auto}
-.reveal .opening h1{font-size:76px;line-height:1.1;letter-spacing:-3.5px}
-.opening-architecture{margin-top:28px}
-.opening-architecture svg{width:100%;height:auto}
+/* Opening hero: a single brand lockup and product title. */
+.reveal .slides>.opening{padding:60px 64px}
+.opening-hero{height:690px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cover-brand{width:360px;margin-bottom:46px;flex-shrink:0}
+.cover-brand img{display:block;width:100%;height:auto}
+.reveal .opening h1{font-size:112px;font-weight:500;line-height:1.08;letter-spacing:-5.2px;white-space:nowrap}
+
+/* Nexus: establish the capacity model, grow resources, then reveal discovery topics. */
+.reveal .nexus h2{font-size:64px;line-height:1.12;letter-spacing:-2.4px}
+.nexus-headline{position:relative;height:143.36px}
+.reveal .nexus-headline h2{position:absolute;inset:0;transition:opacity .25s ease}
+.reveal .nexus-headline .nexus-meta-title,.reveal .nexus-headline .nexus-challenge-title{font-size:54px;white-space:nowrap}
+.nexus-challenge-title{opacity:0;visibility:hidden}
+.nexus-revealed .nexus-meta-title{opacity:0;visibility:hidden}
+.nexus-revealed .nexus-challenge-title{opacity:1;visibility:visible}
+.nexus-art{margin-top:36px}
+.nexus-art svg{width:100%;height:auto}
+.reveal .nexus-art .fragment{transition:opacity .25s ease;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal .nexus-art .fragment,.reveal .nexus-headline h2{transition:none}}
 
 /* Customer result: the secondary claim lives with its evidence. */
 .customer-story{display:flex;justify-content:space-between;font:20px var(--mono);color:#aaa;margin-top:22px}

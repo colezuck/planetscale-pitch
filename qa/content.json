@@ -4,6 +4,10 @@
     "label": "PlanetScale Postgres on Metal"
   },
   {
+    "id": "nexus",
+    "label": "More resources won\u2019t fix the Postgres bottleneck"
+  },
+  {
     "id": "convex",
     "label": "Convex migrated from Aurora to PlanetScale Postgres Metal"
   },

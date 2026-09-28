@@ -2,6 +2,17 @@
 
 Prepared 27 September 2026. Original analysis, followed by the implemented v2 update below.
 
+
+## Current opening and Nexus
+
+The current opening is a minimal PlanetScale logo and “Postgres on Metal” hero. Slide 2 begins with “How Postgres typically runs and scales in the cloud,” then challenges the approach with “More resources won’t fix the Postgres bottleneck.” This supersedes the earlier opening and product-map recommendations below.
+
+The Nexus shows only a Postgres server with vCPU/RAM and a separate network-attached volume. The first click grows compute and storage and labels the three resource levers. The second changes the headline and reveals Latency, High availability, and Storage I/O outside the architecture boundary. Provider names and replicas are omitted. This establishes the current capacity model before the challenge. It is an architectural discovery frame, not measured data or a complete topology shared by all providers. Keep numerical performance and availability evidence on the existing slides. Sources and caveats are in [nexus-research.md](nexus-research.md).
+
+The notes acknowledge that resizing can improve CPU, memory, cache behavior, and instance I/O headroom, and that managed cloud platforms already provide HA and automatic failover. The point is that resource sizing alone does not settle latency, I/O behavior, or application continuity. Tail latency has several causes. Storage capacity and performance can be configured independently on several modern storage tiers. Backups, upgrades, monitoring, connection management, and recovery are discovery prompts in the notes. The PDF combines both reveals into the final state on one page.
+
+Spend about 15 seconds on the hero and 45 seconds on the Nexus, with a discovery pause: “Which is creating more pressure for your team today: performance, reliability, or the work of operating it?” Let the answer shape the technical discussion. Convex follows as the first customer proof. The deck now has ten core slides; Vitalize and cloud deployment are optional, for twelve slides in the full version.
+
 ## Implemented v2 update
 
 The user clarified that hosted Postgres on Metal is the central offer, with speed and reliability first and Neki as the growth path. V2 therefore opens with “Your Postgres. Faster on Metal” and a local-NVMe architecture diagram, while keeping the buyer-oriented discovery question in the spoken introduction. The remaining order follows this blueprint: Vitalize, operated HA platform, Metal performance, Neki architecture, Neki scale, migration close. Durable evidence lives in `customer-case-studies.md` and `postgres-metal-benchmarks.md`.
