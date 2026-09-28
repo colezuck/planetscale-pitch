@@ -1,6 +1,6 @@
 # PlanetScale — Postgres on Metal
 
-Working deck: ten core slides, with optional Vitalize and cloud deployment slides (twelve in the full deck). The opening is a minimal PlanetScale / Postgres on Metal hero, followed by a buyer-focused Nexus. Migration closes the deck. The pitch supports discovery, with technical detail selected around the buyer’s priorities.
+Working deck: ten core slides, with optional Autumn and cloud deployment slides (twelve in the full deck). The opening is a minimal PlanetScale / Postgres on Metal hero, followed by a buyer-focused Nexus. Migration closes the deck. The pitch supports discovery, with technical detail selected around the buyer’s priorities.
 
 ## Present
 
@@ -19,22 +19,22 @@ The PDF is a static 16:9 presentation backup. Speaker notes are also available i
 
 1. PlanetScale / Postgres on Metal hero.
 2. Nexus: establish the common cloud Postgres capacity model, grow vCPU/RAM/storage, then reveal latency, high availability, and storage I/O; pause for discovery.
-3. Convex: production migration and reported p99 results.
-4. Vitalize: migration outcomes (optional).
-5. Autumn: migration support and reported latency outcomes.
+3. Convex: customer story and production p99 results.
+4. Why Metal: local NVMe versus network-attached storage.
+5. Postgres on Metal throughput and p99 benchmark evidence.
 6. Postgres cluster architecture and high availability.
-7. Why Metal: local NVMe versus network-attached storage.
-8. Postgres on Metal throughput and p99 benchmark evidence.
+7. Vitalize: additional migration outcomes.
+8. Autumn: migration support and reported latency outcomes (optional).
 9. Neki’s sharded Postgres architecture.
 10. Neki’s measured scale for a defined workload.
 11. Cloud deployment and networking responsibilities (optional).
 12. Self-service and PlanetScale-led migration options, closing with technical discovery and assessment.
 
-Technical qualifications and benchmark configurations are in the speaker notes. The Neki benchmark is identified as read-only point selects on primary-only shards. Neki's preview status belongs in the spoken introduction and remains in the notes. No source labels or research appendix are shown in the deck.
+Speaker notes contain a short bullet outline for each slide, including discovery questions and essential metric context. Detailed research and sources live in `docs/`. The Neki benchmark is identified as read-only point selects on primary-only shards, and its preview status remains in the outline.
 
 ## Edit
 
-`build_content.py` contains slide copy, speaker notes and editable SVG diagrams. Run it to regenerate `slides.js`, `speaker-notes.md` and the slide manifest. `theme.css` controls the design. `app.js` controls rendering and presentation controls.
+`build_content.py` contains slide copy and editable SVG diagrams. `speaker-outline.json` contains the bullet talk tracks. Run the content builder to regenerate `slides.js`, `speaker-notes.md` and the slide manifest. `theme.css` controls the design. `app.js` controls rendering and presentation controls.
 
 Run `python3 package_deck.py --html-only` to rebuild the portable HTML. Serve this folder on localhost and review it in a browser. For the PDF, capture each final slide in a 16:9 browser view as `qa/slide-01.png` through `qa/slide-09.png`, then run `package_deck.py` with a Python environment containing ReportLab and pypdf. The HTML remains the editable master; the PDF is a raster snapshot with bookmarks.
 
@@ -71,4 +71,4 @@ The opening contains only a centered PlanetScale logo and “Postgres on Metal,�
 
 ### Optional cloud deployment slide
 
-The core pitch keeps ten slides. Add the cloud/account discussion immediately before migration with `?cloud`, or open `Meridian-PlanetScale.html?cloud#/cloud` directly. Combine `?cloud&vitalize` to include both optional slides. Cloud deployment sources, region guidance, and BYOC discovery questions are in this slide's notes.
+The core pitch keeps ten slides, including Vitalize. Add Autumn for migration discussions with `?autumn`. Add the cloud/account discussion immediately before migration with `?cloud`, or open `Meridian-PlanetScale.html?cloud#/cloud` directly. Combine `?cloud&autumn` to include both optional slides. The cloud outline covers deployment choice, region fit, networking responsibilities, and BYOC discovery questions.

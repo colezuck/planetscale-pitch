@@ -31,6 +31,7 @@ body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,s
 .nexus-challenge-title{opacity:0;visibility:hidden}
 .nexus-revealed .nexus-meta-title{opacity:0;visibility:hidden}
 .nexus-revealed .nexus-challenge-title{opacity:1;visibility:visible}
+.nexus-scaled .nexus-base-links{visibility:hidden}
 .nexus-art{margin-top:36px}
 .nexus-art svg{width:100%;height:auto}
 .reveal .nexus-art .fragment{transition:opacity .25s ease;transform:none}
@@ -121,7 +122,10 @@ dialog{color:#fafafa;background:#222;border:1px solid #555;max-width:490px;paddi
 dialog::backdrop{background:#000b}dialog h2{font-size:25px;font-weight:500;margin-top:0}
 dialog p{line-height:1.6}dialog .small{font-size:14px;color:#bbb}dialog a{color:#8bb9da}
 dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15px Inter;cursor:pointer}
-#notes-dialog{max-width:720px}#notes-content{font-size:17px;line-height:1.65;max-height:60vh;overflow:auto;white-space:pre-line}
+#notes-dialog{width:calc(100vw - 32px);max-width:720px;max-height:calc(100dvh - 48px);box-sizing:border-box;overflow:hidden}
+#notes-dialog[open]{display:flex;flex-direction:column;gap:18px}#notes-dialog h2{margin:0;flex-shrink:0}#notes-dialog button{align-self:flex-start;flex-shrink:0}
+#notes-content{font-size:17px;line-height:1.65;max-height:60vh;min-height:0;overflow:auto;white-space:normal}
+.speaker-outline{margin:0;padding-left:1.3em}.speaker-outline li+li{margin-top:12px}
 .capture .deck-tools,.capture .progress{display:none!important}
 .capture .reveal{-webkit-user-select:none;user-select:none}.capture ::selection{background:transparent;color:inherit}
 @media(max-width:700px){.deck-tools{gap:0;white-space:nowrap}.deck-tools button{padding:7px}.deck-tools #help{display:none}}

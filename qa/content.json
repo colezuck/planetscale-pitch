@@ -12,24 +12,24 @@
     "label": "Convex migrated from Aurora to PlanetScale Postgres Metal"
   },
   {
-    "id": "vitalize",
-    "label": "Vitalize: 2 ms p95, half the vCPUs"
-  },
-  {
-    "id": "autumn",
-    "label": "Autumn: two days to PlanetScale Metal"
-  },
-  {
-    "id": "availability",
-    "label": "Postgres Cluster Architecture"
-  },
-  {
     "id": "metal-path",
     "label": "Why Metal: Postgres on local NVMe"
   },
   {
     "id": "metal",
     "label": "Postgres on Metal: throughput and p99"
+  },
+  {
+    "id": "availability",
+    "label": "Planetscale Postgres Architecture"
+  },
+  {
+    "id": "vitalize",
+    "label": "Vitalize: 2 ms p95, half the vCPUs"
+  },
+  {
+    "id": "autumn",
+    "label": "Autumn: two days to PlanetScale Metal"
   },
   {
     "id": "neki",
