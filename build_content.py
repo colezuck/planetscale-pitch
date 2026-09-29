@@ -129,7 +129,7 @@ b+=f'<path d="{line} L{coords[-1][0]:.1f} 300 L{coords[0][0]:.1f} 300 Z" fill="u
 b+=path(line,YELLOW,4)
 for x,y in coords:b+=path(f'M{x} {y+9}V300','#59502d',1,True)
 for (x,y),(_,_,lab,val) in zip(coords,points):
-    b+=f'<circle cx="{x}" cy="{y}" r="10" fill="#111" stroke="{YELLOW}" stroke-width="2"/><circle cx="{x}" cy="{y}" r="4" fill="{YELLOW}"/>'+txt(x,y-25,val,29,YELLOW,'middle',500,True)+txt(x,328,lab,18,WHITE,'middle',mono=True)
+    b+=f'<rect x="{x-9}" y="{y-9}" width="18" height="18" fill="#111" stroke="{YELLOW}" stroke-width="2"/><rect x="{x-4}" y="{y-4}" width="8" height="8" fill="{YELLOW}"/>'+txt(x,y-25,val,29,YELLOW,'middle',500,True)+txt(x,328,lab,18,WHITE,'middle',mono=True)
 b='<g transform="translate(22 0)">'+b+'</g>'
 b+=txt(69,28,'QPS',17,'#b9a762','end',mono=True)
 scale=svg(820,380,b,'Neki read-only point-select benchmark: 5 shards delivered 999,624 QPS; 50 shards delivered 9,923,900 QPS; 512 shards delivered 118,538,803 QPS. Both axes use logarithmic scales.',mark='scale-arrow',color=YELLOW)
@@ -161,11 +161,19 @@ slides=[
  dict(id='neki',label='Neki: Horizontal Scaling for Postgres',theme='neki',html=f'''<div class="neki-heading"><h2>Neki: Horizontal Scaling for Postgres</h2><div class="neki-lockup"><img src="assets/neki-cat.svg" alt="Neki"></div></div><div class="neki-topology">{neki}</div>''',notes=speaker_notes['neki']),
  dict(id='neki-scale',label='Neki: 118.5M queries per second',theme='neki neki-scale',html=f'''<div class="neki-heading"><h2><span class="yellow">118.5M</span> queries / second</h2><div class="neki-lockup"><img src="assets/neki-cat.svg" alt="Neki"></div></div><div class="scale-layout"><div><div class="scale-chart">{scale}</div></div><div class="scale-metrics"><div><strong>1.22 <span>PiB</span></strong><p>data</p></div><div><strong>512</strong><p>shards</p></div><div><strong>6.06 <span>ms</span></strong><p>router p99</p></div></div></div>''',notes=speaker_notes['neki-scale']),
  dict(id='convex',label='Convex reduced p99 query latency by over 50%',theme='customer-case convex',html=f'''<div class="case-heading convex-heading"><img class="convex-title-symbol" src="assets/convex-symbol-color.svg" alt=""><h2>Convex reduced p99 query latency by over 50%</h2></div><div class="convex-curves">{convex_plot}</div><div class="convex-quote"><q>p50 is the new p99.</q><span>Jamie Turner / Convex</span></div>''',notes=speaker_notes['convex']),
+ dict(id='intercom',label='Intercom: Faster Inbox, 60%+ Lower Cost',theme='customer-case intercom',html='''<div class="case-heading intercom-heading"><img src="assets/intercom-symbol.svg" alt=""><h2>Intercom: Faster Inbox, <span class="accent">60%+ Lower Cost</span></h2></div>
+<div class="intercom-stage">
+<div class="intercom-before fragment fade-out" data-fragment-index="1">'''+(R/'assets/intercom-story.svg').read_text()+'''</div>
+<div class="intercom-results fragment" data-fragment-index="1">
+<figure class="intercom-cost-chart"><div class="intercom-chart-labels"><span>Previous EBS io2 setup</span><span class="accent">PlanetScale Metal</span></div><img src="assets/intercom-original-cost-full.jpg" alt="Intercom’s original hourly database cost chart, showing a sharp drop as PlanetScale Metal went live. The published chart does not include numeric axis labels."><figcaption>Hourly database cost</figcaption></figure>
+</div>
+</div>
+''',notes=speaker_notes['intercom']),
  dict(id='autumn',label='Autumn: two days to PlanetScale Metal',theme='customer-case autumn',html=f'''<div class="case-heading autumn-heading"><div class="autumn-title-symbol"><img src="assets/autumn.svg" alt=""></div><h2>Autumn migrated to PlanetScale Metal in two days</h2></div><div class="autumn-evidence"><div>{autumn_plot}</div><div class="autumn-migration"><div class="migration-number"><strong>2<span> days</span></strong><p>Migration</p></div><div class="cutover-number"><strong>Seconds</strong><p>Cutover downtime</p></div><div class="migration-assist"><span class="migration-team-symbol"><img src="assets/planetscale-white.svg" alt="PlanetScale"></span><p>Migration team<br><span>Copy + cutover support</span></p></div></div></div>''',notes=speaker_notes['autumn']),
  dict(id='migration',label='Migrate to PlanetScale',theme='migration',html=f'''<h2>Migrate to PlanetScale</h2><div class="migration-diagram">{migration}</div><div class="migration-paths" role="group" aria-label="Migration options"><div class="migration-path self-service"><div class="migration-path-heading"><h3>Self-service migration</h3></div></div><span class="migration-option-slash" aria-hidden="true">/</span><div class="migration-path planetscale-led"><div class="migration-path-heading"><span class="migration-team-symbol"><img src="assets/planetscale-white.svg" alt=""></span><h3>PlanetScale-led migration</h3></div></div></div><div class="migration-close"><strong>Technical discovery + migration assessment</strong></div>''',notes=speaker_notes['migration']),
  ]
 # Local and remote data I/O paths; durability is covered on the HA slide.
-slides.append(dict(id='metal-path', label='Why Metal: Postgres on local NVMe', theme='metal-path', html='<h2>Why <span class="accent">Metal</span></h2><div class="metal-path-art">'+(R/'assets/metal-path.svg').read_text()+'</div>', notes=speaker_notes['metal-path']))
+slides.append(dict(id='metal-path', label='What is Metal?', theme='metal-path', html='<h2>What is <span class="accent">Metal</span>?</h2><div class="metal-path-art">'+(R/'assets/metal-path.svg').read_text()+'</div>', notes=speaker_notes['metal-path']))
 
 
 # Optional cloud/account discovery slide immediately before the migration close.
@@ -182,7 +190,7 @@ slides.append(dict(id='cloud', label='Planetscale on your cloud', theme='cloud-o
 ''', notes=speaker_notes['cloud']))
 
 # Gong flow: problem, customer story, solution mechanism, evidence, then operating confidence and further proof.
-slide_order=['opening','nexus','convex','metal-path','metal','availability','vitalize','autumn','neki','neki-scale','cloud','migration']
+slide_order=['opening','nexus','convex','intercom','metal-path','metal','availability','vitalize','autumn','neki','neki-scale','cloud','migration']
 slides_by_id={slide['id']:slide for slide in slides}
 assert set(slide_order)==set(slides_by_id) and len(slide_order)==len(slides)
 slides=[slides_by_id[slide_id] for slide_id in slide_order]

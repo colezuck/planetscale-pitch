@@ -21,7 +21,7 @@
     <path d="M542 180H787 M798 231H553" fill="none" stroke="#a5a5a5" stroke-width="2"/>
     <path d="M787 174L798 180L787 186Z M553 225L542 231L553 237Z" fill="#a5a5a5"/>
   </g>
-  <text x="666" y="151" text-anchor="middle" fill="#a5a5a5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="20">Storage network</text>
+  <text x="666" y="151" text-anchor="middle" fill="#a5a5a5" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="20">Network I/O</text>
 
   <rect x="819" y="106" width="405" height="186" fill="#111111" stroke="#747474"/>
   <rect x="809" y="96" width="405" height="186" fill="url(#nexus-volume-dots)" stroke="#a5a5a5" stroke-width="1.5"/>
@@ -55,10 +55,10 @@
 
   <!-- Reveal 2: discovery questions, outside the architecture boundary. -->
   <g class="fragment nexus-problems" data-fragment-index="1">
-    <path d="M552 180H761 M772 231H563" fill="none" stroke="#f35815" stroke-width="2.5"/>
-    <path d="M761 174L772 180L761 186Z M563 225L552 231L563 237Z" fill="#f35815"/>
+    <path d="M552 180H761 M772 231H563" fill="none" stroke="#ff4d4d" stroke-width="2.5"/>
+    <path d="M761 174L772 180L761 186Z M563 225L552 231L563 237Z" fill="#ff4d4d"/>
     <g fill="url(#nexus-problem-dots)" stroke="#8e3338"><rect x="1" y="366" width="390" height="91"/><rect x="430" y="366" width="390" height="91"/><rect x="859" y="366" width="390" height="91"/></g>
     <g fill="#111111"><rect x="31" y="384" width="330" height="55"/><rect x="460" y="384" width="330" height="55"/><rect x="889" y="384" width="330" height="55"/></g>
-    <g fill="#ff4d4d" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="35" font-weight="500"><text x="196" y="425">Latency</text><text x="625" y="425">Availability</text><text x="1054" y="425">Storage I/O</text></g>
+    <g fill="#ff4d4d" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="35" font-weight="500"><text x="196" y="425">Latency</text><text x="625" y="425">Storage I/O</text><text x="1054" y="425">Availability</text></g>
   </g>
 </svg>

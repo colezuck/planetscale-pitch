@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 
 def data_uri(relative):
     path = ROOT / relative
-    mime = {'svg': 'image/svg+xml', 'woff2': 'font/woff2', 'png': 'image/png'}[path.suffix[1:]]
+    mime = {'svg': 'image/svg+xml', 'woff2': 'font/woff2', 'png': 'image/png', 'jpg': 'image/jpeg'}[path.suffix[1:]]
     return f'data:{mime};base64,' + base64.b64encode(path.read_bytes()).decode()
 
 html = (ROOT / 'index.html').read_text()
@@ -27,6 +27,8 @@ for filename in ['vendor/reveal.js', 'vendor/notes.js', 'slides.js', 'app.js']:
         code = code.replace(dynamic, replacement)
     for image in ['postgresql.svg', 'planetscale-black.svg', 'planetscale-white.svg', 'cash-app.svg', 'neki-cat.svg', 'vitalize.svg', 'planetscale-white.png', 'vitalize-query-latency.png', 'convex-white.svg', 'autumn.svg', 'convex-symbol-color.svg', 'convex-wordmark-white.svg', 'convex-original-results.png', 'vitalize-symbol.svg', 'aws.svg', 'google-cloud-symbol.png', 'planetscale-symbol-white.svg']:
         code = code.replace('assets/' + image, data_uri('assets/' + image))
+    code = code.replace('assets/intercom-original-cost-full.jpg', data_uri('assets/intercom-original-cost-full.jpg'))
+    code = code.replace('assets/intercom-symbol.svg', data_uri('assets/intercom-symbol.svg'))
     code = re.sub(r'</script', r'<\\/script', code, flags=re.I)
     html = html.replace(f'<script src="{filename}"></script>', '<script>' + code + '</script>')
 html = html.replace('assets/postgresql.svg', data_uri('assets/postgresql.svg'))

@@ -12,8 +12,12 @@
     "label": "Convex reduced p99 query latency by over 50%"
   },
   {
+    "id": "intercom",
+    "label": "Intercom: Faster Inbox, 60%+ Lower Cost"
+  },
+  {
     "id": "metal-path",
-    "label": "Why Metal: Postgres on local NVMe"
+    "label": "What is Metal?"
   },
   {
     "id": "metal",

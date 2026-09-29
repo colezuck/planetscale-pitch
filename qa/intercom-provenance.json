@@ -1,0 +1,32 @@
+{
+  "source": "https://www.intercom.com/blog/evolving-intercoms-database-infrastructure-lessons-and-progress/",
+  "published": "2025-03-11",
+  "accessed": "2026-09-28",
+  "workload": "Vitess/MySQL",
+  "cost_comparison": "60%+ reduction compared with the previous EBS io2 setup; not a guarantee for Postgres customers.",
+  "image": {
+    "path": "assets/intercom-original-cost-full.jpg",
+    "url": "https://blog.intercomassets.com/blog/wp-content/uploads/2025/03/Evolving-Intercoms-Database-Infrastructure-Lessons-and-Progress-1.jpg",
+    "caption": "Hourly cost of the database when Metal went live",
+    "handling": "Original higher-resolution upload preserved. CSS inversion, hue rotation, and screen blending adapt the presentation to the dark slide; bar geometry is unchanged. No numeric axes, series names, or exact latency changes inferred.",
+    "dimensions": {
+      "width": 3915,
+      "height": 1176
+    }
+  },
+  "claims": {
+    "pressure": "Disk I/O saturation degraded Inbox performance at peak load.",
+    "workaround": "Overscaling and upgrading to high-IOPS EBS io2 volumes; new replicas took hours to provision and catch up.",
+    "metal": "Locally attached NVMe replaces network-attached EBS storage.",
+    "outcomes": "Improved tail latency and 60%+ lower cost compared with prior EBS io2 volumes."
+  },
+  "diagram": {
+    "path": "assets/intercom-story.svg",
+    "handling": "Native vector illustration of the published bottleneck and workaround. Replica stack and queued request blocks are schematic, not measured counts or a complete deployment topology. The workaround added headroom at higher cost; no invented latency or cost values. Two click reveals lead to the unchanged published cost chart."
+  },
+  "logo": {
+    "path": "assets/intercom-symbol.svg",
+    "source": "https://www.intercom.com/blog/evolving-intercoms-database-infrastructure-lessons-and-progress/",
+    "handling": "Official header SVG mark; geometry preserved, scaled proportionally, displayed in white with CSS inversion."
+  }
+}
