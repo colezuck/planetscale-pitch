@@ -32,7 +32,7 @@ DECK.mkdir(parents=True)
 (DECK / "index.html").write_text(page)
 (DECK / "Meridian-PlanetScale.html").write_text(page)
 shutil.copyfile(ROOT / "output/pdf" / PDF_NAME, DECK / PDF_NAME)
-shutil.copyfile(ROOT / "assets/site-background.webp", OUT / "assets/site-background.webp")
+shutil.copyfile(ROOT / "assets/site-prism.svg", OUT / "assets/site-prism.svg")
 
 (OUT / "index.html").write_text("""<!doctype html>
 <html lang="en">
@@ -44,23 +44,26 @@ shutil.copyfile(ROOT / "assets/site-background.webp", OUT / "assets/site-backgro
   <style>
     :root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: #182641 url('/assets/site-background.webp') center / 100% 100% no-repeat; color: #fff; }
-    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(90deg, rgba(9, 14, 30, .48), rgba(9, 14, 30, .04) 80%), linear-gradient(0deg, rgba(9, 14, 30, .22), transparent 60%); pointer-events: none; }
-    main { position: relative; display: flex; min-height: 100vh; width: min(100% - 48px, 1100px); margin: auto; padding: 56px 0; flex-direction: column; align-items: flex-start; justify-content: center; }
-    h1 { margin: 0 0 34px; font-size: clamp(44px, 7vw, 96px); font-weight: 700; letter-spacing: -.055em; line-height: 1.02; text-shadow: 0 2px 24px rgba(0, 0, 0, .25); }
+    body { margin: 0; min-height: 100vh; background: #08080a url('/assets/site-prism.svg') center / cover no-repeat; color: #fff; }
+    main { display: flex; min-height: 100vh; width: min(100% - 48px, 1160px); margin: auto; padding: 48px 0; flex-direction: column; align-items: flex-start; justify-content: center; }
+    .intro { background: #08080a; padding: 34px 40px 40px; max-width: 100%; }
+    h1 { margin: 0 0 30px; font-size: clamp(42px, 6.5vw, 88px); font-weight: 700; letter-spacing: -.055em; line-height: 1.04; }
     h1 span { margin-left: .12em; font-weight: 450; }
-    a { display: inline-flex; align-items: center; gap: 26px; padding: 17px 24px; border-radius: 999px; background: rgba(255, 255, 255, .92); color: #101827; text-decoration: none; font-size: 17px; font-weight: 650; box-shadow: 0 10px 40px rgba(10, 14, 30, .18); transition: background .18s, transform .18s; }
-    a:hover { background: #fff; transform: translateY(-2px); }
+    a { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; width: 220px; aspect-ratio: 1; padding: 22px; background: #f9bf00; color: #08080a; text-decoration: none; font-size: 19px; font-weight: 700; line-height: 1.2; transition: background .18s, transform .18s; }
+    a:hover { background: #ffe800; transform: translateY(-3px); }
     a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-    @media (max-width: 600px) { h1 { font-size: clamp(40px, 10vw, 64px); } a { font-size: 16px; } }
+    a span { font-size: 27px; line-height: 1; }
+    @media (max-width: 600px) { main { width: min(100% - 32px, 1160px); } .intro { padding: 28px 24px 24px; } h1 { font-size: clamp(38px, 10vw, 62px); } a { width: 190px; padding: 18px; font-size: 16px; } }
   </style>
 </head>
 <body>
   <main>
-    <h1>Cole Zuckowsky <span>| GTM</span></h1>
-    <a href="/planetscale/">
-      PlanetScale Pitch Deck <span aria-hidden="true">↗</span>
-    </a>
+    <div class="intro">
+      <h1>Cole Zuckowsky <span>| GTM</span></h1>
+      <a href="/planetscale/">
+        PlanetScale Pitch Deck <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </main>
 </body>
 </html>
