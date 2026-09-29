@@ -6,7 +6,7 @@ The source image is retained unchanged; missing/clipped pixels stay missing.
 from pathlib import Path
 import json
 from PIL import Image
-R=Path(__file__).resolve().parent
+R=Path(__file__).resolve().parent.parent
 im=Image.open(R/'assets/convex-original-results.png').convert('RGB')
 # Digitize only the red p99 trace, preserving gaps where the source clips peaks.
 series=[]

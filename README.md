@@ -28,7 +28,7 @@ For Zoom, share the slide window and keep the presenter window private. Allow lo
 
 `Meridian-PlanetScale.html` is the portable audience presentation, with fonts and artwork embedded. It contains no speaker notes. The `Meridian` filename stays so existing links keep working. The public Pages upload contains only the deck and PDF.
 
-The root `Meridian-PlanetScale.pdf` is an older export. Use the linked PDF above.
+The older nine-page PDF is archived at `output/archive/Meridian-PlanetScale.pdf`. Use the linked audience PDF above.
 
 ## The story
 

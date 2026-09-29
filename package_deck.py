@@ -55,7 +55,8 @@ from pypdf import PdfReader
 
 slides = json.loads((ROOT / 'qa/content.json').read_text())
 links = json.loads((ROOT / 'qa/links.json').read_text())
-pdf = ROOT / 'Meridian-PlanetScale.pdf'
+pdf = ROOT / 'output/archive/Meridian-PlanetScale.pdf'
+pdf.parent.mkdir(parents=True, exist_ok=True)
 c = canvas.Canvas(str(pdf), pagesize=(960, 540))
 c.setTitle('PlanetScale — Postgres on Metal')
 c.setAuthor('Cole Zuckowsky — independent interview sample')

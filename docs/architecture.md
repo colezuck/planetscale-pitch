@@ -47,7 +47,7 @@ A local HTTP server is recommended for presenter view. `Present-PlanetScale.comm
 
 In the local presenter build, the Notes dialog is inside the slide window and the presenter window is separate. For screen sharing, share only the slide window.
 
-`build_site.py` copies only the audience HTML and current PDF into `dist/`. `npm run deploy` uploads that folder to the classic Cloudflare Pages project. The private script and presenter build are ignored by Git and never enter `dist/`. Git history retains earlier versions of the script; this is not a claim of secrecy.
+`build_site.py` copies only the audience HTML and current PDF into `dist/`. `npm run deploy` uploads that folder to the classic Cloudflare Pages project. The private script and presenter build are ignored by Git and never enter `dist/`.
 
 ## Exports
 
@@ -55,11 +55,11 @@ The current audience PDF is `output/pdf/PlanetScale-Postgres-on-Metal.pdf`. It c
 
 The export does not modify the live deck. To update it, capture the current rendered states with fonts and assets loaded, then package them at the same aspect ratio. Review the PDF after rendering it back to images. Rebuilding layouts separately can change spacing, SVG rendering, and font metrics.
 
-`package_deck.py` also contains an older PDF path that reads numbered PNGs from `qa/`. Those captures are historical and do not reproduce the current deck. Use `--html-only` for normal builds. The root `Meridian-PlanetScale.pdf` is the legacy output, not the current handoff.
+`package_deck.py` also contains an older PDF path that reads numbered PNGs from `qa/`. Those captures are historical and do not reproduce the current deck. Use `--html-only` for normal builds. `output/archive/Meridian-PlanetScale.pdf` is the legacy output, not the current handoff.
 
 ## Evidence and assets
 
-`assets/` contains source artwork and customer charts. `qa/` contains benchmark data, provenance, and earlier layout checks. Historical checks are useful context, not evidence that the current version has passed review.
+`assets/` contains source artwork and customer charts. `assets/previews/` holds historical slide snapshots; the build does not use them. `qa/` contains benchmark data, provenance, and earlier layout checks. Historical checks are useful context, not evidence that the current version has passed review.
 
 `docs/` separates product and customer evidence from the spoken script. The dates in those documents identify the research snapshot. Verify changing product details against their original sources before adding new claims.
 
