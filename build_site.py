@@ -33,6 +33,7 @@ DECK.mkdir(parents=True)
 (DECK / "Meridian-PlanetScale.html").write_text(page)
 shutil.copyfile(ROOT / "output/pdf" / PDF_NAME, DECK / PDF_NAME)
 shutil.copyfile(ROOT / "assets/site-prism.svg", OUT / "assets/site-prism.svg")
+shutil.copyfile(ROOT / "assets/planetscale-symbol-white.svg", OUT / "assets/planetscale-symbol-white.svg")
 
 (OUT / "index.html").write_text("""<!doctype html>
 <html lang="en">
@@ -49,11 +50,13 @@ shutil.copyfile(ROOT / "assets/site-prism.svg", OUT / "assets/site-prism.svg")
     .intro { background: #08080a; padding: 34px 40px 40px; max-width: 100%; }
     h1 { margin: 0 0 30px; font-size: clamp(42px, 6.5vw, 88px); font-weight: 700; letter-spacing: -.055em; line-height: 1.04; }
     h1 span { margin-left: .12em; font-weight: 450; }
-    a { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; width: 220px; aspect-ratio: 1; padding: 22px; background: #f9bf00; color: #08080a; text-decoration: none; font-size: 19px; font-weight: 700; line-height: 1.2; transition: background .18s, transform .18s; }
+    a { display: inline-flex; align-items: center; gap: 14px; min-height: 72px; padding: 10px 18px 10px 10px; background: #f9bf00; color: #08080a; text-decoration: none; font-size: 18px; font-weight: 700; line-height: 1.2; transition: background .18s, transform .18s; }
     a:hover { background: #ffe800; transform: translateY(-3px); }
     a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-    a span { font-size: 27px; line-height: 1; }
-    @media (max-width: 600px) { main { width: min(100% - 32px, 1160px); } .intro { padding: 28px 24px 24px; } h1 { font-size: clamp(38px, 10vw, 62px); } a { width: 190px; padding: 18px; font-size: 16px; } }
+    .brand-mark { display: grid; place-items: center; width: 52px; height: 52px; flex: none; background: #08080a; }
+    .brand-mark img { display: block; width: 31px; height: 31px; }
+    .arrow { margin-left: 14px; font-size: 25px; line-height: 1; }
+    @media (max-width: 600px) { main { width: min(100% - 32px, 1160px); } .intro { padding: 28px 24px 24px; } h1 { font-size: clamp(38px, 10vw, 62px); } a { font-size: 16px; } .arrow { margin-left: 2px; } }
   </style>
 </head>
 <body>
@@ -61,7 +64,8 @@ shutil.copyfile(ROOT / "assets/site-prism.svg", OUT / "assets/site-prism.svg")
     <div class="intro">
       <h1>Cole Zuckowsky <span>| GTM</span></h1>
       <a href="/planetscale/">
-        PlanetScale Pitch Deck <span aria-hidden="true">↗</span>
+        <span class="brand-mark"><img src="/assets/planetscale-symbol-white.svg" alt=""></span>
+        PlanetScale Pitch Deck <span class="arrow" aria-hidden="true">↗</span>
       </a>
     </div>
   </main>
