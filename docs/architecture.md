@@ -16,7 +16,8 @@ index.html + slides.js + app.js + theme.css + vendor/ + assets/
 private/slides.js ───── package_deck.py --html-only --presenter
                            └─ private/Presenter.html
 Meridian-PlanetScale.html + current audience PDF
-                      └─ build_site.py ── dist/ (Pages upload)
+                      └─ build_site.py ── dist/planetscale/ (Pages upload)
+                                          dist/index.html (landing page)
 ```
 
 `build_content.py` defines slide copy, generates several vector diagrams, and reads the standalone diagrams and benchmark data. The default `window.PITCH_SLIDES` output contains each slide's ID, label, theme, and HTML. The `--presenter` build reads the private script, verifies its slide IDs, and adds notes to the private output.
@@ -47,7 +48,7 @@ A local HTTP server is recommended for presenter view. `Present-PlanetScale.comm
 
 In the local presenter build, the Notes dialog is inside the slide window and the presenter window is separate. For screen sharing, share only the slide window.
 
-`build_site.py` copies only the audience HTML and current PDF into `dist/`. `npm run deploy` uploads that folder to the classic Cloudflare Pages project. The private script and presenter build are ignored by Git and never enter `dist/`.
+`build_site.py` places the audience HTML and current PDF under `dist/planetscale/`, writes a minimal landing page at `dist/index.html`, and redirects the former root deck and PDF URLs. `npm run deploy` uploads that folder to the classic Cloudflare Pages project. The private script and presenter build are ignored by Git and never enter `dist/`.
 
 ## Exports
 

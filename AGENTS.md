@@ -20,7 +20,7 @@ python3 build_content.py
 python3 package_deck.py --html-only
 ```
 
-`python3 build_content.py --presenter` and `python3 package_deck.py --html-only --presenter` create ignored local presenter files from the private script. `build_site.py` packages only the audience HTML and PDF into ignored `dist/` for Cloudflare Pages.
+`python3 build_content.py --presenter` and `python3 package_deck.py --html-only --presenter` create ignored local presenter files from the private script. `build_site.py` packages a small root landing page plus the audience deck and PDF under `dist/planetscale/` for Cloudflare Pages.
 
 Keep the portable filename and slide IDs stable. Existing links use them. Vitalize and Autumn are hidden by default, not deleted. Cloud is included by default.
 
