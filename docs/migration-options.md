@@ -1,6 +1,6 @@
 # Postgres migration options
 
-Verified 2026-09-27. Sources belong in the notes; the closing slide stays concise.
+Verified 2026-09-27. Sources stay in this research reference; the closing slide and delivery script stay concise.
 
 ## Self-service migration
 
@@ -20,7 +20,7 @@ These services are not restricted to Enterprise customers. PlanetScale advertise
 - One next step: Technical discovery + migration assessment
 - Session outcome, spoken only: Confirm compatibility, performance targets, and the migration approach
 
-After Autumn’s customer evidence, this slide gives the buyer control over delivery ownership and a concrete next meeting. It replaces the previous detailed migration mechanism and three-step row.
+This slide gives the buyer control over delivery ownership and a concrete next meeting. It replaces the previous detailed migration mechanism and three-step row.
 
 The source may continue serving traffic during initial copy and replication, depending on the method. WAL-streaming cutover includes stopping source writes, waiting for replication to catch up, and changing application connections. Recovery and rollback must account for target-side writes. The compact slide arrow conveys destination only.
 

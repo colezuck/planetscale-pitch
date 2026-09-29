@@ -7,8 +7,10 @@ from pathlib import Path
 import base64
 import json
 import re
+import sys
 
 ROOT = Path(__file__).resolve().parent
+presenter = '--presenter' in sys.argv
 
 def data_uri(relative):
     path = ROOT / relative
@@ -19,8 +21,11 @@ html = (ROOT / 'index.html').read_text()
 css = (ROOT / 'theme.css').read_text().replace('assets/inter.woff2', data_uri('assets/inter.woff2'))
 html = html.replace('<link rel="stylesheet" href="vendor/reveal.css">', '<style>' + (ROOT / 'vendor/reveal.css').read_text() + '</style>')
 html = html.replace('<link rel="stylesheet" href="theme.css">', '<style>' + css + '</style>')
-for filename in ['vendor/reveal.js', 'vendor/notes.js', 'slides.js', 'app.js']:
-    code = (ROOT / filename).read_text()
+scripts = ['vendor/reveal.js', 'slides.js', 'app.js']
+if presenter:
+    scripts.insert(1, 'vendor/notes.js')
+for filename in scripts:
+    code = (ROOT / ('private/slides.js' if presenter and filename == 'slides.js' else filename)).read_text()
     if filename == 'app.js':
         dynamic = "assets/planetscale-${light?'black':'white'}.svg"
         replacement = "${light ? '" + data_uri('assets/planetscale-black.svg') + "' : '" + data_uri('assets/planetscale-white.svg') + "'}"
@@ -32,7 +37,13 @@ for filename in ['vendor/reveal.js', 'vendor/notes.js', 'slides.js', 'app.js']:
     code = re.sub(r'</script', r'<\\/script', code, flags=re.I)
     html = html.replace(f'<script src="{filename}"></script>', '<script>' + code + '</script>')
 html = html.replace('assets/postgresql.svg', data_uri('assets/postgresql.svg'))
-(ROOT / 'Meridian-PlanetScale.html').write_text(html)
+if not presenter:
+    html = html.replace('<script src="vendor/notes.js"></script>', '')
+    html = re.sub(r'<button id="notes".*?</button>', '', html)
+    html = re.sub(r'<dialog id="notes-dialog".*?</dialog>', '', html, flags=re.S)
+    html = html.replace('S &nbsp; Speaker view with notes and timer', '')
+    html = re.sub(r'^[ \t]+$', '', html, flags=re.M)
+(ROOT / ('private/Presenter.html' if presenter else 'Meridian-PlanetScale.html')).write_text(html)
 
 import sys
 if '--html-only' in sys.argv:

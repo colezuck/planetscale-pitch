@@ -1,0 +1,11 @@
+{
+  "name": "planetscale-pitch",
+  "private": true,
+  "scripts": {
+    "build": "python3 build_content.py && python3 package_deck.py --html-only && python3 build_site.py",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name planetscale-pitch --branch main"
+  },
+  "devDependencies": {
+    "wrangler": "4.136.3"
+  }
+}

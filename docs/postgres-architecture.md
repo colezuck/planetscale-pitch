@@ -14,9 +14,11 @@ PlanetScale's [architecture documentation](https://planetscale.com/docs/postgres
 - Outer containers: Availability zone A / B / C. These letters are schematic, not provider-specific AZ identifiers.
 - Inner boxes: Primary node / Replica node / Replica node.
 - Application: explicitly selects a primary or replica connection.
-- Primary path: PgBouncer inside the primary node.
-- Replica path: Replica PgBouncer, labeled “Dedicated · optional,” outside the database nodes.
-- Management: Control plane. Keep the underlying operator implementation in speaker notes.
+- Primary path: Primary connection, used for writes and fresh reads.
+- Replica path: Replica connection, explicitly selected by the application.
+- Management: Control plane, separate from the query path.
+
+The current art omits connection-pool internals. The sections below preserve the researched connection behavior; they do not describe additional boxes on the slide.
 
 The operator manages creation, version upgrades, resizes, and failovers. It is a management component, not a database node or query hop. The [operations documentation](https://planetscale.com/docs/postgres/operations-philosophy) also confirms semi-sync replication and acknowledges brief disruptions during failovers and changes.
 
@@ -24,7 +26,7 @@ The operator manages creation, version upgrades, resizes, and failovers. It is a
 
 The [replica documentation](https://planetscale.com/docs/postgres/scaling/replicas) says replica reads require explicit application selection. The [PgBouncer documentation](https://planetscale.com/docs/postgres/connecting/pgbouncer) specifies that local PgBouncer runs on the primary node and serves primary connections on port 6432. It does not inspect queries to automatically send reads to replicas.
 
-The diagram shows local PgBouncer inside the primary node's boundary. Its orange path carries writes and reads that require the primary's visibility. Replica reads follow the separate, explicitly selected connection through an optional dedicated replica PgBouncer, which runs separately from the database servers. This pool can distribute read traffic across replicas; zone affinity affects that distribution. Dedicated pools use port 6432 and a pool-name username suffix. Direct replica access on port 5432 with a `|replica` username suffix is an alternative, described in the outline but omitted from the diagram to keep the architecture legible.
+Local PgBouncer serves primary connections. The orange path in the simplified diagram carries writes and reads requiring the primary's visibility. Replica reads follow a separately selected connection. An optional dedicated replica PgBouncer can distribute read traffic across replicas; zone affinity affects that distribution. Dedicated pools use port 6432 and a pool-name username suffix. Direct replica access on port 5432 with a `|replica` username suffix is another option. Pool internals and ports are omitted from the current artwork.
 
 Dedicated primary PgBouncers are another optional deployment: application → dedicated primary pool → local PgBouncer → primary Postgres. This additional layer can preserve client connections through more lifecycle events. It is not shown as a default component. Logical query paths and database placement are shown; TLS termination, network proxies, pool redundancy, and provider networking are omitted.
 

@@ -149,9 +149,9 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-source-frame{position:relative;aspect-ratio:1488/660;overflow:hidden}
 .convex-source-frame img{display:block;width:100%;height:auto;filter:invert(.93) hue-rotate(180deg) brightness(1.7) contrast(1.12)}
 .commit-source img{transform:translateY(-50.752%)}
-.convex-result{margin-top:36px;padding-top:24px;border-top:1px solid #444}
+.convex-result{margin:0;padding:32px 0;border:0;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:18px;transform:translateY(18px)}
 .convex-result>span{font:21px var(--mono);color:#aaa}
-.convex-result>div{margin-top:21px;font:30px var(--mono);white-space:nowrap}
+.convex-result>div{margin-top:0;font:30px/1.2 var(--mono);white-space:nowrap}
 .convex-result i{font-style:normal;color:#777;margin:0 10px}
 .convex-result strong{color:var(--orange);font-size:38px}
 .autumn-evidence{display:grid;grid-template-columns:940px 1fr;gap:66px;margin-top:38px}
@@ -183,10 +183,10 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .convex-quote{justify-content:center;text-align:center}
 .convex-heading h2{font-size:44px;letter-spacing:-1.9px}
 
-/* PlanetScale-style stipple panel for the customer quote. */
-.convex-quote{border:1px solid #555;padding:18px 24px;margin-top:24px;background-color:#111;background-image:radial-gradient(#494949 .7px,transparent .9px);background-size:7px 7px;gap:0}
-.convex-quote q{background:#111;padding:6px 14px}
-.convex-quote>span{background:#111;padding:9px 14px 9px 8px}
+/* Plain customer quote below the evenly padded metrics. */
+.convex-quote{border:0;padding:0;margin-top:0;background:none;gap:20px;transform:translateY(18px)}
+.convex-quote q{background:none;padding:0}
+.convex-quote>span{background:none;padding:0}
 
 /* Customer title uses the deck typography with the official symbol. */
 .autumn-heading{justify-content:flex-start;gap:24px}

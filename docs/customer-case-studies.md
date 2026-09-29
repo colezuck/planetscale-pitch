@@ -1,6 +1,6 @@
 # PlanetScale customer evidence
 
-Reviewed: 2026-09-27. Durable research context for the Postgres on Metal pitch. These are customer-reported experiences, not controlled benchmarks or promises for another workload. Keep this reference in the repository; use selected evidence in the deck and retain source links in speaker notes.
+Reviewed: 2026-09-27. Durable research context for the Postgres on Metal pitch. These are customer-reported experiences, not controlled benchmarks or promises for another workload. Keep this reference in the repository; use selected evidence in the deck and retain source links in research docs.
 
 ## Autumn
 

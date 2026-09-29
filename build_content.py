@@ -1,9 +1,12 @@
 """Editable deck content and vector diagrams. Run to rebuild slides.js and notes."""
 from pathlib import Path
-import json, html
+import json, html, sys
 R=Path(__file__).resolve().parent
-speaker_outline=json.loads((R/'speaker-outline.json').read_text())
-speaker_notes={slide_id: '\n'.join('• '+point for point in points) for slide_id,points in speaker_outline.items()}
+presenter='--presenter' in sys.argv
+speaker_outline=json.loads((R/'private/speaker-outline.json').read_text()) if presenter else {}
+class PublicNotes(dict):
+    def __missing__(self, key): return ''
+speaker_notes=PublicNotes({slide_id: '\n'.join('• '+point for point in points) for slide_id,points in speaker_outline.items()})
 INK='#111111'; PANEL='#111111'; LINE='#dadada'; WHITE='#fafafa'; GRAY='#a5a5a5'; ORANGE='#f35815'; BLUE='#dadada'; YELLOW='#fbca00'
 def txt(x,y,s,size=24,color=WHITE,anchor='start',weight=400,mono=True):
     return f'<text x="{x}" y="{y}" fill="{color}" font-size="{size}" font-weight="{weight}" text-anchor="{anchor}" font-family="{("ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" if mono else "Inter,Arial,sans-serif")}">{html.escape(s)}</text>'
@@ -160,7 +163,7 @@ slides=[
  dict(id='metal',label='Postgres on Metal: throughput and p99',theme='metal',html=f'''<div class="metal-heading"><h2>More QPS &amp; Lower p99 on <span class="metal-title-brand"><span class="metal-title-symbol"><img src="assets/planetscale-white.svg" alt="PlanetScale"></span><span class="accent">Metal</span></span></h2></div><div class="benchmark-grid"><div><h3>Throughput (QPS)</h3>{bars}</div><div><h3>p99 latency</h3><div class="chart-legend"><span class="ps-dot">PlanetScale</span><span class="aurora-dot">Aurora</span><span class="alloydb-dot">AlloyDB</span><span class="supabase-dot">Supabase</span></div>{latency}</div></div>''',notes=speaker_notes['metal']),
  dict(id='neki',label='Neki: Horizontal Scaling for Postgres',theme='neki',html=f'''<div class="neki-heading"><h2>Neki: Horizontal Scaling for Postgres</h2><div class="neki-lockup"><img src="assets/neki-cat.svg" alt="Neki"></div></div><div class="neki-topology">{neki}</div>''',notes=speaker_notes['neki']),
  dict(id='neki-scale',label='Neki: 118.5M queries per second',theme='neki neki-scale',html=f'''<div class="neki-heading"><h2><span class="yellow">118.5M</span> queries / second</h2><div class="neki-lockup"><img src="assets/neki-cat.svg" alt="Neki"></div></div><div class="scale-layout"><div><div class="scale-chart">{scale}</div></div><div class="scale-metrics"><div><strong>1.22 <span>PiB</span></strong><p>data</p></div><div><strong>512</strong><p>shards</p></div><div><strong>6.06 <span>ms</span></strong><p>router p99</p></div></div></div>''',notes=speaker_notes['neki-scale']),
- dict(id='convex',label='Convex reduced p99 query latency by over 50%',theme='customer-case convex',html=f'''<div class="case-heading convex-heading"><img class="convex-title-symbol" src="assets/convex-symbol-color.svg" alt=""><h2>Convex reduced p99 query latency by over 50%</h2></div><div class="convex-curves">{convex_plot}</div><div class="convex-quote"><q>p50 is the new p99.</q><span>Jamie Turner / Convex</span></div>''',notes=speaker_notes['convex']),
+ dict(id='convex',label='Convex reduced p99 query latency by over 50%',theme='customer-case convex',html=f'''<div class="case-heading convex-heading"><img class="convex-title-symbol" src="assets/convex-symbol-color.svg" alt=""><h2>Convex reduced p99 query latency by over 50%</h2></div><div class="convex-curves">{convex_plot}</div><div class="convex-quote"><q>p50 is the new p99.</q><span>Jamie Turner | CEO of Context</span></div>''',notes=speaker_notes['convex']),
  dict(id='intercom',label='Intercom: Faster Inbox, 60%+ Lower Cost',theme='customer-case intercom',html='''<div class="case-heading intercom-heading"><img src="assets/intercom-symbol.svg" alt=""><h2>Intercom: Faster Inbox, <span class="accent">60%+ Lower Cost</span></h2></div>
 <div class="intercom-stage">
 <div class="intercom-before fragment fade-out" data-fragment-index="1">'''+(R/'assets/intercom-story.svg').read_text()+'''</div>
@@ -194,9 +197,14 @@ slide_order=['opening','nexus','convex','intercom','metal-path','metal','availab
 slides_by_id={slide['id']:slide for slide in slides}
 assert set(slide_order)==set(slides_by_id) and len(slide_order)==len(slides)
 slides=[slides_by_id[slide_id] for slide_id in slide_order]
-assert set(speaker_outline)==set(slides_by_id)
-(R/'slides.js').write_text('window.PITCH_BRAND = '+json.dumps((R/'assets/planetscale-white.svg').read_text())+';\nwindow.PITCH_SLIDES = '+json.dumps(slides,ensure_ascii=False,indent=2)+';\n')
+if presenter: assert set(speaker_outline)==set(slides_by_id)
+else:
+    for slide in slides: slide.pop('notes', None)
+content_output=R/'private' if presenter else R
+content_output.mkdir(exist_ok=True)
+(content_output/'slides.js').write_text('window.PITCH_BRAND = '+json.dumps((R/'assets/planetscale-white.svg').read_text())+';\nwindow.PITCH_SLIDES = '+json.dumps(slides,ensure_ascii=False,indent=2)+';\n')
 (R/'qa/content.json').write_text(json.dumps([{'id':s['id'],'label':s['label']} for s in slides],indent=2))
 (R/'qa/links.json').write_text('{}\n')
-(R/'speaker-notes.md').write_text('# PlanetScale Postgres — outline script\n\n'+'\n\n'.join(f'## {i}. {s["label"]}\n\n'+'\n'.join('- '+point for point in speaker_outline[s['id']]) for i,s in enumerate(slides,1))+'\n')
-print(f'Built {len(slides)} slides, vector diagrams and speaker notes.')
+if presenter:
+    (content_output/'speaker-notes.md').write_text('# PlanetScale Postgres — outline script\n\n'+'\n\n'.join(f'## {i}. {s["label"]}\n\n'+'\n'.join('- '+point for point in speaker_outline[s['id']]) for i,s in enumerate(slides,1))+'\n')
+print(f'Built {len(slides)} slides ({"local presenter" if presenter else "public, no notes"}).')

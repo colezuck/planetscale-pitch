@@ -20,3 +20,10 @@ qa/*.png
 !qa/slide-09.png
 # Reference decks remain local
 references/
+# Local presenter script and build artifacts
+private/
+speaker-outline.json
+speaker-notes.md
+dist/
+node_modules/
+.wrangler/

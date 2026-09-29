@@ -43,7 +43,7 @@ The separate read-only comparison reports similar average QPS for PlanetScale an
 
 “In this published mixed-workload run, Postgres on Metal sustains higher throughput and lower p99 than these configurations. We can assess those same measures with your queries, concurrency, data size, and latency targets.”
 
-Keep provider names, units, dataset, concurrency, and duration visible. Keep source links and fuller hardware details in speaker notes. Do not add an ROI estimate, current price quote, extrapolated annual saving, or a promise that the customer's latency will match the benchmark.
+Keep provider names, units, dataset, concurrency, and duration visible. Keep source links and fuller hardware details in the research docs. Do not add an ROI estimate, current price quote, extrapolated annual saving, or a promise that the customer's latency will match the benchmark.
 
 
 ## Four-provider latency comparison
