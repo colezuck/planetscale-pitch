@@ -32,7 +32,7 @@ DECK.mkdir(parents=True)
 (DECK / "index.html").write_text(page)
 (DECK / "Meridian-PlanetScale.html").write_text(page)
 shutil.copyfile(ROOT / "output/pdf" / PDF_NAME, DECK / PDF_NAME)
-shutil.copyfile(ROOT / "assets/site-prism.svg", OUT / "assets/site-prism.svg")
+shutil.copyfile(ROOT / "assets/site-prism-color.svg", OUT / "assets/site-prism-color.svg")
 shutil.copyfile(ROOT / "assets/planetscale-symbol-white.svg", OUT / "assets/planetscale-symbol-white.svg")
 
 (OUT / "index.html").write_text("""<!doctype html>
@@ -45,7 +45,7 @@ shutil.copyfile(ROOT / "assets/planetscale-symbol-white.svg", OUT / "assets/plan
   <style>
     :root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: #08080a url('/assets/site-prism.svg') center / cover no-repeat; color: #fff; }
+    body { margin: 0; min-height: 100vh; background: #08080a url('/assets/site-prism-color.svg') center / cover no-repeat; color: #fff; }
     main { display: flex; min-height: 100vh; width: min(100% - 48px, 1160px); margin: auto; padding: 48px 0; flex-direction: column; align-items: flex-start; justify-content: center; }
     .intro { background: #08080a; padding: 34px 40px 40px; max-width: 100%; }
     h1 { margin: 0 0 30px; font-size: clamp(42px, 6.5vw, 88px); font-weight: 700; letter-spacing: -.055em; line-height: 1.04; }

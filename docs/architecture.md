@@ -60,7 +60,7 @@ The export does not modify the live deck. To update it, capture the current rend
 
 ## Evidence and assets
 
-`assets/` contains source artwork and customer charts. `assets/site-prism.svg` is the personal homepage background; `build_site.py` copies it and the existing PlanetScale symbol into the Pages upload. `assets/previews/` holds historical slide snapshots; the build does not use them. `qa/` contains benchmark data, provenance, and earlier layout checks. Historical checks are useful context, not evidence that the current version has passed review.
+`assets/` contains source artwork and customer charts. `assets/site-prism-color.svg` is the color-only personal homepage background; `build_site.py` copies it and the existing PlanetScale symbol into the Pages upload. `assets/previews/` holds historical slide snapshots; the build does not use them. `qa/` contains benchmark data, provenance, and earlier layout checks. Historical checks are useful context, not evidence that the current version has passed review.
 
 `docs/` separates product and customer evidence from the spoken script. The dates in those documents identify the research snapshot. Verify changing product details against their original sources before adding new claims.
 
