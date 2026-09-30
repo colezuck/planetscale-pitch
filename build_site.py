@@ -46,23 +46,23 @@ shutil.copyfile(ROOT / "assets/planetscale-symbol-white.svg", OUT / "assets/plan
     :root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
     * { box-sizing: border-box; }
     body { margin: 0; min-height: 100vh; background: #08080a url('/assets/site-prism-color.png') center / cover no-repeat; color: #fff; }
-    main { display: flex; min-height: 100vh; width: min(100% - 48px, 1160px); margin: auto; padding: 48px 0; flex-direction: column; align-items: flex-start; justify-content: center; }
+    main { display: flex; min-height: 100vh; min-height: 100svh; width: min(100% - 48px, 1160px); margin: auto; padding: 48px 0; flex-direction: column; align-items: center; justify-content: center; }
     .intro { background: #08080a; padding: 34px 40px 40px; max-width: 100%; }
     h1 { margin: 0 0 30px; font-size: clamp(42px, 6.5vw, 88px); font-weight: 700; letter-spacing: -.055em; line-height: 1.04; }
-    h1 span { margin-left: .12em; font-weight: 450; }
+    h1 .role { margin-left: .12em; font-weight: 450; }
     a { display: inline-flex; align-items: center; gap: 14px; min-height: 72px; padding: 10px 18px 10px 10px; background: #f9bf00; color: #08080a; text-decoration: none; font-size: 18px; font-weight: 700; line-height: 1.2; transition: background .18s, transform .18s; }
     a:hover { background: #ffe800; transform: translateY(-3px); }
     a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
     .brand-mark { display: grid; place-items: center; width: 52px; height: 52px; flex: none; background: #08080a; }
     .brand-mark img { display: block; width: 31px; height: 31px; }
     .arrow { margin-left: 14px; font-size: 25px; line-height: 1; }
-    @media (max-width: 600px) { main { width: min(100% - 32px, 1160px); } .intro { padding: 28px 24px 24px; } h1 { font-size: clamp(38px, 10vw, 62px); } a { font-size: 16px; } .arrow { margin-left: 2px; } }
+    @media (max-width: 600px) { main { width: min(100% - 32px, 1160px); padding: 32px 0; } .intro { width: 100%; padding: 28px 24px 24px; } h1 { margin-bottom: 26px; font-size: clamp(30px, 9vw, 40px); } h1 .name { display: block; white-space: nowrap; } h1 .role { display: block; margin: 8px 0 0; color: #f9bf00; font-size: .68em; letter-spacing: -.025em; } a { font-size: 16px; } .arrow { margin-left: 2px; } }
   </style>
 </head>
 <body>
   <main>
     <div class="intro">
-      <h1>Cole Zuckowsky <span>| GTM</span></h1>
+      <h1><span class="name">Cole Zuckowsky</span> <span class="role">| GTM</span></h1>
       <a href="/planetscale/">
         <span class="brand-mark"><img src="/assets/planetscale-symbol-white.svg" alt=""></span>
         PlanetScale Pitch Deck <span class="arrow" aria-hidden="true">↗</span>
