@@ -56,13 +56,13 @@ shutil.copyfile(ROOT / "assets/planetscale-symbol-white.svg", OUT / "assets/plan
     .brand-mark { display: grid; place-items: center; width: 52px; height: 52px; flex: none; background: #08080a; }
     .brand-mark img { display: block; width: 31px; height: 31px; }
     .arrow { margin-left: 14px; font-size: 25px; line-height: 1; }
-    @media (max-width: 600px) { main { width: min(100% - 32px, 1160px); padding: 32px 0; } .intro { width: 100%; padding: 28px 24px 24px; } h1 { margin-bottom: 26px; font-size: clamp(30px, 9vw, 40px); } h1 .name { display: block; white-space: nowrap; } h1 .role { display: block; margin: 8px 0 0; color: #f9bf00; font-size: .68em; letter-spacing: -.025em; } a { font-size: 16px; } .arrow { margin-left: 2px; } }
+    @media (max-width: 600px) { main { width: min(100% - 32px, 1160px); padding: 32px 0; } .intro { width: 100%; padding: 28px 24px 24px; text-align: center; } h1 { margin-bottom: 26px; font-size: clamp(30px, 9vw, 40px); } h1 .name { display: block; white-space: nowrap; } h1 .role { display: block; margin: 8px 0 0; color: #fff; font-size: .68em; letter-spacing: -.025em; } h1 .separator { display: none; } a { font-size: 16px; } .arrow { margin-left: 2px; } }
   </style>
 </head>
 <body>
   <main>
     <div class="intro">
-      <h1><span class="name">Cole Zuckowsky</span> <span class="role">| GTM</span></h1>
+      <h1><span class="name">Cole Zuckowsky</span> <span class="role"><span class="separator" aria-hidden="true">| </span>GTM</span></h1>
       <a href="/planetscale/">
         <span class="brand-mark"><img src="/assets/planetscale-symbol-white.svg" alt=""></span>
         PlanetScale Pitch Deck <span class="arrow" aria-hidden="true">↗</span>
