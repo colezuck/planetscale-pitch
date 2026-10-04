@@ -1,0 +1,4 @@
+interface:
+  display_name: "PlanetScale Sales Slides"
+  short_description: "Build and iterate branded technical sales slides"
+  default_prompt: "Use $planetscale-pitch-design to build or refine sales slides in our PlanetScale style, with sourced proof, diagrams, images, and purposeful reveals."

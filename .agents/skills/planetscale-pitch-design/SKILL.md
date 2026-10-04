@@ -1,36 +1,40 @@
 ---
 name: planetscale-pitch-design
-description: Design or refine slides, SVG artwork, and sales copy for this PlanetScale Postgres on Metal pitch deck, including customer stories and the Neki preview. Use the existing HTML deck and visual system.
+description: Create and iterate technical sales slides in this repository's PlanetScale style, including SVG diagrams, sourced images and charts, Reveal.js animations, speaker outlines, and portable HTML. Use the Postgres on Metal deck as the visual and sales reference; applies to new decks and focused slide edits.
 ---
 
-# PlanetScale pitch design
+# PlanetScale sales slides
 
-Make the buyer understand a problem, see credible evidence, and agree on a useful next step. The audience is a technical leader; the presentation is a sales conversation, not a component tour.
+Build slides a technical buyer can understand while Cole speaks. Reuse the proven visual system and make each reveal explain a change. The reference is the current rendered [Postgres on Metal deck](../../../decks/postgres-metal/README.md), not old screenshots or every sentence in its private script.
 
-Locate the repository through the nearest `AGENTS.md`. Read `docs/architecture.md` for implementation boundaries and `docs/pitch-blueprint.md` for the current story. Read only the research document relevant to the claim being changed.
+Locate the repository through `AGENTS.md`. Repository paths below are relative to that root. Preserve the user's requested medium, slide count, content scope, and existing approvals. Default to this repo's static HTML/Reveal.js workflow for an animated deck; use the available presentation skill if the user specifically requests editable PPTX. Do not silently substitute HTML for PowerPoint.
 
-## Visual language
+## Select the work
 
-Use the existing tokens in `theme.css`: `#111111` background, `#fafafa` text, `#f35815` Metal/product emphasis, `#fbca00` for Neki, and `#ff4d4d` for bottlenecks. Match existing muted borders and labels.
+- **New deck:** read [sales framework](references/sales-framework.md) and [visual recipes](references/visual-recipes.md). Create a clean shell with `scripts/new_deck.py`; do not duplicate the Metal pitch's claims, optional slides, old scripts, or deployment configuration.
+- **Copy or story edit:** read [sales framework](references/sales-framework.md). Inspect the relevant product/account evidence before writing claims.
+- **Art, diagram, chart, image, or layout:** read [visual recipes](references/visual-recipes.md), including its source-image rules.
+- **Reveal or animation:** read [motion and delivery](references/motion-and-delivery.md). For Nexus-style diagrams, use the [shared scene framework](../../../shared/presentation/README.md) and its authoring guide rather than duplicating complete SVG layers or writing new state handlers.
+- **Build, export, or final review:** read [motion and delivery](references/motion-and-delivery.md) and run the relevant commands.
 
-Use Inter for headlines and system monospace for technical labels. Keep diagrams rectangular: square corners, thin frames, occasional double outlines, sparse stipple, and directional connectors. Use the bundled logos and source artwork. Avoid decorative gradients, generic rounded cards, stock illustrations, and emoji labels.
+Read [past corrections](references/past-corrections.md) before choosing a new chart treatment or substantial layout. For a focused text edit, consult only the relevant correction. Do not load every reference for every small change.
 
-The slide canvas is 1440 × 810. Content uses 64 px side margins and a vertically centered composition. Budget the heading, art, metrics, and whitespace together. Keep captions and arrowheads clear of container boundaries. Repeated cards share edges and baselines. A bigger icon should explain scale, not displace the connector.
+## Working contract
 
-Prefer one-line headlines when they remain readable. If text does not fit, shorten the copy before shrinking the type. Keep original charts at their native resolution; change their framing without inventing data.
+Before making slides, resolve audience, buyer problem, desired next step, available time, and source evidence from the request and repository. Ask only for missing information that materially changes the result; otherwise state the assumption and proceed. For interview work, `interview/brief/README.md` outranks the earlier pitch blueprint as assignment context.
 
-## Sales copy
+Use a short slide plan in the target exercise or deck folder: ID; buyer question; slide purpose; visual recipe; evidence and limitations; reveal states; spoken point; check-in or next-step question. Keep one job per slide. For edits, update the existing plan instead of creating parallel documents.
 
-Use concrete outcomes: fewer slow requests, more workload headroom, less recovery work, lower reported cost. Connect the mechanism to the outcome rather than listing features.
+The baseline is a 1440 × 810 canvas, Inter headings, monospace technical labels, #111111 background, #fafafa text, #f35815 product emphasis, #ff4d4d bottlenecks, thin square frames, sparse stipple, and explicit connectors. Yellow identifies the Neki story in the reference; do not make it a generic accent. Keep slides conversational and technical rather than filling them with UI panels.
 
-Customer slides tell a short story: pressure → previous response → observed result. An outcome headline can remain fixed while the visual reveals the story. Use a clear replacement or fade between states, without overlapping labels or a flash frame.
+Claims need a source and an applicable comparison. Product research lives in `context/`; shared account evidence in `accounts/`; exercise scripts in `interview/`. Label scenario premises and hypotheses. Source the speaker outline from evidence too: the existing private script demonstrates delivery structure, but its superlatives and availability claims are not approved reusable facts.
 
-Keep one job per slide. Use notes for the spoken explanation and discovery questions, and research docs for sources and limitations. Do not turn every caveat into audience-facing copy, but do not remove the information needed to interpret a claim.
+Edit canonical sources and rebuild. Preserve stable slide IDs and audience/presenter separation. Never fix generated HTML instead of its source. A local preview working does not prove that a portable export embeds a newly inserted image.
 
-Distinguish Postgres customer results, Vitess/MySQL stories, vendor benchmarks, and Neki preview experiments. A reported result is not a customer guarantee. Storage-path latency is not query latency; an SLA is not observed uptime. Do not introduce unverified exclusivity, universal speed claims, or zero-downtime promises.
+## Fast iteration
 
-## Implement and review
+Implement the smallest slide or state that answers the buyer question. Preview it before extending the deck. Change one cause at a time: copy length, geometry, image framing, or reveal timing. Match the current theme before inventing a new treatment. Shorten copy or recompose before shrinking labels.
 
-Edit the canonical sources described in `AGENTS.md`; rebuild only when slide content or behavior changes. Keep notes outside `.slide-content`. Preserve the slide IDs and requested optional-slide behavior.
+Check the initial state, each settled reveal, and backward navigation. Inspect at 16:9 after fonts/images load. Capture exports only after transitions settle. Verify source HTML and portable HTML both show inserted images. Record reusable corrections in the relevant reference with a concrete trigger and fix; do not turn a one-off preference into an unrelated universal rule.
 
-Review the initial state and every meaningful reveal. Check text fit, vertical balance, arrow visibility, chart labels, and provider/card alignment. For a PDF, export the rendered HTML states rather than reconstructing layouts in a second drawing system. Strip notes and controls from the export, use 16:9 pages, and inspect every page.
+The existing deck's builds are documented in `decks/postgres-metal/README.md`. The starter creates its own `build.py` and `package.py`; see [motion and delivery](references/motion-and-delivery.md). Publishing and PDF regeneration are separate tasks, not incidental steps in editing.

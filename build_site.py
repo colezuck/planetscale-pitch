@@ -6,12 +6,13 @@ import shutil
 
 
 ROOT = Path(__file__).resolve().parent
+SOURCE = ROOT / "decks/postgres-metal"
 OUT = ROOT / "dist"
 DECK = OUT / "planetscale"
 PDF_NAME = "PlanetScale-Postgres-on-Metal.pdf"
 PDF_URL = f"/planetscale/{PDF_NAME}"
 
-page = (ROOT / "Meridian-PlanetScale.html").read_text()
+page = (SOURCE / "Meridian-PlanetScale.html").read_text()
 assert '"notes":' not in page and 'id="notes"' not in page
 page = re.sub(r'<button id="notes".*?</button>', "", page)
 page = re.sub(r'<dialog id="notes-dialog".*?</dialog>', "", page, flags=re.S)
@@ -31,9 +32,9 @@ DECK.mkdir(parents=True)
 
 (DECK / "index.html").write_text(page)
 (DECK / "Meridian-PlanetScale.html").write_text(page)
-shutil.copyfile(ROOT / "output/pdf" / PDF_NAME, DECK / PDF_NAME)
-shutil.copyfile(ROOT / "assets/site-prism-color.png", OUT / "assets/site-prism-color.png")
-shutil.copyfile(ROOT / "assets/planetscale-symbol-white.svg", OUT / "assets/planetscale-symbol-white.svg")
+shutil.copyfile(SOURCE / "output/pdf" / PDF_NAME, DECK / PDF_NAME)
+shutil.copyfile(SOURCE / "assets/site-prism-color.png", OUT / "assets/site-prism-color.png")
+shutil.copyfile(SOURCE / "assets/planetscale-symbol-white.svg", OUT / "assets/planetscale-symbol-white.svg")
 
 (OUT / "index.html").write_text("""<!doctype html>
 <html lang="en">

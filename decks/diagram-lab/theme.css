@@ -1,0 +1,48 @@
+@font-face{font-family:Inter;src:url('assets/inter.woff2') format('woff2');font-weight:100 900;font-display:swap}
+:root{--ink:#111111;--white:#fafafa;--orange:#f35815;--muted:#a5a5a5;--line:#414141;--yellow:#fbca00;--mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,Arial,sans-serif}
+.reveal{font-family:Inter,Arial,sans-serif;font-size:25px;font-weight:400;color:var(--white)}
+.reveal .slides{text-align:left}
+.reveal .slides>section{height:810px;padding:60px 64px;overflow:hidden}
+.slide-content{position:absolute;top:50%;left:64px;right:64px;transform:translateY(-50%)}
+.reveal h1,.reveal h2,.reveal h3,.reveal p{margin:0;font-weight:400}
+.reveal h1{font-size:88px;font-weight:500;line-height:1.06;letter-spacing:-4.8px}
+.reveal h2{font-size:56px;font-weight:500;line-height:1.1;letter-spacing:-2.4px}
+.reveal h3{font:500 25px/1.3 var(--mono);letter-spacing:-1px}
+.reveal p{line-height:1.45}.reveal strong{font-weight:500}
+.reveal img{margin:0;max-width:none;max-height:none}
+.reveal svg{display:block;width:100%;height:auto;overflow:visible}
+.reveal .progress{height:2px;color:var(--orange)}
+.accent{color:var(--orange)}.yellow{color:var(--yellow)}
+
+/* Opening hero: a single brand lockup and product title. */
+.reveal .slides>.opening{padding:60px 64px}
+.opening-hero{height:690px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cover-brand{width:360px;margin-bottom:46px;flex-shrink:0}
+.cover-brand img{display:block;width:100%;height:auto}
+.reveal .opening h1{font-size:112px;font-weight:500;line-height:1.08;letter-spacing:-5.2px;white-space:nowrap}
+
+/* Presentation UI is outside the slide canvas. */
+.deck-tools{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:5px 9px;background:rgba(30,30,30,.98);border:1px solid #454545;border-radius:8px;z-index:20;color:#ddd;font-size:12px;opacity:.13;transition:opacity .15s}
+.deck-tools:hover,.deck-tools:focus-within{opacity:1}
+.deck-tools button{background:transparent;border:0;color:#e1e1e1;font:12px Inter;cursor:pointer;padding:7px 9px;border-radius:4px}
+.deck-tools button:hover{background:#424242}.deck-tools button:disabled{opacity:.3;cursor:default}
+.deck-tools #position{min-width:55px;text-align:center;font-variant-numeric:tabular-nums}
+.tool-divider{width:1px;height:16px;background:#555;margin:0 4px}
+button:focus-visible,a:focus-visible{outline:3px solid #74b9ef;outline-offset:4px}
+.deck-tools #previous,.deck-tools #next{font-size:18px}
+dialog{color:#fafafa;background:#222;border:1px solid #555;max-width:490px;padding:30px;border-radius:8px;font:16px Inter;z-index:50}
+dialog::backdrop{background:#000b}dialog h2{font-size:25px;font-weight:500;margin-top:0}
+dialog p{line-height:1.6}dialog .small{font-size:14px;color:#bbb}dialog a{color:#8bb9da}
+dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15px Inter;cursor:pointer}
+#notes-dialog{width:calc(100vw - 32px);max-width:720px;max-height:calc(100dvh - 48px);box-sizing:border-box;overflow:hidden}
+#notes-dialog[open]{display:flex;flex-direction:column;gap:18px}#notes-dialog h2{margin:0;flex-shrink:0}#notes-dialog button{align-self:flex-start;flex-shrink:0}
+#notes-content{font-size:17px;line-height:1.65;max-height:60vh;min-height:0;overflow:auto;white-space:normal}
+.speaker-outline{margin:0;padding-left:1.3em}.speaker-outline li+li{margin-top:12px}
+.presentation-mode .deck-tools{display:none!important}
+.capture .deck-tools,.capture .progress{display:none!important}
+.capture .reveal{-webkit-user-select:none;user-select:none}.capture ::selection{background:transparent;color:inherit}
+@media(max-width:700px){.deck-tools{gap:0;white-space:nowrap}.deck-tools button{padding:7px}.deck-tools #help{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{.deck-tools,dialog{display:none!important}.reveal .slides>section{overflow:hidden!important}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}

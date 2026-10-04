@@ -1,0 +1,196 @@
+{
+  "id": "capacity-model",
+  "title": "The common cloud Postgres capacity model",
+  "description": "A simplified capacity and storage-I/O illustration. Replicas, availability zones, backups, and the managed control plane are omitted. The pressure labels are questions to investigate, not measurements or claims that other managed databases lack availability.",
+  "width": 1250,
+  "height": 470,
+  "duration": 420,
+  "nodes": [
+    {
+      "id": "compute",
+      "kind": "container",
+      "x": 51,
+      "y": 75,
+      "w": 480,
+      "h": 237,
+      "label": "Postgres server",
+      "fontSize": 36,
+      "fill": "#151515"
+    },
+    {
+      "id": "cpu",
+      "kind": "chip",
+      "x": 91,
+      "y": 154,
+      "w": 145,
+      "h": 104,
+      "label": "vCPU",
+      "fontSize": 30
+    },
+    {
+      "id": "ram",
+      "kind": "memory",
+      "x": 292,
+      "y": 154,
+      "w": 181,
+      "h": 104,
+      "label": "RAM",
+      "fontSize": 30
+    },
+    {
+      "id": "storage",
+      "kind": "storage",
+      "x": 809,
+      "y": 96,
+      "w": 405,
+      "h": 186,
+      "label": "Network-attached\nvolume",
+      "fontSize": 29,
+      "fill": "#151515"
+    },
+    {
+      "id": "latency",
+      "kind": "callout",
+      "x": 1,
+      "y": 366,
+      "w": 390,
+      "h": 91,
+      "label": "Latency",
+      "stroke": "#8e3338",
+      "color": "#ff4d4d",
+      "opacity": 0,
+      "fontSize": 32
+    },
+    {
+      "id": "io",
+      "kind": "callout",
+      "x": 430,
+      "y": 366,
+      "w": 390,
+      "h": 91,
+      "label": "Storage I/O",
+      "stroke": "#8e3338",
+      "color": "#ff4d4d",
+      "opacity": 0,
+      "fontSize": 32
+    },
+    {
+      "id": "availability",
+      "kind": "callout",
+      "x": 859,
+      "y": 366,
+      "w": 390,
+      "h": 91,
+      "label": "Availability",
+      "stroke": "#8e3338",
+      "color": "#ff4d4d",
+      "opacity": 0,
+      "fontSize": 32
+    }
+  ],
+  "links": [
+    {
+      "id": "request",
+      "from": {
+        "node": "compute",
+        "side": "right",
+        "at": 0.44
+      },
+      "to": {
+        "node": "storage",
+        "side": "left",
+        "at": 0.45
+      },
+      "label": "Network I/O",
+      "labelOffset": -34
+    },
+    {
+      "id": "response",
+      "from": {
+        "node": "storage",
+        "side": "left",
+        "at": 0.73
+      },
+      "to": {
+        "node": "compute",
+        "side": "right",
+        "at": 0.66
+      }
+    }
+  ],
+  "stages": [
+    {
+      "name": "base",
+      "heading": "How Postgres typically runs and scales in the cloud",
+      "description": "Postgres compute reads and writes a separate network-attached storage volume. Simplified capacity model, not a literal topology for every provider.",
+      "emphasis": "Postgres"
+    },
+    {
+      "name": "more-capacity",
+      "heading": "How Postgres typically runs and scales in the cloud",
+      "description": "Compute and storage capacity grow while the storage remains network-attached. The resource counts are illustrative.",
+      "nodes": {
+        "compute": {
+          "x": 41,
+          "y": 64,
+          "w": 500,
+          "h": 260,
+          "stroke": "#fafafa"
+        },
+        "cpu": {
+          "x": 79,
+          "y": 145,
+          "w": 182,
+          "h": 133,
+          "label": "More vCPU",
+          "fontSize": 25,
+          "stroke": "#fafafa"
+        },
+        "ram": {
+          "x": 288,
+          "y": 145,
+          "w": 201,
+          "h": 133,
+          "label": "More RAM",
+          "fontSize": 25,
+          "stroke": "#fafafa"
+        },
+        "storage": {
+          "x": 783,
+          "y": 73,
+          "w": 456,
+          "h": 235,
+          "label": "Network-attached\nvolume\nMore storage",
+          "fontSize": 26,
+          "stroke": "#fafafa"
+        }
+      },
+      "emphasis": "Postgres"
+    },
+    {
+      "name": "questions",
+      "heading": "More compute doesn’t solve every Postgres bottleneck",
+      "description": "Latency, storage I/O, and availability remain questions to investigate beyond capacity sizing. This does not mean the compared managed services lack HA.",
+      "nodes": {
+        "latency": {
+          "opacity": 1
+        },
+        "io": {
+          "opacity": 1
+        },
+        "availability": {
+          "opacity": 1
+        }
+      },
+      "links": {
+        "request": {
+          "stroke": "#ff4d4d"
+        },
+        "response": {
+          "stroke": "#ff4d4d"
+        }
+      },
+      "emphasis": "every Postgres bottleneck"
+    }
+  ]
+}

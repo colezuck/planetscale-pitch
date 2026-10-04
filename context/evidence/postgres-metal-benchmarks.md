@@ -25,7 +25,7 @@ The v2 charts use **32 simultaneous connections, 300 seconds, TPCC-like, 500 GB*
 
 The index's rounded headline figures and “up to” ratios describe a broader summary. Do not replace only the PlanetScale bar with its approximately 18k headline while retaining other providers' exact 32-connection values.
 
-Raw QPS samples and provenance are in `qa/benchmark-qps.json`. The existing `qa/benchmark-p99.json` arrays were checked against the current public chart bundle on the review date and matched exactly. The selected latency ranges are 170.48–223.34 ms for PlanetScale and 325.98–733 ms for Aurora. A range of interval percentiles is not a latency distribution for every individual query.
+Raw QPS samples and provenance are in `decks/postgres-metal/qa/benchmark-qps.json`. The existing `decks/postgres-metal/qa/benchmark-p99.json` arrays were checked against the current public chart bundle on the review date and matched exactly. The selected latency ranges are 170.48–223.34 ms for PlanetScale and 325.98–733 ms for Aurora. A range of interval percentiles is not a latency distribution for every individual query.
 
 ## Configurations and interpretation
 
@@ -48,6 +48,6 @@ Keep provider names, units, dataset, concurrency, and duration visible. Keep sou
 
 ## Four-provider latency comparison
 
-The p99 plot now includes AlloyDB and Supabase at 32 connections. Each has 300 published one-second samples; PlanetScale's samples match across the provider comparison datasets. Ranges: AlloyDB 277.21–1,235.62 ms; Supabase 196.89–1,561.52 ms. The shared linear axis is 0–1,600 ms; all samples are retained without smoothing or clipping. The x-axis aligns elapsed time in separate runs, not simultaneous wall-clock timestamps. Provenance is in `qa/benchmark-p99-provenance.json`. The visible workload footer was removed at the user's request; workload context remains in the speaker notes for spoken delivery.
+The p99 plot now includes AlloyDB and Supabase at 32 connections. Each has 300 published one-second samples; PlanetScale's samples match across the provider comparison datasets. Ranges: AlloyDB 277.21–1,235.62 ms; Supabase 196.89–1,561.52 ms. The shared linear axis is 0–1,600 ms; all samples are retained without smoothing or clipping. The x-axis aligns elapsed time in separate runs, not simultaneous wall-clock timestamps. Provenance is in `decks/postgres-metal/qa/benchmark-p99-provenance.json`. The visible workload footer was removed at the user's request; workload context remains in the speaker notes for spoken delivery.
 
 The slide display now uses a 0–1,200 ms y-axis and clips higher values at the plot boundary. Raw samples remain unchanged; full ranges remain in speaker notes.

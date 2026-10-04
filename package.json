@@ -1,9 +1,15 @@
 {
-  "name": "planetscale-pitch",
+  "name": "planetscale-sales",
   "private": true,
   "scripts": {
-    "build": "python3 build_content.py && python3 package_deck.py --html-only && python3 build_site.py",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name planetscale-pitch --branch main"
+    "build": "python3 build_content.py && python3 package_deck.py --html-only && python3 scripts/build_diagram_lab.py && python3 build_site.py",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name planetscale-pitch --branch main",
+    "build:pitch": "python3 decks/postgres-metal/build_content.py && python3 decks/postgres-metal/package_deck.py --html-only",
+    "build:presenter": "python3 decks/postgres-metal/build_content.py --presenter && python3 decks/postgres-metal/package_deck.py --html-only --presenter",
+    "check": "python3 scripts/check_repo.py && node --check decks/postgres-metal/app.js && node --check decks/postgres-metal/slides.js && git diff --check && node --check shared/presentation/diagram-motion.js && node --check decks/diagram-lab/app.js && node --check decks/diagram-lab/slides.js",
+    "serve": "python3 -m http.server 8765 --bind 127.0.0.1",
+    "build:diagrams": "python3 scripts/build_diagram_lab.py",
+    "test:diagrams": "python3 -m unittest discover -s shared/presentation/tests -p \"test_*.py\" && node shared/presentation/tests/test_motion.js"
   },
   "devDependencies": {
     "wrangler": "4.136.3"

@@ -79,11 +79,11 @@ The user requested two additional slides while preserving Vitalize and the exist
 
 ## Customer-slide visual refinement — 2026-09-27
 
-Convex now uses two p99 curves reconstructed from its original published chart. The red p99 traces are digitized at source-pixel resolution by `qa/digitize_convex.py`, persisted in `qa/convex-p99-digitized.json`, and rendered as native SVG. This is approximate image-derived data, not raw telemetry. Missing pixels remain gaps, including query peaks clipped above 20 ms in the source. The white/orange boundary follows the visible step around 23:55; it is not an independently established cutover timestamp. Callouts use the article’s explicit 10–15 → 5–7 ms and 75–200 ms spikes → ~20 ms claims, rather than statistics recomputed from pixels. Other percentile lines are intentionally omitted.
+Convex now uses two p99 curves reconstructed from its original published chart. The red p99 traces are digitized at source-pixel resolution by `decks/postgres-metal/qa/digitize_convex.py`, persisted in `decks/postgres-metal/qa/convex-p99-digitized.json`, and rendered as native SVG. This is approximate image-derived data, not raw telemetry. Missing pixels remain gaps, including query peaks clipped above 20 ms in the source. The white/orange boundary follows the visible step around 23:55; it is not an independently established cutover timestamp. Callouts use the article’s explicit 10–15 → 5–7 ms and 75–200 ms spikes → ~20 ms claims, rather than statistics recomputed from pixels. Other percentile lines are intentionally omitted.
 
 Original Convex chart: https://storage.ghost.io/c/e6/e9/e6e9d6ca-a1ad-4d1c-bd58-d32798cd446c/content/images/2025/07/Screenshot-2025-07-01-at-7.59.02---AM-2.png
 
-Autumn uses an approximate 100 ms baseline and a dashed 10 ms upper-bound bar, labelled <10 ms. This is general query latency, with no published percentile. The previous provider remains unnamed. Its Insights screenshot (`assets/autumn-original-insights.png`) is retained as research evidence only: it is not a paired migration comparison. The later ~200 → <50 ms p99 and 40% → <10% CPU improvements followed query/index tuning, so they remain separate from the migration result.
+Autumn uses an approximate 100 ms baseline and a dashed 10 ms upper-bound bar, labelled <10 ms. This is general query latency, with no published percentile. The previous provider remains unnamed. Its Insights screenshot (`decks/postgres-metal/assets/autumn-original-insights.png`) is retained as research evidence only: it is not a paired migration comparison. The later ~200 → <50 ms p99 and 40% → <10% CPU improvements followed query/index tuning, so they remain separate from the migration result.
 
 Original Autumn chart: https://useautumn.com/images/blog/planetscale-insights.png
 
@@ -94,7 +94,7 @@ Both stories remain candidate slides 8–9, with Vitalize and the original seven
 
 ### Original Convex chart panels replace the reconstruction
 
-The current slide now displays `assets/convex-original-results.png` directly in two CSS clipping viewports, one per original chart. The source PNG remains unchanged. `filter: invert(.93) hue-rotate(180deg) brightness(1.7) contrast(1.12)` changes only browser presentation colors to fit the dark deck. All five percentile lines, legends, ticks, and chart titles remain as published. Chart axes remain in seconds; the separate p99 summaries are in milliseconds. The digitized JSON/script above are historical research and no longer supply the slide.
+The current slide now displays `decks/postgres-metal/assets/convex-original-results.png` directly in two CSS clipping viewports, one per original chart. The source PNG remains unchanged. `filter: invert(.93) hue-rotate(180deg) brightness(1.7) contrast(1.12)` changes only browser presentation colors to fit the dark deck. All five percentile lines, legends, ticks, and chart titles remain as published. Chart axes remain in seconds; the separate p99 summaries are in milliseconds. The digitized JSON/script above are historical research and no longer supply the slide.
 
 
 ### Convex layout and metric scope

@@ -1,5 +1,7 @@
 # How the deck works
 
+Paths below are relative to `decks/postgres-metal/` unless stated otherwise. Root compatibility commands still work.
+
 The deck is static HTML with a small Python content build. There is no backend, framework build, or remote asset dependency during presentation.
 
 ## Content to presentation
@@ -44,11 +46,11 @@ The optional-slide filter lives in `app.js`; the full order lives in `build_cont
 
 `private/speaker-outline.json` is the ignored editable script. Build with `--presenter` to produce a readable private Markdown copy and notes on each slide in the private HTML. The app then enables the Notes dialog and Reveal's separate presenter window. The public build has no notes and does not load the presenter plugin.
 
-A local HTTP server is recommended for presenter view. `Present-PlanetScale.command` serves this folder on an available localhost port between 8765 and 8774 and opens `private/Presenter.html`. It reuses a server only when that server serves the same HTML file.
+A local HTTP server is recommended for presenter view. root `Present-PlanetScale.command` serves this folder on an available localhost port between 8765 and 8774 and opens `private/Presenter.html`. It reuses a server only when that server serves the same HTML file.
 
 In the local presenter build, the Notes dialog is inside the slide window and the presenter window is separate. For screen sharing, share only the slide window.
 
-`build_site.py` places the audience HTML and current PDF under `dist/planetscale/`, writes a minimal landing page at `dist/index.html`, and redirects the former root deck and PDF URLs. `npm run deploy` uploads that folder to the classic Cloudflare Pages project. The private script and presenter build are ignored by Git and never enter `dist/`.
+root `build_site.py` places the audience HTML and current PDF under root `dist/planetscale/`, writes a minimal landing page at root `dist/index.html`, and redirects the former root deck and PDF URLs. `npm run deploy` uploads that folder to the classic Cloudflare Pages project. The private script and presenter build are ignored by Git and never enter root `dist/`.
 
 ## Exports
 
@@ -60,8 +62,8 @@ The export does not modify the live deck. To update it, capture the current rend
 
 ## Evidence and assets
 
-`assets/` contains source artwork and customer charts. `assets/site-prism-color.svg` is the editable color-only homepage artwork; its PNG export is the browser background copied by `build_site.py` alongside the existing PlanetScale symbol. `assets/previews/` holds historical slide snapshots; the build does not use them. `qa/` contains benchmark data, provenance, and earlier layout checks. Historical checks are useful context, not evidence that the current version has passed review.
+`assets/` contains source artwork and customer charts. `assets/site-prism-color.svg` is the editable color-only homepage artwork; its PNG export is the browser background copied by root `build_site.py` alongside the existing PlanetScale symbol. `assets/previews/` holds historical slide snapshots; the build does not use them. `qa/` contains benchmark data, provenance, and earlier layout checks. Historical checks are useful context, not evidence that the current version has passed review.
 
-`docs/` separates product and customer evidence from the spoken script. The dates in those documents identify the research snapshot. Verify changing product details against their original sources before adding new claims.
+`../../context/` separates product and customer evidence from the spoken script. The dates in those documents identify the research snapshot. Verify changing product details against their original sources before adding new claims.
 
 `vendor/` contains local Reveal.js files and its license. The Inter license lives with the font in `assets/`. Keep bundled dependency changes separate from slide edits.

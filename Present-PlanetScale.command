@@ -10,7 +10,7 @@ import time
 import webbrowser
 
 root = Path.cwd()
-deck = 'private/Presenter.html'
+deck = 'decks/postgres-metal/private/Presenter.html'
 if not (root / deck).exists():
     raise SystemExit('Build the local presenter deck first: python3 build_content.py --presenter && python3 package_deck.py --html-only --presenter')
 expected = (root / deck).read_bytes()

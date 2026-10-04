@@ -1,0 +1,14 @@
+[
+  {
+    "id": "capacity-model",
+    "label": "Capacity model",
+    "theme": "diagram-slide",
+    "diagramFile": "diagrams/capacity-model.json"
+  },
+  {
+    "id": "end",
+    "label": "Next slide",
+    "theme": "opening",
+    "html": "<div class=\"opening-hero\"><h1>Diagram lab</h1></div>"
+  }
+]

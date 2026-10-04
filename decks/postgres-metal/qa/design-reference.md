@@ -1,6 +1,6 @@
 # Design references
 
-The reusable design guidance lives in [the PlanetScale pitch skill](../.agents/skills/planetscale-pitch-design/SKILL.md).
+The reusable design guidance lives in [the PlanetScale pitch skill](../../../.agents/skills/planetscale-pitch-design/SKILL.md).
 
 The visual language came from the user-supplied PlanetScale ASCII diagram reference: square frames, double-line primaries, dashed connectors, monospace labels, and stippled fills. Inter headlines and restrained orange/yellow accents carry that language into slides.
 

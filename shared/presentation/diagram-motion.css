@@ -1,0 +1,9 @@
+/* Reveal owns navigation. The runtime owns SVG geometry and labels. */
+.ps-diagram{position:relative}
+.ps-diagram h2{min-height:1.15em;font-size:54px!important;line-height:1.15!important}
+.ps-diagram svg{margin-top:32px;overflow:visible}
+.ps-diagram svg text{font-family:var(--mono,ui-monospace,Menlo,monospace)}
+.ps-diagram [data-kind="container"] text,.ps-diagram [data-kind="storage"] text{font-family:Inter,Arial,sans-serif}
+.reveal .ps-diagram .ps-diagram-step{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;transition:none!important}
+.ps-diagram svg [data-node],.ps-diagram svg [data-link]{transition:none}
+@media(prefers-reduced-motion:reduce){.ps-diagram *{animation:none!important;transition:none!important}}
