@@ -49,7 +49,7 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 
 /* Aurora-focused teach-back: the explanation lives in the art, not footnotes. */
 .reveal .teach h2{font-size:56px;line-height:1.12;letter-spacing:-2.4px}
-.teach-cloud .ps-diagram svg{height:410px;margin-top:28px}
+.teach-cloud .ps-diagram svg{height:470px;margin-top:28px}
 .teach-comparison .metal-comparison{height:595px;width:100%;margin:25px auto 0}
 .reveal .fragment.latency-reveal{opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity 300ms ease,transform 300ms ease,visibility 300ms}
 .reveal .fragment.latency-reveal.visible{opacity:1;visibility:visible;transform:translateY(0)}

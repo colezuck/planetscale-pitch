@@ -1,9 +1,9 @@
 {
   "id": "aurora-storage",
   "title": "Aurora PostgreSQL compute and shared distributed storage",
-  "description": "Simplified read path for a provisioned Aurora PostgreSQL instance. Persistent data is in an SSD-backed shared distributed cluster volume. Cache hits do not take this storage path; eligible local Optimized Reads caches are omitted. Geometry is schematic, not measured capacity, network distance or latency. Availability zones and replication are outside the visual scope. Visible io2/gp3 latency values are illustrative EBS references, not measurements of Aurora or isolated network-hop latency.",
+  "description": "Simplified read path for a provisioned Aurora PostgreSQL instance. Persistent data is in an SSD-backed shared distributed cluster volume. Cache hits do not take this storage path; eligible local Optimized Reads caches are omitted. Geometry is schematic, not measured capacity, network distance or latency. Availability zones and replication are outside the visual scope. The ~1 ms storage-access reference comes from a published PlanetScale network-attached-storage workload, not measured Aurora latency or network-only timing.",
   "width": 1250,
-  "height": 530,
+  "height": 445,
   "duration": 520,
   "nodes": [
     {
@@ -68,37 +68,14 @@
       "color": "#a5a5a5"
     },
     {
-      "id": "tails",
-      "kind": "label",
-      "x": 25,
-      "y": 475,
-      "w": 590,
-      "h": 45,
-      "label": "Query tail latency rises",
-      "fontSize": 28,
-      "color": "#ff4d4d",
-      "opacity": 0
-    },
-    {
-      "id": "throughput",
-      "kind": "label",
-      "x": 645,
-      "y": 475,
-      "w": 580,
-      "h": 45,
-      "label": "Throughput falls when I/O-bound",
-      "fontSize": 27,
-      "opacity": 0
-    },
-    {
       "id": "io2",
       "kind": "label",
       "x": 496,
       "y": 268,
       "w": 334,
       "h": 38,
-      "label": "io2 ~400 µs",
-      "fontSize": 25,
+      "label": "~1 ms",
+      "fontSize": 27,
       "color": "#f35815"
     },
     {
@@ -108,8 +85,8 @@
       "y": 310,
       "w": 334,
       "h": 38,
-      "label": "gp3 ~1 ms",
-      "fontSize": 25,
+      "label": "storage access",
+      "fontSize": 21,
       "color": "#f35815"
     }
   ],
@@ -133,7 +110,7 @@
   "stages": [
     {
       "name": "today",
-      "heading": "AWS Aurora Postgres architecture",
+      "heading": "AWS Aurora Storage architecture",
       "emphasis": "",
       "description": "Memory serves cached pages. Reads requiring Aurora persistent storage cross the storage network to its shared cluster volume."
     },
@@ -190,14 +167,7 @@
       "heading": "Bottleneck → Network Hop for Storage I/O",
       "emphasis": "Network Hop for Storage I/O",
       "description": "A conditional I/O-bound workload: physical storage waits can raise query tail latency and reduce completed work at a given concurrency. More memory and tuning may help; an unchanged network hop does not imply an unchanged measured latency.",
-      "nodes": {
-        "tails": {
-          "opacity": 1
-        },
-        "throughput": {
-          "opacity": 1
-        }
-      },
+      "nodes": {},
       "links": {
         "read": {
           "stroke": "#ff4d4d"

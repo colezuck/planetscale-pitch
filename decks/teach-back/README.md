@@ -1,6 +1,6 @@
 # Teach-back presentation
 
-Six-slide animated Reveal.js draft for an Aurora PostgreSQL staff engineer: clean cover, actual Aurora architecture and vertical scale-up, local NVMe comparison, the original Postgres benchmark slide, Convex customer outcome, and a five-row tradeoffs comparison. Built locally, not included in the published site.
+Five-slide animated Reveal.js draft for an Aurora PostgreSQL staff engineer: clean cover, actual Aurora architecture and vertical scale-up, local NVMe comparison, the original Postgres benchmark slide, and Convex customer outcome. The five-row tradeoffs comparison is retained with `hidden: true`; volunteer its key tradeoff in the Metal speaking notes. Built locally, not included in the published site.
 
 Read the [slide plan](../../interview/teach-back/slide-plan.md), [speaking outline](../../interview/teach-back/script-outline.md), [Q&A](../../interview/teach-back/questions.md), and [evidence review](../../context/product/aurora-metal-teach-back.md). The comparison reuses the original Metal pitch’s EBS/local-NVMe hardware geometry and labels. The static storage figures are illustrative references: io2 ~400 µs, gp3 ~1 ms and local NVMe ~50 µs. Source qualifications live in the notes; these are not Aurora measurements or a measured Metal mean. Convex’s exact original slide is the active customer proof, with its two original chart panels and query/batch-commit results. Depot is hidden.
 
