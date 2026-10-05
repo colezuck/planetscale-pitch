@@ -30,3 +30,9 @@ assert.deepEqual(port({x:10,y:20,w:100,h:50},{side:'bottom',at:0.25}),[35,70]);
 assert.equal(route({a:{x:0,y:0,w:10,h:10},b:{x:30,y:30,w:10,h:10}},{from:{node:'a',side:'right'},to:{node:'b',side:'top'}}).path,'M10 5H35V30');
 assert.equal(ease(0),0);assert.equal(ease(1),1);
 console.log('Motion geometry, moving connectors, and interrupted reverse navigation checked.');
+
+const iconStart = {nodes:{disk:{iconScale:1,label:"SSD"}},links:{}};
+const iconEnd = {nodes:{disk:{iconScale:1.8,label:"SSD"}},links:{}};
+const iconMid = interpolate(iconStart,iconEnd,0.5);
+assert.equal(iconMid.nodes.disk.iconScale,1.4);
+assert.equal(interpolate(iconMid,iconStart,1).nodes.disk.iconScale,1);

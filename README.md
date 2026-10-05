@@ -27,6 +27,8 @@ npm run build             # Audience HTML and deployment folder
 npm run build:presenter   # Local presenter HTML from the existing private script
 npm run check             # Repository paths, JavaScript syntax, Git whitespace
 npm run build:diagrams    # Build the reusable diagram lab
+npm run build:teach-back  # Build the five-slide interview deck
+npm run build:teach-back:presenter # Local presenter derived from the rehearsal outline
 npm run test:diagrams     # Scene compiler and motion geometry tests
 npm run serve             # Local preview on http://127.0.0.1:8765
 ```
@@ -40,7 +42,7 @@ Open `/decks/postgres-metal/index.html` on the local server for development, or 
 - `context/`: shared product research and source evidence, with original review dates.
 - `accounts/`: reusable account research; label facts, hypotheses, and open questions.
 - `interview/`: assignment requirements and preparation for each exercise.
-- `decks/`: presentation implementations and exports. The existing pitch works; the teach-back deck has not been authored.
+- `decks/`: presentation implementations and exports. The existing pitch works; the five-slide teach-back is a working draft awaiting aloud rehearsal.
 - `shared/`: guidance used across decks. The existing deck retains its runtime/artwork; reusable diagram primitives and motion now live in `shared/presentation/`.
 - `.agents/skills/`: repository-specific skills.
 - `scripts/`: repository maintenance checks.

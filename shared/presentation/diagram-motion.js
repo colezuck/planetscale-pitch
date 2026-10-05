@@ -29,7 +29,7 @@
     for (const type of ['nodes', 'links']) {
       for (const [id, end] of Object.entries(target[type])) {
         const old = start[type][id], item = result[type][id];
-        for (const field of ['x', 'y', 'w', 'h', 'opacity', 'fontSize', 'labelOffset']) {
+        for (const field of ['x', 'y', 'w', 'h', 'opacity', 'fontSize', 'iconScale', 'labelOffset']) {
           if (typeof end[field] === 'number') item[field] = mix(old[field], end[field], t);
         }
         for (const field of ['stroke', 'fill', 'color']) {
@@ -75,8 +75,9 @@
       if (kind === 'storage') {
         set(part('frame'), {fill: `url(#${scene.config.id}-dots)`});
         set(part('detail'), {x: x + 8, y: y + 8, width: w - 16, height: h - 16, fill: node.fill, stroke: node.stroke, opacity: 1});
-        const ix = x + 26, iy = y + h / 2 - 30;
-        set(part('icon'), {d: `M${ix} ${iy}h42v60h-42Z M${ix+8} ${iy+12}h26 M${ix+8} ${iy+24}h26 M${ix+8} ${iy+36}h26 M${ix+8} ${iy+48}h26`, stroke: node.stroke});
+        const scale = node.iconScale ?? 1;
+        const ix = x + 26, iy = y + h / 2 - 30 * scale;
+        set(part('icon'), {d: `M${ix} ${iy}h${42*scale}v${60*scale}h${-42*scale}Z M${ix+8*scale} ${iy+12*scale}h${26*scale} M${ix+8*scale} ${iy+24*scale}h${26*scale} M${ix+8*scale} ${iy+36*scale}h${26*scale} M${ix+8*scale} ${iy+48*scale}h${26*scale}`, stroke: node.stroke});
       }
       if (kind === 'chip' || kind === 'memory') {
         let pins = '';

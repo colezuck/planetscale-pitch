@@ -11,7 +11,8 @@ Checked October 4, 2026 during the reorganization and reusable-skill work.
 | Local presenter and source ZIP | Existing script, notes, presenter HTML, and reference source ZIP remain inside the deck's ignored local folders. They exist locally and are not published by the build. |
 | Reusable slide skill | Expanded [.agents skill](../.agents/skills/planetscale-pitch-design/SKILL.md), with sales framework, visual recipes, motion, corrections, and a clean deck starter. |
 | Diagram framework | Declarative SVG primitives, motion plugin, authoring guide, and [working lab](../decks/diagram-lab/README.md) are present under `shared/presentation/` and `decks/diagram-lab/`. |
-| Teach-back, cold-call, discovery content | Folder entry points and requirements are present; scripts, research, and the new teach-back deck have not been authored. |
+| Teach-back | Five-slide working deck, speaking outline, slide plan, Q&A, and Aurora/Metal evidence review are present. Aloud rehearsal remains. |
+| Cold-call and discovery content | Folder entry points and requirements are present; account research and exercise scripts have not been authored. |
 | Notion | No Notion content has been imported or synchronized. Add confirmed page links and reconcile settled material when requested. |
 
 The public repository can contain interview preparation by Cole's instruction. Credentials and existing private presenter files remain ignored. The tracked materials above form the reusable repository; ignored presenter files and the source ZIP remain local and are not included in a fresh clone.

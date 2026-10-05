@@ -21,6 +21,8 @@ Each node has `id`, `kind`, `x`, `y`, `w`, `h`, and `label`. Coordinates use the
 | `callout` | Red stipple/frame for a constraint or buyer question |
 | `label` | Text region without a frame |
 
+Optional `iconScale` (0.25–4, default 1) scales the storage glyph independently of its label and frame. Override it in a stage to animate glyph growth; reserve space for the largest glyph.
+
 Optional fields: `stroke`, `fill`, `color` as `#RRGGBB`; `fontSize`; `opacity` from 0 to 1. Defaults are muted border, dark fill, white text, 28px label, and full opacity. Font size range is 12–64 source SVG pixels; this validates numeric plausibility, not audience readability. Nodes including hardware pin extents must stay inside the viewBox. Reserve enough room for all stages, including initially hidden callouts.
 
 Nodes are independent objects with explicitly authored geometry. To resize a container and its inner CPU/memory, override each affected node. This lets labels stay the same font size while frames expand. It also makes component relationships visible in the source rather than implied by automatic layout.

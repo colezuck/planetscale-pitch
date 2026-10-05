@@ -1,0 +1,208 @@
+{
+  "id": "aurora-storage",
+  "title": "Aurora PostgreSQL compute and shared distributed storage",
+  "description": "Simplified read path for a provisioned Aurora PostgreSQL instance. Persistent data is in an SSD-backed shared distributed cluster volume. Cache hits do not take this storage path; eligible local Optimized Reads caches are omitted. Geometry is schematic, not measured capacity, network distance or latency. Availability zones and replication are outside the visual scope. Visible io2/gp3 latency values are illustrative EBS references, not measurements of Aurora or isolated network-hop latency.",
+  "width": 1250,
+  "height": 530,
+  "duration": 520,
+  "nodes": [
+    {
+      "id": "host",
+      "kind": "container",
+      "x": 15,
+      "y": 112,
+      "w": 465,
+      "h": 250,
+      "label": "Aurora DB instance",
+      "fontSize": 23
+    },
+    {
+      "id": "postgres",
+      "kind": "label",
+      "x": 55,
+      "y": 158,
+      "w": 380,
+      "h": 45,
+      "label": "Postgres",
+      "fontSize": 32
+    },
+    {
+      "id": "cpu",
+      "kind": "chip",
+      "x": 65,
+      "y": 244,
+      "w": 140,
+      "h": 68,
+      "label": "CPU",
+      "fontSize": 26
+    },
+    {
+      "id": "ram",
+      "kind": "memory",
+      "x": 268,
+      "y": 244,
+      "w": 164,
+      "h": 68,
+      "label": "Memory",
+      "fontSize": 25
+    },
+    {
+      "id": "volume",
+      "kind": "storage",
+      "x": 845,
+      "y": 165,
+      "w": 375,
+      "h": 144,
+      "label": "SSD storage",
+      "fontSize": 29
+    },
+    {
+      "id": "network",
+      "kind": "label",
+      "x": 496,
+      "y": 182,
+      "w": 334,
+      "h": 40,
+      "label": "Network I/O",
+      "fontSize": 23,
+      "color": "#a5a5a5"
+    },
+    {
+      "id": "tails",
+      "kind": "label",
+      "x": 25,
+      "y": 475,
+      "w": 590,
+      "h": 45,
+      "label": "Query tail latency rises",
+      "fontSize": 28,
+      "color": "#ff4d4d",
+      "opacity": 0
+    },
+    {
+      "id": "throughput",
+      "kind": "label",
+      "x": 645,
+      "y": 475,
+      "w": 580,
+      "h": 45,
+      "label": "Throughput falls when I/O-bound",
+      "fontSize": 27,
+      "opacity": 0
+    },
+    {
+      "id": "io2",
+      "kind": "label",
+      "x": 496,
+      "y": 268,
+      "w": 334,
+      "h": 38,
+      "label": "io2 ~400 µs",
+      "fontSize": 25,
+      "color": "#f35815"
+    },
+    {
+      "id": "gp3",
+      "kind": "label",
+      "x": 496,
+      "y": 310,
+      "w": 334,
+      "h": 38,
+      "label": "gp3 ~1 ms",
+      "fontSize": 25,
+      "color": "#f35815"
+    }
+  ],
+  "links": [
+    {
+      "id": "read",
+      "from": {
+        "node": "host",
+        "side": "right",
+        "at": 0.5
+      },
+      "to": {
+        "node": "volume",
+        "side": "left",
+        "at": 0.5
+      },
+      "stroke": "#a5a5a5",
+      "dashed": true
+    }
+  ],
+  "stages": [
+    {
+      "name": "today",
+      "heading": "AWS Aurora Postgres architecture",
+      "emphasis": "",
+      "description": "Memory serves cached pages. Reads requiring Aurora persistent storage cross the storage network to its shared cluster volume."
+    },
+    {
+      "name": "scale-up",
+      "heading": "Scale up → Network Hop remains",
+      "emphasis": "Network Hop remains",
+      "description": "A larger provisioned DB instance supplies more CPU, memory and potentially network bandwidth. Independently, the shared volume automatically grows as data increases. Shapes illustrate vertical compute scaling and data growth, not a manual EBS IOPS or SSD upgrade. The storage placement remains remote. The taller host, CPU, memory and SSD frames illustrate more capacity; the network connection remains in place. SSD storage is Aurora’s shared cluster volume, not an attached EBS volume.",
+      "nodes": {
+        "host": {
+          "y": 55,
+          "w": 535,
+          "h": 365
+        },
+        "postgres": {
+          "y": 131,
+          "w": 450
+        },
+        "cpu": {
+          "y": 220,
+          "w": 178,
+          "h": 132
+        },
+        "ram": {
+          "x": 292,
+          "y": 220,
+          "w": 214,
+          "h": 132
+        },
+        "volume": {
+          "x": 835,
+          "y": 115,
+          "w": 385,
+          "h": 245,
+          "iconScale": 1.8
+        },
+        "network": {
+          "x": 550,
+          "w": 285,
+          "fontSize": 22
+        },
+        "io2": {
+          "x": 550,
+          "w": 285
+        },
+        "gp3": {
+          "x": 550,
+          "w": 285
+        }
+      }
+    },
+    {
+      "name": "storage-waits",
+      "heading": "Bottleneck → Network Hop for Storage I/O",
+      "emphasis": "Network Hop for Storage I/O",
+      "description": "A conditional I/O-bound workload: physical storage waits can raise query tail latency and reduce completed work at a given concurrency. More memory and tuning may help; an unchanged network hop does not imply an unchanged measured latency.",
+      "nodes": {
+        "tails": {
+          "opacity": 1
+        },
+        "throughput": {
+          "opacity": 1
+        }
+      },
+      "links": {
+        "read": {
+          "stroke": "#ff4d4d"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "metal-capacity",
+  "title": "Metal capacity planning versus Aurora storage growth",
+  "description": "Metal uses a selected local drive size without disk autoscaling. Aurora persistent storage automatically grows with data independently of compute. Shapes and headroom are illustrative, not measurements. Metal resize copies data; eligible disk choices do not always require extra CPU or RAM.",
+  "width": 1250,
+  "height": 280,
+  "duration": 520,
+  "nodes": [
+    {
+      "id": "metal-name",
+      "kind": "label",
+      "x": 0,
+      "y": 0,
+      "w": 540,
+      "h": 40,
+      "label": "PlanetScale Metal",
+      "fontSize": 27,
+      "color": "#f35815"
+    },
+    {
+      "id": "network-name",
+      "kind": "label",
+      "x": 665,
+      "y": 0,
+      "w": 580,
+      "h": 40,
+      "label": "Aurora PostgreSQL",
+      "fontSize": 27
+    },
+    {
+      "id": "metal-disk",
+      "kind": "container",
+      "x": 10,
+      "y": 63,
+      "w": 440,
+      "h": 144,
+      "label": "Selected local drive",
+      "fontSize": 22,
+      "stroke": "#f35815",
+      "color": "#f35815"
+    },
+    {
+      "id": "metal-data",
+      "kind": "container",
+      "x": 28,
+      "y": 127,
+      "w": 260,
+      "h": 62,
+      "label": "Data",
+      "fontSize": 22,
+      "fill": "#202020",
+      "stroke": "#414141"
+    },
+    {
+      "id": "metal-space",
+      "kind": "label",
+      "x": 302,
+      "y": 127,
+      "w": 140,
+      "h": 62,
+      "label": "Headroom",
+      "fontSize": 21,
+      "color": "#f35815"
+    },
+    {
+      "id": "network-disk",
+      "kind": "container",
+      "x": 675,
+      "y": 63,
+      "w": 440,
+      "h": 144,
+      "label": "Shared cluster volume",
+      "fontSize": 22
+    },
+    {
+      "id": "network-data",
+      "kind": "container",
+      "x": 695,
+      "y": 127,
+      "w": 260,
+      "h": 62,
+      "label": "Data",
+      "fontSize": 22,
+      "fill": "#202020",
+      "stroke": "#414141"
+    },
+    {
+      "id": "network-space",
+      "kind": "label",
+      "x": 968,
+      "y": 127,
+      "w": 140,
+      "h": 62,
+      "label": "Headroom",
+      "fontSize": 21,
+      "color": "#a5a5a5"
+    },
+    {
+      "id": "metal-action",
+      "kind": "label",
+      "x": 10,
+      "y": 232,
+      "w": 540,
+      "h": 38,
+      "label": "Monitor → plan → resize",
+      "fontSize": 23,
+      "color": "#f35815"
+    },
+    {
+      "id": "network-action",
+      "kind": "label",
+      "x": 675,
+      "y": 232,
+      "w": 570,
+      "h": 38,
+      "label": "Storage grows with your data",
+      "fontSize": 23,
+      "color": "#a5a5a5"
+    }
+  ],
+  "links": [],
+  "stages": [
+    {
+      "name": "allocate",
+      "heading": "Faster I/O. Planned capacity.",
+      "emphasis": "Planned capacity.",
+      "description": "Choose Metal storage upfront and reserve room for growth. Aurora persistent storage grows automatically with data."
+    },
+    {
+      "name": "resize",
+      "heading": "Faster I/O. Planned capacity.",
+      "emphasis": "Planned capacity.",
+      "description": "A Metal resize copies data to larger drives. This is a planned operation rather than storage autoscaling. Aurora persistent storage grows independently of compute.",
+      "nodes": {
+        "metal-disk": {
+          "w": 550,
+          "label": "Resize to a larger drive"
+        },
+        "metal-space": {
+          "x": 302,
+          "w": 246
+        },
+        "network-disk": {
+          "w": 550,
+          "label": "Volume grows automatically"
+        },
+        "network-space": {
+          "x": 968,
+          "w": 246
+        }
+      }
+    }
+  ]
+}

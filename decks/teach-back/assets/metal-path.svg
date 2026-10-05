@@ -1,0 +1,60 @@
+<svg class="metal-comparison" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 635" role="img" aria-label="EBS io2 and gp3 storage reference versus PlanetScale Metal local NVMe mechanism. Visible io2 approximately 400 microseconds and gp3 approximately 1 millisecond are illustrative reference values, not AWS published universal averages. AWS specifies io2 below 500 microseconds for 16 KiB I/O and gp3 single-digit milliseconds. These are storage I/O figures, not isolated network-hop latency. The approximately 50 microsecond local NVMe value is PlanetScale’s educational storage round-trip example, not a measured Metal mean. These are different evidence bases, not a controlled benchmark or Aurora latency. Query p95/p99 are separate metrics. Memory/cache hits, replication and application networking are omitted.">
+  <defs>
+    <pattern id="teach-metal-host-dots" width="7" height="7" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="1.2" height="2" fill="#f35815"/><rect x="4.5" y="4.5" width="1.2" height="2" fill="#f35815"/></pattern>
+    <marker id="teach-metal-remote-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="#a5a5a5"/></marker>
+    <marker id="teach-metal-local-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="#f35815"/></marker>
+    <linearGradient id="teach-metal-drive-fill" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#f35815" stop-opacity=".16"/><stop offset="1" stop-color="#f35815" stop-opacity=".03"/></linearGradient>
+  </defs>
+
+  <g font-family="Inter,Arial,sans-serif" fill="#fafafa">
+    <text x="0" y="30" font-size="28" font-weight="500">EBS-backed Postgres</text>
+    <g transform="translate(652 2) scale(.077)" fill="#fafafa"><path d="m0 227c.00001067-125.369 101.631-227.00001067 227-227 92.178.00000806 171.524 54.9423 207.076 133.865l-300.211 300.211c-12.882-5.803-25.126-12.774-36.5966-20.776l186.2996-186.3h-56.568l-160.5132 160.513c-41.0789-41.079-66.48680548-97.829-66.4868-160.513z"/><path d="m454 227.078-226.922 226.922c125.307-.042 226.88-101.615 226.922-226.922z"/></g>
+    <text x="705" y="30" fill="#f35815" font-size="28" font-weight="500">PlanetScale Metal</text>
+  </g>
+
+  <!-- Explicit EBS reference; this is not Aurora’s persistent storage implementation. -->
+  <rect x="1" y="74" width="529" height="241" fill="#151515" stroke="#777" stroke-width="1.5"/>
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#a5a5a5">
+    <text x="265.5" y="111" text-anchor="middle" font-size="20">EC2 instance</text>
+  </g>
+  <rect x="28" y="135" width="474" height="63" fill="#111" stroke="#a5a5a5"/>
+  <text x="265" y="176" fill="#fafafa" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="31">Postgres</text>
+  <rect x="62" y="224" width="149" height="64" fill="#111" stroke="#777"/>
+  <path d="M76 218V224M93 218V224M110 218V224M127 218V224M144 218V224M161 218V224M178 218V224M195 218V224M76 288V294M93 288V294M110 288V294M127 288V294M144 288V294M161 288V294M178 288V294M195 288V294" stroke="#777"/>
+  <text x="136" y="265" fill="#fafafa" text-anchor="middle" font-family="ui-monospace,monospace" font-size="22">CPU</text>
+  <path d="M211 256H307" stroke="#777" stroke-width="2"/>
+  <rect x="307" y="224" width="161" height="64" fill="#111" stroke="#777"/>
+  <text x="388" y="265" fill="#fafafa" text-anchor="middle" font-family="ui-monospace,monospace" font-size="22">Memory</text>
+
+  <path d="M265 316V526" fill="none" stroke="#a5a5a5" stroke-width="2" stroke-dasharray="9 8" marker-end="url(#teach-metal-remote-arrow)"/>
+  <text x="288" y="365" fill="#a5a5a5" font-family="ui-monospace,monospace" font-size="21">Network I/O</text>
+
+  <rect x="29" y="542" width="473" height="80" fill="#111" stroke="#777"/>
+  <rect x="39" y="532" width="453" height="80" fill="#111" stroke="#aaa"/>
+  <g fill="none" stroke="#aaa"><rect x="67" y="554" width="36" height="36"/><path d="M73 561H97M73 569H97M73 577H90"/></g>
+  <text x="280" y="581" fill="#fafafa" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="29">EBS SSD volume</text>
+  <g class="latency-metric"><text x="288" y="398" fill="#fafafa" font-family="ui-monospace,monospace" font-size="25">io2 ~400 µs</text><text x="288" y="430" fill="#fafafa" font-family="ui-monospace,monospace" font-size="21">gp3 ~1 ms</text>
+  </g>
+
+  <!-- The full orange boundary denotes one physical host, including its local SSD. -->
+  <rect x="652" y="74" width="597" height="548" fill="url(#teach-metal-host-dots)" stroke="#f35815" stroke-width="2"/>
+  <rect x="660" y="82" width="581" height="532" fill="#151515"/>
+  <text x="950.5" y="111" text-anchor="middle" fill="#f35815" font-family="ui-monospace,monospace" font-size="20">One machine → compute + storage</text>
+  <rect x="680" y="135" width="541" height="63" fill="#111" stroke="#fafafa"/>
+  <text x="950" y="176" fill="#fafafa" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="31">Postgres</text>
+  <rect x="714" y="224" width="149" height="64" fill="#111" stroke="#aaa"/>
+  <path d="M728 218V224M745 218V224M762 218V224M779 218V224M796 218V224M813 218V224M830 218V224M847 218V224M728 288V294M745 288V294M762 288V294M779 288V294M796 288V294M813 288V294M830 288V294M847 288V294" stroke="#aaa"/>
+  <text x="788" y="265" fill="#fafafa" text-anchor="middle" font-family="ui-monospace,monospace" font-size="22">CPU</text>
+  <path d="M863 256H1060" stroke="#f35815" stroke-width="3"/>
+  <rect x="1060" y="224" width="161" height="64" fill="#111" stroke="#aaa"/>
+  <text x="1141" y="265" fill="#fafafa" text-anchor="middle" font-family="ui-monospace,monospace" font-size="22">Memory</text>
+
+  <path d="M950 256V485" fill="none" stroke="#f35815" stroke-width="4" marker-end="url(#teach-metal-local-arrow)"/>
+  <text x="975" y="363" fill="#f35815" font-family="ui-monospace,monospace" font-size="21">Local I/O</text>
+  <rect x="714" y="500" width="473" height="91" fill="url(#teach-metal-drive-fill)" stroke="#f35815" stroke-width="2"/>
+  <rect x="736" y="522" width="44" height="46" fill="#111" stroke="#f35815"/>
+  <rect x="742" y="528" width="32" height="34" fill="#111" stroke="#f35815"/>
+  <path d="M1187 511H1195M1187 520H1195M1187 529H1195M1187 538H1195M1187 547H1195M1187 556H1195M1187 565H1195M1187 574H1195" stroke="#f35815" stroke-width="2"/>
+  <text x="981" y="556" fill="#f35815" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="500">Local NVMe SSD</text>
+  <g class="latency-metric"><text x="975" y="408" fill="#f35815" font-family="ui-monospace,monospace" font-size="38">~50 µs</text></g>
+</svg>

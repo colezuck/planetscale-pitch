@@ -8,9 +8,9 @@ from pathlib import Path
 import re
 
 KINDS = {'container', 'chip', 'memory', 'storage', 'callout', 'label'}
-NODE_KEYS = {'id', 'kind', 'x', 'y', 'w', 'h', 'label', 'stroke', 'fill', 'color', 'fontSize', 'opacity'}
+NODE_KEYS = {'id', 'kind', 'x', 'y', 'w', 'h', 'label', 'stroke', 'fill', 'color', 'fontSize', 'opacity', 'iconScale'}
 LINK_KEYS = {'id', 'from', 'to', 'stroke', 'opacity', 'label', 'labelOffset', 'dashed'}
-DEFAULTS = {'stroke': '#a5a5a5', 'fill': '#111111', 'color': '#fafafa', 'fontSize': 28, 'opacity': 1}
+DEFAULTS = {'stroke': '#a5a5a5', 'fill': '#111111', 'color': '#fafafa', 'fontSize': 28, 'opacity': 1, 'iconScale': 1}
 IDENTIFIER = re.compile(r'[a-z][a-z0-9-]*\Z')
 COLOR = re.compile(r'#[0-9a-fA-F]{6}\Z')
 
@@ -38,7 +38,7 @@ def validate_node(node, width, height):
     identifier(node['id'], 'node.id')
     if node['kind'] not in KINDS:
         raise ValueError(f'Unknown node kind: {node["kind"]}')
-    for field in ['x', 'y', 'w', 'h', 'fontSize', 'opacity']:
+    for field in ['x', 'y', 'w', 'h', 'fontSize', 'opacity', 'iconScale']:
         number(node[field], f'{node["id"]}.{field}', 0)
     if node['w'] < 24 or node['h'] < 24 or not 12 <= node['fontSize'] <= 64 or node['opacity'] > 1:
         raise ValueError(f'{node["id"]}: invalid dimensions, font size, or opacity')
@@ -46,6 +46,7 @@ def validate_node(node, width, height):
     extension = 7 if node['kind'] == 'chip' else 6 if node['kind'] == 'storage' else 0
     if node['x'] < (7 if node['kind'] == 'chip' else 0) or node['y'] < (7 if node['kind'] == 'chip' else 0) or node['x'] + node['w'] + extension > width or node['y'] + node['h'] + extension > height:
         raise ValueError(f'{node["id"]}: node extends outside the viewBox')
+    number(node['iconScale'], f'{node["id"]}.iconScale', 0.25, 4)
     text(node['label'], f'{node["id"]}.label')
     for field in ['stroke', 'fill', 'color']:
         if not isinstance(node[field], str) or not COLOR.fullmatch(node[field]):
@@ -163,8 +164,9 @@ def compile_scene(scene):
         if kind == 'storage': pieces += rectangle('detail', x+8, y+8, w-16, h-16, node['fill'])
         icon = ''
         if kind == 'storage':
-            ix, iy = x+26, y+h/2-30
-            icon = f'M{ix} {iy}h42v60h-42Z ' + ' '.join(f'M{ix+8} {iy+offset}h26' for offset in [12,24,36,48])
+            scale = node['iconScale']
+            ix, iy = x+26, y+h/2-30*scale
+            icon = f'M{ix} {iy}h{42*scale}v{60*scale}h{-42*scale}Z ' + ' '.join(f'M{ix+8*scale} {iy+offset*scale}h{26*scale}' for offset in [12,24,36,48])
         if kind in {'chip', 'memory'}:
             for i in range(1, 7):
                 px = x+w*i/7
