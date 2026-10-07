@@ -60,9 +60,35 @@ dialog button{padding:10px 20px;background:#f35815;color:white;border:0;font:15p
 .capacity-table th:nth-child(2),.capacity-table td:nth-child(2){width:35%;color:var(--orange)}
 .capacity-table th:last-child,.capacity-table td:last-child{padding-left:24px}
 .capacity-table thead{display:none}
-.teach-cover .opening-hero{height:690px;flex-direction:row;gap:28px}
+.teach-cover .opening-hero{height:690px;flex-direction:column;gap:0}
+.cover-lockup{display:flex;align-items:center;gap:28px}
 .teach-cover .cover-brand{width:540px;margin-bottom:0}
 .reveal .teach-cover h1{font-size:100px;letter-spacing:-4.5px}
+.reveal .teach-outcomes h2{font-size:68px;line-height:1.1;letter-spacing:-2.8px}
+.outcome-columns{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:50px;margin-top:64px}
+.outcome-column{min-width:0}
+.reveal .outcome-column h3{font:500 46px/1.15 Inter,Arial,sans-serif;letter-spacing:-1.8px;color:var(--white);min-height:106px}
+.outcome-art{height:285px;margin-top:38px;display:flex;align-items:center;justify-content:center}
+.reveal .outcome-speed{width:180px;height:240px}
+.reveal .outcome-throughput{width:220px;height:240px}
+.reveal .outcome-ha-diagram{width:100%;height:auto}
+.reveal .aurora-business-impact{font-size:30px;line-height:1.4;margin-top:12px}
+
+/* Intercom: the original cost chart and the business outcomes, all visible. */
+.teach-intercom .intercom-heading{justify-content:flex-start;gap:20px}
+.intercom-heading img{width:64px;height:64px;filter:invert(1)}
+.intercom-heading h2{font-size:50px;letter-spacing:-2px}
+.reveal .intercom-scope{font:21px/1.4 var(--mono);color:var(--muted);margin-top:12px}
+.intercom-business-proof{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:42px;align-items:center;margin-top:40px}
+.intercom-cost-proof{margin:0;min-width:0}
+.intercom-cost-proof figcaption{display:flex;justify-content:space-between;font:21px/1.3 var(--mono);margin-bottom:16px}
+.reveal .intercom-cost-proof img{width:100%;height:auto;aspect-ratio:3915/1176;object-fit:contain;display:block}
+.reveal .intercom-cost-proof p{font:19px/1.4 var(--mono);color:var(--muted);margin-top:12px}
+.intercom-saving{border-left:1px solid var(--line);padding-left:36px}
+.intercom-saving strong{display:block;font-size:100px;letter-spacing:-5px;color:var(--orange);line-height:1.1}
+.reveal .intercom-saving p{font-size:29px;letter-spacing:-.8px;line-height:1.3;margin-top:12px}
+.intercom-saving span{display:block;color:var(--muted);font:19px/1.4 var(--mono);margin-top:12px}
+.reveal .intercom-customer-impact{font-size:38px;line-height:1.3;letter-spacing:-1.1px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
 
 /* Depot: original customer evidence, large results, and an expanding history schematic. */
 .reveal .depot-scope{font:22px/1.4 var(--mono);color:var(--muted);margin-top:20px}

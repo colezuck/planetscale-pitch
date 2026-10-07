@@ -1,82 +1,58 @@
-# Metal teach-back speaking outline
+# Metal teach-back — Speaking script
 
-Five-minute target including two brief check-ins; time aloud before the interview. Audience: an Aurora PostgreSQL staff engineer who thinks their current system is fine. One cover plus four teaching slides. The tradeoffs slide is retained but hidden; volunteer the tradeoff during Slide 3. Canonical settled script; [Notion](https://app.notion.com/p/3ef1840cbb9e8105a768d99d5570e754) holds the working story architecture. Reconciled October 4, 2026. [Evidence](../../context/product/aurora-metal-teach-back.md).
+Five minutes. Explain the mechanism through its effect on customer experience, growth capacity, operating cost and managed recovery. The outcome and teaching sections have short spoken paragraphs and one optional understanding question; the cover is just the introduction. Use the questions naturally; do not turn the five-minute explanation into discovery.
 
-## Slide 1 — PlanetScale Metal · 0:00–0:15
+Canonical presenter script; [Notion TeachBack](https://app.notion.com/p/3ef1840cbb9e8105a768d99d5570e754) reconciled October 6, 2026. [Evidence](../../context/product/aurora-metal-teach-back.md) holds sources and claim scope.
 
-“Metal puts persistent database storage on local NVMe alongside compute. Let's start with your Aurora architecture, see what changes, and discuss the tradeoff.”
+## Slide 1 — Intro
+You’re running Aurora and it’s working for you. I’ll show what PlanetScale Metal changes and how that can translate into business impact.
 
-**Advance:** Move directly from the clean cover to Aurora today.
+## Slide 2 — Impact of Metal
+Faster queries mean customers spend less time waiting for application features. For I/O-heavy workloads, Metal’s local NVMe can help keep that experience responsive.
 
-## Slide 2 — Aurora today, scale-up and storage waits · 0:15–1:35
+Higher throughput means the database can complete more work under load, giving the business more room for additional customers and more product usage.
 
-“Aurora may be working well today. The problem I would watch as your workload grows is keeping query responses fast and predictable.
+Managed high availability uses one primary and two replicas. PlanetScale handles recovery when the primary fails. That helps restore service without waiting for an engineer to intervene, while your team focuses on the product. Brief interruptions can still occur.
 
-Here is the relevant part of your architecture: PostgreSQL, CPU and memory in the database instance, with persistent data in a separate, shared SSD-backed storage volume. If a page is in memory, Postgres avoids the storage read. On a cache miss, it requests the page across the storage network.
+**Question:** Are speed, capacity and reliability a useful way to frame the comparison?
 
-Now scale up the database instance. More memory can reduce those misses, and a larger instance can provide useful compute and network capacity. Aurora's storage also grows automatically as data grows, independently of compute. But for a page that still needs persistent storage, the remote path remains.
+## Slide 3 — Case Study: Intercom
+Intercom shows what this can mean in practice. It’s a Vitess / MySQL customer using Metal’s local storage approach.
 
-When physical reads become a bottleneck, the query waits. That can affect your slowest responses, and limit throughput as concurrency increases. We should first check plans, indexes and waits; storage isn't the cause of every slow query.
+Peak-load I/O saturation on its PlanetScale EBS setup slowed the Inbox. Its immediate workaround was extra capacity and higher-IOPS io2 storage.
 
-Are physical reads a meaningful part of your slow queries, or does the working set mostly fit in memory?”
+With Metal, conversation loading became faster and more consistent, even at peak load, and database cost fell by over 60% compared with that previous EBS io2 setup. That’s a better experience for customers and a lower operating bill for the business.
 
-“The roughly one-millisecond figure is a published PlanetScale network-attached-storage workload example. It measures storage access, not the network hop alone, and is not a measurement of your Aurora database.”
+In its March 2025 report, Intercom also reported no availability issues caused by migrated databases and maintenance without customer downtime through Vitess failover.
 
-**Advance:** AWS Aurora Storage architecture → larger compute and SSD → Bottleneck → Network Hop for Storage I/O. Pause briefly for the check-in.
+**Question:** Does that connect the storage change to both customer experience and operating cost?
 
-## Slide 3 — What is Metal? · 1:35–2:40
+## Slide 4 — What is Metal? Aurora comparison
+Metal puts Postgres compute and persistent local NVMe on the same machine. Here’s how that compares with your Aurora setup: the database instance has the CPU and memory, while persistent data lives in a separate, shared SSD storage volume.
 
-“Here I’m using EBS-backed Postgres as a concrete storage reference; Aurora’s shared volume is a different implementation.
+When Aurora needs data that isn’t cached, it accesses that storage over the network. Under heavy I/O demand, storage waits can slow queries and limit how much work completes. Customers feel that as slower application features during busy periods.
 
-Metal changes where persistent data lives. Postgres, compute, memory and NVMe are on the same host. A local persistent page read avoids the separate storage network round trip.
+Metal changes that persistent storage path. Fast local NVMe can reduce waiting for storage-bound queries, while higher I/O capacity gives the database room to complete more work under load. The business impact is a responsive product with more headroom for usage and customer growth.
 
-That shorter path can reduce storage waiting. For an I/O-bound workload, the benefit can be faster query tails and more sustained throughput. It is not a promised multiplier: query plans, locks, CPU and caching still matter.
+More CPU, memory and tuning can still help on Aurora. Metal’s benefit depends on whether storage I/O is the constraint. The tradeoff is fixed drive capacity: leave headroom and plan resizing ahead of growth.
 
-Aurora can already use local NVMe for temporary data and eligible tiered caching through Optimized Reads. The distinction here is persistent storage placement, not whether Aurora has any local disk.
+**Question:** Is it clear how local storage can improve both query speed and capacity under load?
 
-AWS documents io2 Block Express averaging under 500 microseconds for sixteen-kibibyte I/O. AWS describes gp3 latency as single-digit milliseconds. PlanetScale’s illustrative local-NVMe access example is about 50 microseconds. These aren't matched Aurora-versus-Metal measurements, and we can't turn them into a promised query multiplier. We'd measure your actual storage reads and query tails separately. Metal's drives also have finite capacity; ‘no separately purchased IOPS tier’ doesn't mean unlimited hardware performance.”
+## Slide 5 — Show Benchmarks
+In this tested workload, Metal completed 16.3k queries per second versus 10.9k on Aurora, with lower p99 query latency.
 
-“The tradeoff is capacity planning. Metal uses fixed local drive capacity, so you reserve headroom and plan resizing, which copies data to new drives. Aurora’s storage grows automatically. If your queries mostly hit memory or aren’t storage-bound, Metal may offer less benefit.”
+That’s more work completed with faster responses for the slowest queries. The business relevance is capacity without sacrificing the customer experience. These results are specific to the benchmark workload.
 
-**Delivery:** Say this unprompted before advancing to the benchmark. The detailed tradeoffs table remains hidden as a backup.
+**Question:** Does that clarify why we look at both throughput and query latency?
 
-**Advance:** Both paths and all latency metrics are visible immediately. No metric reveal or animation on What is Metal. Keep the architecture stable. Average storage-read measurement: AWS `os.diskIO.auroraStorage.readLatency` in milliseconds; keep the metric name in Q&A.
+## Preparation cues — outside the speaking notes
 
-## Slide 4 — More QPS & Lower p99 on PlanetScale Metal
-
-“Here is the benchmark from our Postgres pitch: the same published test shows higher throughput and lower p99 on PlanetScale Metal. These are workload-specific benchmark results, not a universal improvement promise.”
-
-## Slide 5 — Convex reduced p99 query latency by over 50% · target 45–55 seconds
-
-“Convex's Chef workload moved from Aurora to PlanetScale Postgres. These are its original charts, with all percentile curves preserved. Query p99 changed from ten to fifteen milliseconds to five to seven milliseconds; batch-commit p99 changed from seventy-five to two hundred milliseconds to about twenty.
-
-This is a customer-reported result, not a controlled disk-only experiment or a forecast for your workload. We would benchmark your queries, cache behavior and concurrency separately.”
-
-**Advance:** Exact original Postgres-pitch slide, with its original charts, logo, quote, wording and styling. Depot is hidden from the current presentation; its source and script are retained.
-
-## Rehearsal checks
-
-- One problem: fast, predictable query responses as working set and concurrency grow.
-- Explain Aurora's actual storage architecture; no provisioned-EBS-IOPS story.
-- Keep the cache-miss condition and Optimized Reads nuance.
-- Quote Convex's query and batch-commit p99 separately; retain customer-workload qualifications.
-- Preserve the capacity tradeoff and two check-ins if shortening for time.
-- If uncertain: “I don't know the exact behavior for that configuration. I'd confirm it with our solutions engineer and the current docs.”
-
-Visible storage references use io2 ~400 µs and gp3 ~1 ms at Cole’s request. Treat these as illustrative values, not universal AWS averages or Aurora/network-only measurements. AWS publishes io2 <500 µs average for 16 KiB I/O on Nitro and gp3 single-digit milliseconds. Local NVMe ~50 µs remains an illustrative example.
-
-## Hidden backup — Metal tradeoffs · target 45–60 seconds
-
-“The tradeoff is less storage waiting versus more capacity planning. Metal puts persistent data on local NVMe. A local page read avoids the separate storage network hop, but hardware capacity is still finite.
-
-Choose a drive size upfront, reserve headroom and monitor growth. Drives don't autoscale. Resizing copies data to new drives and generally takes longer than a network-storage resize. Several drive sizes can be available at the same CPU and RAM size.
-
-Aurora's shared persistent volume grows automatically, independently of compute. Its compute instances can resize separately without moving persistent data to a new local drive.
-
-For cost, Metal doesn't require a separate IOPS tier. Aurora Standard charges for read/write I/O; I/O-Optimized doesn't. Compare the complete configuration, including selected capacity and unused headroom, rather than promising savings.
-
-If your working set is cached, storage waiting may be small; eligible Aurora Optimized Reads tiered caches can already reduce remote reads. I would benchmark an I/O-bound workload at realistic concurrency, then weigh query tails and throughput against growth and resizing effort.
-
-Which matters more for this workload: reducing storage waiting or keeping capacity growth automatic?”
-
-**Advance:** All five comparison rows are visible together. No capacity diagrams or fragment sequence. Use “Aurora” in the column header; its shared distributed storage is not an ordinary EBS volume. Confirm version-specific volume limits and resize duration in Q&A.
+- Timing → Intro 10s; outcomes 45s; Intercom 75s; Metal comparison 120s; benchmark 50s. Rehearse aloud; timings are targets.
+- Questions → one per slide, used naturally to check understanding. Ask the Metal question if time is tight; leave deeper discussion for the Q&A block.
+- Availability → HA clusters have replicas and automated failover; single-node plans do not offer the same resilience. Brief disruption and application retries remain possible. Aurora also offers HA; local NVMe alone is not HA. [Postgres operations](https://planetscale.com/docs/postgres/operations-philosophy).
+- Intercom → Aurora MySQL/custom sharding → PlanetScale Vitess/EBS → Metal. Its 60%+ saving is database cost versus previous EBS io2, not its total cloud bill or a Postgres result. The 90%+ query improvement in the article involved materialized-view rewrites; do not attribute it to Metal. [Customer report](https://www.intercom.com/blog/evolving-intercoms-database-infrastructure-lessons-and-progress/).
+- Mechanism → local attachment and NVMe work together. No verified raw-drive comparison with a particular Aurora SSD. [Metal docs](https://planetscale.com/docs/metal).
+- Metrics → Aurora has no universal network-hop latency in these sources. The combined comparison uses Aurora’s actual shared-storage path. Its ~1 ms network-storage workload and ~50 µs local-NVMe access examples have different evidence bases; they are not Aurora measurements or a matched benchmark. IOPS and QPS are different metrics; hardware capacity is finite.
+- Tradeoffs → capacity planning stays in the Metal notes; the detailed tradeoffs slide remains hidden.
+- Unknown → “I don’t know that configuration. I’d confirm it.”
+- ROI → Intercom demonstrates improved service performance and lower database operating cost. Its outcome reflects the complete change from EBS io2 to Metal; the report does not isolate a dollar saving from the network hop alone. Workload growth and hardware still require planning.

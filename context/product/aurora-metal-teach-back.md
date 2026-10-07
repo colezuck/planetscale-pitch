@@ -62,6 +62,25 @@ The current art-free table compares **PlanetScale Metal** with **Aurora**, using
 
 Sources: [PlanetScale Metal capacity, resizing and workload fit](https://planetscale.com/docs/metal), [AWS Aurora shared storage, growth and I/O billing](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.StorageReliability.html), [Aurora pricing](https://aws.amazon.com/rds/aurora/pricing/), [Aurora Optimized Reads](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.optimized.reads.html). Rechecked October 4, 2026.
 
-## Current customer proof: Convex
+## Retained customer proof: Convex (hidden)
 
-The active TeachBack uses the exact Convex slide from the Postgres pitch, including its original charts, logo, text, quote and CSS. Query p99: 10–15 ms to 5–7 ms; batch-commit p99: 75–200 ms to ~20 ms. Customer-reported Chef workload results, not a controlled storage-only comparison or a performance forecast. [Original Convex report](https://news.convex.dev/powered-by-planetscale-for-postgres/). Depot is temporarily hidden from audience and presenter builds; its retained section above is evidence for later use, not the current slide narrative.
+The retained hidden Convex source uses the exact Convex slide from the Postgres pitch, including its original charts, logo, text, quote and CSS. Query p99: 10–15 ms to 5–7 ms; batch-commit p99: 75–200 ms to ~20 ms. Customer-reported Chef workload results, not a controlled storage-only comparison or a performance forecast. [Original Convex report](https://news.convex.dev/powered-by-planetscale-for-postgres/). Depot is temporarily hidden from audience and presenter builds; its retained section above is evidence for later use, not the current slide narrative.
+
+
+## Business framing and active proof — October 6, 2026
+
+One problem: growing I/O demand can create storage waits that slow user-facing features and limit how much work completes at peak load. Metal changes the persistent storage path to local NVMe; faster access and higher I/O capacity can improve storage-bound workloads. Business relevance is responsiveness and growth headroom, not guaranteed user counts. The Aurora diagram is now static and has no latency estimate. [Metal documentation](https://planetscale.com/docs/metal).
+
+HA is a managed cluster capability. PlanetScale’s operator detects primary failure and promotes a healthy replica; single-node configurations do not provide that redundancy. Failover can briefly disrupt service and applications need suitable reconnection/retry behavior. Aurora also supports HA; this is not an Aurora availability comparison or an always-up promise. [Operations philosophy](https://planetscale.com/docs/postgres/operations-philosophy).
+
+Intercom replaces Convex as visible customer proof. Its path was Aurora MySQL/custom sharding → PlanetScale Vitess on EBS → Metal. Peak-load IOPS saturation affected Inbox responsiveness, prompting extra capacity/io2 as a workaround. Intercom reports more consistent Inbox loading, 60%+ lower database cost versus its prior EBS io2 setup, and no availability issues caused by migrated databases at the time of its March 2025 report. Maintenance without customer downtime was attributed to Vitess failover. The separate 90%+ query improvement involved materialized-view rewrites and is not a Metal-only result. [Intercom report](https://www.intercom.com/blog/evolving-intercoms-database-infrastructure-lessons-and-progress/); [original art and scope](../evidence/intercom-teach-back.md).
+
+
+## Centralized comparison — October 6, 2026
+
+The visible flow is now Intro → Impact → Intercom → What is Metal / Aurora comparison → benchmark. The separate Aurora slide is retained but hidden. The combined diagram uses Aurora’s actual DB instance and shared distributed SSD-backed cluster volume, not a conventional EC2/EBS attachment. The earlier io2/gp3 and illustrative local-NVMe latency figures are removed from this direct Aurora comparison; benchmark evidence remains workload-specific. Notes explain Metal first, compare the remote Aurora path, connect storage waits to customer experience and growth headroom, then volunteer capacity planning.
+
+
+## Storage-access references restored — October 6, 2026
+
+At Cole’s request, the combined diagram again shows ~1 ms beside Network I/O and ~50 µs beside Local I/O. Both are visibly labeled as examples. The ~1 ms comes from a [PlanetScale production workload on network-attached storage](https://planetscale.com/blog/planetscale-metal-theres-no-replacement-for-displacement); the ~50 µs is a [local-NVMe access round-trip example](https://planetscale.com/blog/io-devices-and-latency). They come from different evidence bases. Neither establishes Aurora storage latency, isolated network-hop timing, a measured Metal mean or a controlled speedup ratio. The left diagram still depicts actual Aurora shared storage; its network-storage workload reference is explicitly an example.

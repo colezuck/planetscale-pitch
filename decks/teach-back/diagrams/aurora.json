@@ -1,10 +1,10 @@
 {
   "id": "aurora-storage",
   "title": "Aurora PostgreSQL compute and shared distributed storage",
-  "description": "Simplified read path for a provisioned Aurora PostgreSQL instance. Persistent data is in an SSD-backed shared distributed cluster volume. Cache hits do not take this storage path; eligible local Optimized Reads caches are omitted. Geometry is schematic, not measured capacity, network distance or latency. Availability zones and replication are outside the visual scope. The ~1 ms storage-access reference comes from a published PlanetScale network-attached-storage workload, not measured Aurora latency or network-only timing.",
+  "description": "Simplified Aurora PostgreSQL persistent storage read path. Postgres, CPU and memory reside in the DB instance; uncached persistent reads use a separate shared distributed SSD-backed cluster volume. Memory/cache hits and eligible Optimized Reads caches are omitted, as are Aurora HA and replication. Heavy I/O demand can increase storage waits and affect application responsiveness; this is conditional, not a diagnosis of every Aurora workload. No latency estimate is asserted.",
   "width": 1250,
   "height": 445,
-  "duration": 520,
+  "duration": 0,
   "nodes": [
     {
       "id": "host",
@@ -53,8 +53,8 @@
       "y": 165,
       "w": 375,
       "h": 144,
-      "label": "SSD storage",
-      "fontSize": 29
+      "label": "Shared SSD storage",
+      "fontSize": 27
     },
     {
       "id": "network",
@@ -66,28 +66,6 @@
       "label": "Network I/O",
       "fontSize": 23,
       "color": "#a5a5a5"
-    },
-    {
-      "id": "io2",
-      "kind": "label",
-      "x": 496,
-      "y": 268,
-      "w": 334,
-      "h": 38,
-      "label": "~1 ms",
-      "fontSize": 27,
-      "color": "#f35815"
-    },
-    {
-      "id": "gp3",
-      "kind": "label",
-      "x": 496,
-      "y": 310,
-      "w": 334,
-      "h": 38,
-      "label": "storage access",
-      "fontSize": 21,
-      "color": "#f35815"
     }
   ],
   "links": [
@@ -112,67 +90,7 @@
       "name": "today",
       "heading": "AWS Aurora Storage architecture",
       "emphasis": "",
-      "description": "Memory serves cached pages. Reads requiring Aurora persistent storage cross the storage network to its shared cluster volume."
-    },
-    {
-      "name": "scale-up",
-      "heading": "Scale up → Network Hop remains",
-      "emphasis": "Network Hop remains",
-      "description": "A larger provisioned DB instance supplies more CPU, memory and potentially network bandwidth. Independently, the shared volume automatically grows as data increases. Shapes illustrate vertical compute scaling and data growth, not a manual EBS IOPS or SSD upgrade. The storage placement remains remote. The taller host, CPU, memory and SSD frames illustrate more capacity; the network connection remains in place. SSD storage is Aurora’s shared cluster volume, not an attached EBS volume.",
-      "nodes": {
-        "host": {
-          "y": 55,
-          "w": 535,
-          "h": 365
-        },
-        "postgres": {
-          "y": 131,
-          "w": 450
-        },
-        "cpu": {
-          "y": 220,
-          "w": 178,
-          "h": 132
-        },
-        "ram": {
-          "x": 292,
-          "y": 220,
-          "w": 214,
-          "h": 132
-        },
-        "volume": {
-          "x": 835,
-          "y": 115,
-          "w": 385,
-          "h": 245,
-          "iconScale": 1.8
-        },
-        "network": {
-          "x": 550,
-          "w": 285,
-          "fontSize": 22
-        },
-        "io2": {
-          "x": 550,
-          "w": 285
-        },
-        "gp3": {
-          "x": 550,
-          "w": 285
-        }
-      }
-    },
-    {
-      "name": "storage-waits",
-      "heading": "Bottleneck → Network Hop for Storage I/O",
-      "emphasis": "Network Hop for Storage I/O",
-      "description": "A conditional I/O-bound workload: physical storage waits can raise query tail latency and reduce completed work at a given concurrency. More memory and tuning may help; an unchanged network hop does not imply an unchanged measured latency.",
-      "nodes": {},
-      "links": {
-        "read": {
-          "stroke": "#ff4d4d"
-        }
-      }
+      "description": "Simplified Aurora PostgreSQL persistent storage read path. Postgres, CPU and memory reside in the DB instance; uncached persistent reads use a separate shared distributed SSD-backed cluster volume. Memory/cache hits and eligible Optimized Reads caches are omitted, as are Aurora HA and replication. Heavy I/O demand can increase storage waits and affect application responsiveness; this is conditional, not a diagnosis of every Aurora workload. No latency estimate is asserted."
     }
   ]
 }

@@ -3,17 +3,31 @@
     "id": "problem",
     "label": "PlanetScale Metal",
     "theme": "opening teach-cover",
-    "html": "<div class=\"opening-hero\"><div class=\"cover-brand\"><img src=\"assets/planetscale-white.svg\" alt=\"PlanetScale\"></div><h1 class=\"accent\">Metal</h1></div>"
+    "html": "<div class=\"opening-hero\"><div class=\"cover-lockup\"><div class=\"cover-brand\"><img src=\"assets/planetscale-white.svg\" alt=\"PlanetScale\"></div><h1 class=\"accent\">Metal</h1></div></div>"
+  },
+  {
+    "id": "outcomes",
+    "label": "Impact of Metal",
+    "theme": "teach teach-outcomes",
+    "html": "<h2>Impact of <span class=\"accent\">Metal</span></h2>\n<div class=\"outcome-columns\">\n <div class=\"outcome-column\"><h3>Faster<br>Queries</h3><div class=\"outcome-art\"><svg class=\"outcome-speed\" viewBox=\"0 0 180 240\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M110 18 40 130h56l-13 92 71-122h-58Z\" fill=\"none\" stroke=\"#f35815\" stroke-width=\"3\"/><path d=\"M8 87h32M0 126h27M8 166h32\" stroke=\"#777777\" stroke-width=\"2\"/></svg></div></div>\n <div class=\"outcome-column\"><h3>Higher<br>Throughput</h3><div class=\"outcome-art\"><svg class=\"outcome-throughput\" viewBox=\"0 0 220 240\" aria-hidden=\"true\" focusable=\"false\"><g fill=\"none\" stroke=\"#f35815\" stroke-width=\"3\"><path d=\"M28 48h156m-22-22 22 22-22 22M28 120h156m-22-22 22 22-22 22M28 192h156m-22-22 22 22-22 22\"/></g><path d=\"M8 31v34M8 103v34M8 175v34\" stroke=\"#777777\" stroke-width=\"2\"/></svg></div></div>\n <div class=\"outcome-column outcome-ha\"><h3>Managed High<br>Availability</h3><div class=\"outcome-art\"><svg class=\"outcome-ha-diagram\" viewBox=\"0 0 460 270\" role=\"img\" aria-labelledby=\"outcomes-ha-title outcomes-ha-desc\"><title id=\"outcomes-ha-title\">Managed high availability: one primary and two replicas</title><desc id=\"outcomes-ha-desc\">Simplified PlanetScale Postgres HA cluster. The primary replicates to two replicas. A healthy replica can be promoted by the managed operator if the primary fails. Links depict replication, not application query routing. Availability zones and operator detail are omitted.</desc>\n <g fill=\"none\" stroke=\"#777777\" stroke-width=\"2\"><path d=\"M230 101v44H94v49M230 145h136v49\"/><path d=\"m86 184 8 10 8-10m256 0 8 10 8-10\"/></g>\n <g fill=\"#141619\" stroke-width=\"1.5\"><rect x=\"156\" y=\"13\" width=\"148\" height=\"88\" stroke=\"#f35815\"/><rect x=\"162\" y=\"19\" width=\"136\" height=\"76\" stroke=\"#f35815\"/><rect x=\"14\" y=\"194\" width=\"160\" height=\"62\" stroke=\"#777777\"/><rect x=\"20\" y=\"200\" width=\"148\" height=\"50\" stroke=\"#777777\"/><rect x=\"286\" y=\"194\" width=\"160\" height=\"62\" stroke=\"#777777\"/><rect x=\"292\" y=\"200\" width=\"148\" height=\"50\" stroke=\"#777777\"/></g>\n <g text-anchor=\"middle\" font-family=\"ui-monospace,SFMono-Regular,Menlo,Consolas,monospace\" font-size=\"25\"><text x=\"230\" y=\"64\" fill=\"#f35815\">Primary</text><text x=\"94\" y=\"234\" fill=\"#fafafa\">Replica 1</text><text x=\"366\" y=\"234\" fill=\"#fafafa\">Replica 2</text></g>\n </svg></div></div>\n</div>"
+  },
+  {
+    "id": "intercom",
+    "label": "Intercom: faster Inbox, 60%+ lower database cost",
+    "theme": "customer-case teach-intercom",
+    "html": "<div class=\"case-heading intercom-heading\"><img src=\"assets/intercom-symbol.svg\" alt=\"\"><h2>Intercom: faster Inbox, <span class=\"accent\">lower cost.</span></h2></div>\n<p class=\"intercom-scope\">Vitess / MySQL · PlanetScale EBS → Metal</p>\n<div class=\"intercom-business-proof\">\n <figure class=\"intercom-cost-proof\"><figcaption><span>Previous EBS io2 setup</span><span class=\"accent\">PlanetScale Metal</span></figcaption><img src=\"assets/intercom-original-cost-full.jpg\" alt=\"Intercom’s original hourly database cost chart shows a sharp drop when Metal went live. Source image unchanged; the published chart has no numeric axis labels. The separately reported 60%+ saving compares database cost with its previous EBS io2 setup.\"><p>Hourly database cost</p></figure>\n <div class=\"intercom-saving\"><strong>60%+</strong><p>lower database cost</p><span>versus previous EBS io2 setup</span></div>\n</div>\n<p class=\"intercom-customer-impact\">Faster, more consistent Inbox loading.<br><span class=\"accent\">Even at peak load.</span></p>"
   },
   {
     "id": "aurora",
-    "label": "Aurora today: scale up and storage waits",
+    "label": "Aurora: storage I/O and customer experience",
     "theme": "teach teach-cloud",
-    "diagramFile": "diagrams/aurora.json"
+    "diagramFile": "diagrams/aurora.json",
+    "afterHtml": "<p class=\"aurora-business-impact\">Under heavy I/O demand, <span class=\"accent\">storage waits can slow customer-facing features.</span></p>",
+    "hidden": true
   },
   {
     "id": "metal",
-    "label": "EBS reference versus Metal: storage access latency",
+    "label": "What is Metal: local NVMe versus Aurora shared storage",
     "theme": "teach teach-comparison",
     "html": "<h2>What is <span class=\"accent\">Metal?</span></h2>\n{{METAL_PATH}}"
   },
@@ -27,7 +41,8 @@
     "id": "convex",
     "label": "Convex reduced p99 query latency by over 50%",
     "theme": "customer-case convex",
-    "html": "<div class=\"case-heading convex-heading\"><img class=\"convex-title-symbol\" src=\"assets/convex-symbol-color.svg\" alt=\"\"><h2>Convex reduced p99 query latency by over 50%</h2></div><div class=\"convex-curves\"><div class=\"convex-original-grid\"><div><div class=\"source-provider-row\"><span>AWS Aurora</span><span>PlanetScale Postgres</span></div><div class=\"convex-source-frame\"><img src=\"assets/convex-original-results.png\" alt=\"Original Convex index query latency chart. All five percentile curves, original axes and legend are preserved; values are in seconds.\"></div><div class=\"convex-result\"><span>Query p99</span><div>10–15 ms <i>→</i> <strong>5–7 ms</strong></div></div></div><div><div class=\"source-provider-row\"><span>AWS Aurora</span><span>PlanetScale Postgres</span></div><div class=\"convex-source-frame commit-source\"><img src=\"assets/convex-original-results.png\" alt=\"Original Convex database commit latency chart. All five percentile curves, original axes and legend are preserved; values are in seconds.\"></div><div class=\"convex-result\"><span>Batch-commit p99</span><div>75–200 ms <i>→</i> <strong>~20 ms</strong></div></div></div></div></div><div class=\"convex-quote\"><q>p50 is the new p99.</q><span>Jamie Turner | CEO of Context</span></div>"
+    "html": "<div class=\"case-heading convex-heading\"><img class=\"convex-title-symbol\" src=\"assets/convex-symbol-color.svg\" alt=\"\"><h2>Convex reduced p99 query latency by over 50%</h2></div><div class=\"convex-curves\"><div class=\"convex-original-grid\"><div><div class=\"source-provider-row\"><span>AWS Aurora</span><span>PlanetScale Postgres</span></div><div class=\"convex-source-frame\"><img src=\"assets/convex-original-results.png\" alt=\"Original Convex index query latency chart. All five percentile curves, original axes and legend are preserved; values are in seconds.\"></div><div class=\"convex-result\"><span>Query p99</span><div>10–15 ms <i>→</i> <strong>5–7 ms</strong></div></div></div><div><div class=\"source-provider-row\"><span>AWS Aurora</span><span>PlanetScale Postgres</span></div><div class=\"convex-source-frame commit-source\"><img src=\"assets/convex-original-results.png\" alt=\"Original Convex database commit latency chart. All five percentile curves, original axes and legend are preserved; values are in seconds.\"></div><div class=\"convex-result\"><span>Batch-commit p99</span><div>75–200 ms <i>→</i> <strong>~20 ms</strong></div></div></div></div></div><div class=\"convex-quote\"><q>p50 is the new p99.</q><span>Jamie Turner | CEO of Convex</span></div>",
+    "hidden": true
   },
   {
     "id": "depot",

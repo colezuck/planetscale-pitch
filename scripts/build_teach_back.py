@@ -21,8 +21,8 @@ if args.presenter:
     script = {}
     for slide, section in zip(slides, sections):
         section = section.split('\n## ', 1)[0]
-        points = [re.sub(r'\*\*([^*]+)\*\*', r'\1', paragraph).strip('“”')
-                  for paragraph in section.strip().split('\n\n') if paragraph.strip()]
+        points = [re.sub(r'^[-*]\s+', '', re.sub(r'\*\*([^*]+)\*\*', r'\1', paragraph)).strip('“”')
+                  for paragraph in re.split(r'\n\s*\n|\n(?=[-*]\s+)', section.strip()) if paragraph.strip()]
         script[slide['id']] = points
     (DECK / 'private').mkdir(exist_ok=True)
     (DECK / 'private/speaker-outline.json').write_text(json.dumps(script, ensure_ascii=False, indent=2) + '\n')
